@@ -10,7 +10,7 @@ requiredDataConnectors:
   - connectorId: AzureActiveDirectory
     dataTypes:
       - AuditLogs
-queryFrequency: 1d
+queryFrequency: 1h
 queryPeriod: 14d
 triggerOperator: gt
 triggerThreshold: 0
