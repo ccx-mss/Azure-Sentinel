@@ -21,7 +21,7 @@ relevantTechniques:
   - T1528
   - T1550
 query: |
-  let detectionTime = 1d;
+  let detectionTime = 1h;
   let joinLookback = 14d;
   AuditLogs
   | where TimeGenerated > ago(detectionTime)

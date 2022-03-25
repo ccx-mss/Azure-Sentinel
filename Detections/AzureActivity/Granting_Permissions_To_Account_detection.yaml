@@ -19,7 +19,7 @@ relevantTechniques:
 query: |
 
   let starttime = 14d;
-  let endtime = 1d;
+  let endtime = 1h;
   // The number of operations below which an IP address is considered an unusual source of role assignment operations
   let alertOperationThreshold = 5;
   let createRoleAssignmentActivity = AzureActivity
