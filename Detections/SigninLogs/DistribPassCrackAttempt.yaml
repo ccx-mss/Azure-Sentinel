@@ -58,5 +58,15 @@ entityMappings:
     fieldMappings:
       - identifier: Address
         columnName: IPCustomEntity
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+incidentConfiguration:
+  createIncident: true
+  groupingConfiguration:
+    enabled: true
+    groupByEntities: [ "Account" ]
+    lookbackDuration: 1d
+    matchingMethod: Selected
+    reopenClosedIncident: false
 version: 1.0.0
 kind: Scheduled
