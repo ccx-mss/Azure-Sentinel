@@ -19,8 +19,8 @@ relevantTechniques:
   - T1114
   - T1020
 query: |
-  let queryfrequency = 1d;
-  let queryperiod = 7d;
+  let queryfrequency = 1h;
+  let queryperiod = 7h;
   OfficeActivity
   | where TimeGenerated > ago(queryperiod)
   | where OfficeWorkload =~ "Exchange"
