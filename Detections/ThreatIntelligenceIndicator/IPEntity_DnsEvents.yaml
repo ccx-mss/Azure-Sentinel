@@ -48,7 +48,7 @@ query: |
   | summarize DNS_TimeGenerated = arg_max(DNS_TimeGenerated , *) by IndicatorId, SingleIP
   | project DNS_TimeGenerated, Description, ActivityGroupNames, IndicatorId, ThreatType, Url, DomainName, ExpirationDateTime, ConfidenceScore,
   TI_ipEntity, Computer, EventId, SubType, ClientIP, Name, IPAddresses, NetworkIP, NetworkDestinationIP, NetworkSourceIP, EmailSourceIpAddress
-  | extend timestamp = DNS_TimeGenerated, IPCustomEntity = ClientIP, HostCustomEntity = Computer, URLCustomEntity = Url
+  | extend timestamp = DNS_TimeGenerated, IPCustomEntity = TI_ipEntity, HostCustomEntity = Computer, URLCustomEntity = Url
 entityMappings:
   - entityType: Host
     fieldMappings:
@@ -62,5 +62,15 @@ entityMappings:
     fieldMappings:
       - identifier: Url
         columnName: URLCustomEntity
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+incidentConfiguration:
+  createIncident: true
+  groupingConfiguration:
+    enabled: true
+    groupByEntities: [ "IP" ]
+    lookbackDuration: 1d
+    matchingMethod: Selected
+    reopenClosedIncident: false
 version: 1.2.3
 kind: Scheduled
