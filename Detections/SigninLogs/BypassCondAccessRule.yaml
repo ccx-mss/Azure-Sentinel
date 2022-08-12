@@ -33,10 +33,11 @@ relevantTechniques:
 query: |
 
   let threshold = 1;
+  let cExclude = (_GetWatchlist('conditional_bypass_status_codes') | project errorCode);
   let aadFunc = (tableName:string){
   table(tableName)
   | where ConditionalAccessStatus == 1 or ConditionalAccessStatus =~ "failure"
-  | extend DeviceDetail = todynamic(DeviceDetail), Status = todynamic(DeviceDetail), LocationDetails = todynamic(LocationDetails)
+  | extend DeviceDetail = todynamic(DeviceDetail), Status = todynamic(Status), LocationDetails = todynamic(LocationDetails)
   | extend OS = DeviceDetail.operatingSystem, Browser = DeviceDetail.browser
   | extend State = tostring(LocationDetails.state), City = tostring(LocationDetails.city), Region = tostring(LocationDetails.countryOrRegion) 
   | extend StatusCode = tostring(Status.errorCode), StatusDetails = tostring(Status.additionalDetails)
@@ -57,6 +58,7 @@ query: |
   let aadSignin = aadFunc("SigninLogs");
   let aadNonInt = aadFunc("AADNonInteractiveUserSignInLogs");
   union isfuzzy=true aadSignin, aadNonInt
+  | where not (Status has_any (cExclude))
 entityMappings:
   - entityType: Account
     fieldMappings:
