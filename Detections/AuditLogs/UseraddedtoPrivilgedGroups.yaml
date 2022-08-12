@@ -24,7 +24,7 @@ tags:
 query: |
   let OperationList = dynamic(["Add member to role","Add member to role in PIM requested (permanent)"]);
   let PrivilegedGroups = dynamic(["UserAccountAdmins","PrivilegedRoleAdmins","TenantAdmins"]);
-  let uExclude = (_GetWatchlist('privileged_groups_account') | project Account);
+  let uExclude = (_GetWatchlist('privileged_accounts') | project Account);
   AuditLogs
   //| where LoggedByService =~ "Core Directory"
   | where Category =~ "RoleManagement"
