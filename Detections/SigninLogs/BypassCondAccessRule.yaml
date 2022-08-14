@@ -33,7 +33,7 @@ relevantTechniques:
 query: |
 
   let threshold = 1;
-  let cExclude = (_GetWatchlist('conditional_bypass_status_codes') | project errorCode);
+  let cExclude = (_GetWatchlist('azad_conditional_bypass_status_codes') | project errorCode);
   let aadFunc = (tableName:string){
   table(tableName)
   | where ConditionalAccessStatus == 1 or ConditionalAccessStatus =~ "failure"
