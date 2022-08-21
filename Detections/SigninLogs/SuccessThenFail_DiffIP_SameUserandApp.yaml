@@ -14,7 +14,7 @@ requiredDataConnectors:
 queryFrequency: 1h
 queryPeriod: 1h
 triggerOperator: gt
-triggerThreshold: 0
+triggerThreshold: 3
 tactics:
   - CredentialAccess
   - InitialAccess
