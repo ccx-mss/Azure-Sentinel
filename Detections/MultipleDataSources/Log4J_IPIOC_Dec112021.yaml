@@ -70,6 +70,7 @@ query:  |
   let CSlogDestIP = CommonSecurityLog | summarize by IPAddress = DestinationIP, Type;
   let CSlogMsgIP = CommonSecurityLog | extend MessageIP = extract(IPRegex, 0, Message) | summarize by IPAddress = MessageIP, Type;
   let DnsIP = DnsEvents | summarize by IPAddress = IPAddresses, Type;
+  let AllowActions = dynamic(["Accept", "Allow", "Allowed", "dns"]);
   // If you have enabled the imDNS and/or imNetworkSession normalization in your workspace, you can uncomment one or both below.  Reference - https://docs.microsoft.com/azure/sentinel/normalization
   //let imDnsIP = imDns (response_has_any_prefix=IPList) | summarize by IPAddress = ResponseName, Type;
   //let imNetSessIP = imNetworkSession (dstipaddr_has_any_prefix=IPList) | summarize by IPAddress = DstIpAddr, Type;
@@ -100,6 +101,7 @@ query:  |
   let ipMatch = ipsort | where IPAddress in (IPList);
   (union isfuzzy=true
   (CommonSecurityLog
+  | where DeviceAction in~ (AllowActions)
   | where SourceIP in (ipMatch) or DestinationIP in (ipMatch) or Message has_any (ipMatch)
   | project TimeGenerated, SourceIP, DestinationIP, Message, SourceUserID, RequestURL, Type
   | extend MessageIP = extract(IPRegex, 0, Message)
@@ -204,5 +206,20 @@ entityMappings:
     fieldMappings:
       - identifier: Address
         columnName: IPCustomEntity
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+incidentConfiguration:
+  createIncident: true
+  groupingConfiguration:
+    enabled: true
+    groupByAlertDetails: [
+      "DisplayName"
+    ]
+    groupByEntities: [
+      "IP"
+    ]
+    lookbackDuration: 1d
+    matchingMethod: Selected
+    reopenClosedIncident: false
 version: 2.0.1
 kind: Scheduled
