@@ -16,7 +16,7 @@ requiredDataConnectors:
   - connectorId: AzureActiveDirectory
     dataTypes:
       - AADNonInteractiveUserSignInLogs
-queryFrequency: 1d
+queryFrequency: 1h
 queryPeriod: 7d
 triggerOperator: gt
 triggerThreshold: 0
@@ -27,7 +27,7 @@ relevantTechniques:
   - T1110
 query: |
 
-  let timeRange = 1d;
+  let timeRange = 1h;
   let lookBack = 7d;
   let threshold_Failed = 5;
   let threshold_FailedwithSingleIP = 20;

@@ -10,7 +10,7 @@ requiredDataConnectors:
   - connectorId: AzureActiveDirectory
     dataTypes:
       - AuditLogs
-queryFrequency: 1d
+queryFrequency: 1h
 queryPeriod: 14d
 triggerOperator: gt
 triggerThreshold: 0
@@ -20,7 +20,7 @@ tactics:
 relevantTechniques:
   - T1528
 query: |
-  let detectionTime = 1d;
+  let detectionTime = 1h;
   let joinLookback = 14d;
   AuditLogs
   | where TimeGenerated > ago(detectionTime)
