@@ -5,7 +5,7 @@ description: |
   Default threshold for Azure Applications attempted to sign in to is 3.
   References: https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes
   50057 - User account is disabled. The account has been disabled by an administrator.'
-severity: Medium
+severity: Low
 requiredDataConnectors:
   - connectorId: AzureActiveDirectory
     dataTypes:
@@ -46,5 +46,15 @@ entityMappings:
     fieldMappings:
       - identifier: Address
         columnName: IPCustomEntity
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+incidentConfiguration:
+  createIncident: true
+  groupingConfiguration:
+    enabled: true
+    groupByEntities: [ "Account" ]
+    lookbackDuration: 1d
+    matchingMethod: Selected
+    reopenClosedIncident: false
 version: 1.0.0
 kind: Scheduled

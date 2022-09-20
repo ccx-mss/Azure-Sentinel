@@ -50,12 +50,23 @@ query: |
   | extend timestamp = StartTime, IPCustomEntity = IPAddress
   };
   let aadSignin = aadFunc("SigninLogs");
-  let aadNonInt = aadFunc("AADNonInteractiveUserSignInLogs");
-  union isfuzzy=true aadSignin, aadNonInt
+  // removed due to being noisy with little value 
+  // let aadNonInt = aadFunc("AADNonInteractiveUserSignInLogs");
+  union isfuzzy=true aadSignin //, aadNonInt
 entityMappings:
   - entityType: IP
     fieldMappings:
       - identifier: Address
         columnName: IPCustomEntity
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+incidentConfiguration:
+  createIncident: true
+  groupingConfiguration:
+    enabled: true
+    groupByEntities: [ "IP" ]
+    lookbackDuration: 1d
+    matchingMethod: Selected
+    reopenClosedIncident: false
 version: 1.1.0
 kind: Scheduled
