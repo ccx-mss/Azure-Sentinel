@@ -34,7 +34,7 @@ relevantTechniques:
 query: |
 
   let threshold = 1;
-  let cExclude = (_GetWatchlist('azad_conditional_bypass_status_codes') | project errorCode);
+  let UserCodeWL = ((_GetWatchlist('aad_conditional_bypass_user_with_resulttype') | project UserPrincipalName, ResultType | summarize make_list(strcat(UserPrincipalName, "|", ResultType))));
   let aadFunc = (tableName:string){
   table(tableName)
   | where ConditionalAccessStatus == 1 or ConditionalAccessStatus =~ "failure"
@@ -48,18 +48,22 @@ query: |
   | extend ConditionalAccessPol2Name = tostring(ConditionalAccessPolicies[2].displayName)
   | extend Status = strcat(StatusCode, ": ", ResultDescription) 
   | summarize StartTime = min(TimeGenerated), EndTime = max(TimeGenerated), Status = make_list(Status), StatusDetails = make_list(StatusDetails), IPAddresses = make_list(IPAddress), IPAddressCount = dcount(IPAddress), CorrelationIds = make_list(CorrelationId) 
-  by UserPrincipalName, AppDisplayName, tostring(Browser), tostring(OS), City, State, Region, ConditionalAccessPol0Name, ConditionalAccessPol1Name, ConditionalAccessPol2Name, Type
+  by UserPrincipalName, AppDisplayName, tostring(Browser), tostring(OS), City, State, Region, ConditionalAccessPol0Name, ConditionalAccessPol1Name, ConditionalAccessPol2Name, Type, ResultType
   | where IPAddressCount > threshold and StatusDetails !has "MFA successfully completed"
   | mvexpand IPAddresses, Status, StatusDetails, CorrelationIds
   | extend Status = strcat(Status, " ", StatusDetails)
   | summarize IPAddresses = make_set(IPAddresses), Status = make_set(Status), CorrelationIds = make_set(CorrelationIds) 
-  by StartTime, EndTime, UserPrincipalName, AppDisplayName, tostring(Browser), tostring(OS), City, State, Region, ConditionalAccessPol0Name, ConditionalAccessPol1Name, ConditionalAccessPol2Name, IPAddressCount, Type
+  by StartTime, EndTime, UserPrincipalName, AppDisplayName, tostring(Browser), tostring(OS), City, State, Region, ConditionalAccessPol0Name, ConditionalAccessPol1Name, ConditionalAccessPol2Name, IPAddressCount, Type, ResultType
   | extend timestamp = StartTime, AccountCustomEntity = UserPrincipalName, IPCustomEntity = tostring(IPAddresses)
   };
   let aadSignin = aadFunc("SigninLogs");
   let aadNonInt = aadFunc("AADNonInteractiveUserSignInLogs");
   union isfuzzy=true aadSignin, aadNonInt
-  | where not (Status has_any (cExclude))
+  | extend AllUsers = strcat("*|", tostring(ResultType))
+  | extend AllTypes = strcat(tostring(AccountCustomEntity), "|*")
+  | extend UserType = strcat(tostring(AccountCustomEntity), "|", tostring(ResultType))
+  | where not (AllUsers in (UserCodeWL) or AllTypes in (UserCodeWL) or UserType in (UserCodeWL))
+  | project-away AllUsers, AllTypes, UserType
 entityMappings:
   - entityType: Account
     fieldMappings:
