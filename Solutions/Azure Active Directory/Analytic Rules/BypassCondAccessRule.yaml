@@ -35,6 +35,7 @@ query: |
 
   let threshold = 1;
   let UserCodeWL = ((_GetWatchlist('aad_conditional_bypass_user_with_resulttype') | project UserPrincipalName, ResultType | summarize make_list(strcat(UserPrincipalName, "|", ResultType))));
+  let ConditionalPolicyWL = ((_GetWatchlist('aad_conditional_bypass_user_with_resulttype') | project ConditionalAccessPolicy ));
   let aadFunc = (tableName:string){
   table(tableName)
   | where ConditionalAccessStatus == 1 or ConditionalAccessStatus =~ "failure"
@@ -63,6 +64,7 @@ query: |
   | extend AllTypes = strcat(tostring(AccountCustomEntity), "|*")
   | extend UserType = strcat(tostring(AccountCustomEntity), "|", tostring(ResultType))
   | where not (AllUsers in (UserCodeWL) or AllTypes in (UserCodeWL) or UserType in (UserCodeWL))
+  | where not (ConditionalAccessPol0Name in (ConditionalPolicyWL) or ConditionalAccessPol1Name in (ConditionalPolicyWL) or ConditionalAccessPol2Name in (ConditionalPolicyWL))
   | project-away AllUsers, AllTypes, UserType
 entityMappings:
   - entityType: Account
