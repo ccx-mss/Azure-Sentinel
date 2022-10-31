@@ -20,15 +20,16 @@ query: |
   let failureCountThreshold = 5;
   let successCountThreshold = 1;
   let authenticationWindow = 20m;
+  let successCodes = ((_GetWatchlist('logon_result_codes')) | project SuccessCodes);
   SigninLogs
   | extend OS = DeviceDetail.operatingSystem, Browser = DeviceDetail.browser
   | extend StatusCode = tostring(Status.errorCode), StatusDetails = tostring(Status.additionalDetails)
   | extend State = tostring(LocationDetails.state), City = tostring(LocationDetails.city)
   | where AppDisplayName =~ "Windows Sign In"
   // Split out failure versus non-failure types
-  | extend FailureOrSuccess = iff(ResultType in ("0", "50125", "50140", "70043", "70044"), "Success", "Failure")
-  | summarize StartTime = min(TimeGenerated), EndTime = max(TimeGenerated), IPAddress = makeset(IPAddress), makeset(OS), makeset(Browser), makeset(City), 
-  makeset(ResultType), FailureCount = countif(FailureOrSuccess=="Failure"), SuccessCount = countif(FailureOrSuccess=="Success") 
+  | extend FailureOrSuccess = iff(ResultType in (successCodes), "Success", "Failure")
+  | summarize StartTime = min(TimeGenerated), EndTime = max(TimeGenerated), IPAddress = make_set(IPAddress), make_set(OS), make_set(Browser), make_set(City), 
+  make_set(ResultType), make_set(Status.failureReason), FailureCount = countif(FailureOrSuccess=="Failure"), SuccessCount = countif(FailureOrSuccess=="Success") 
   by bin(TimeGenerated, authenticationWindow), UserDisplayName, UserPrincipalName, AppDisplayName
   | where FailureCount >= failureCountThreshold and SuccessCount >= successCountThreshold
   | mvexpand IPAddress
