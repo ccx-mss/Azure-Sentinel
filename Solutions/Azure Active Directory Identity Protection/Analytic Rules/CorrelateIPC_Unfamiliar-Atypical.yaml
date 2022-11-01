@@ -17,10 +17,15 @@ tactics:
 relevantTechniques:
   - T1078
 query: |
+  let UPNUserId =
+  SigninLogs
+  | where not(UserPrincipalName == UserId)
+  | summarize by UserPrincipalName, UserId 
+  ;
   let Alert1 = 
   SecurityAlert
   | where AlertName == "Unfamiliar sign-in properties"
-  | extend UserPrincipalName = tostring(parse_json(ExtendedProperties).["User Account"])
+  | extend UserId = tostring(parse_json(Entities)[0].["AadUserId"])
   | extend Alert1Time = TimeGenerated
   | extend Alert1 = AlertName
   | extend Alert1Severity = AlertSeverity
@@ -28,7 +33,7 @@ query: |
   let Alert2 = 
   SecurityAlert
   | where AlertName == "Atypical travel"
-  | extend UserPrincipalName = tostring(parse_json(ExtendedProperties).["User Account"])
+  | extend UserId = tostring(parse_json(Entities)[0].["AadUserId"])
   | extend Alert2Time = TimeGenerated
   | extend Alert2 = AlertName
   | extend Alert2Severity = AlertSeverity
@@ -38,9 +43,10 @@ query: |
   | extend PreviousIPAddress = tostring(parse_json(Entities)[3].Address)
   ;
   Alert1
-  | join kind=inner Alert2 on UserPrincipalName
-  | where abs(datetime_diff('minute', Alert1Time, Alert2Time)) <=10
+  | join kind=inner Alert2 on UserId
+  | where abs(datetime_diff('minute', Alert1Time, Alert2Time)) <= 10
   | extend TimeDelta = Alert1Time - Alert2Time
+  | join kind=leftouter (UPNUserId) on UserId
   | project UserPrincipalName, Alert1, Alert1Time, Alert1Severity, Alert2, Alert2Time, Alert2Severity, TimeDelta, CurrentLocation, PreviousLocation, CurrentIPAddress, PreviousIPAddress
   | extend AccountCustomEntity = UserPrincipalName
   | extend IPCustomEntity = CurrentIPAddress
