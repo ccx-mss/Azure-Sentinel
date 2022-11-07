@@ -13,7 +13,7 @@ requiredDataConnectors:
 queryFrequency: 1h
 queryPeriod: 1h
 triggerOperator: gt
-triggerThreshold: 0
+triggerThreshold: 1
 status: Available
 tactics:
   - CredentialAccess
@@ -43,5 +43,15 @@ entityMappings:
     fieldMappings:
       - identifier: Url
         columnName: URLCustomEntity
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+incidentConfiguration:
+  createIncident: true
+  groupingConfiguration:
+    enabled: true
+    groupByEntities: [ "Account" ]
+    lookbackDuration: 4h
+    matchingMethod: Selected
+    reopenClosedIncident: false
 version: 1.0.1
 kind: Scheduled
