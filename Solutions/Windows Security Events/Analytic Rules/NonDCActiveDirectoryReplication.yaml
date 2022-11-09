@@ -22,8 +22,8 @@ tactics:
 relevantTechniques:
   - T1003
 query: |
-  let DCServersList = ((_GetWatchlist('domain_controllers')) | project Computer);
-  let DCServersAccountList = ((_GetWatchlist('domain_controllers') | project Computer, Account | summarize make_list(strcat(Computer, "|", Account))));
+  let DCServersList = ((_GetWatchlist('domain_controllers_with_accounts')) | project Computer);
+  let DCServersAccountList = ((_GetWatchlist('domain_controllers_with_accounts') | project Computer, Account | summarize make_list(strcat(Computer, "|", Account))));
   SecurityEvent
   | where Computer in (DCServersList)
   | where EventID == 4662 and ObjectServer == 'DS'
