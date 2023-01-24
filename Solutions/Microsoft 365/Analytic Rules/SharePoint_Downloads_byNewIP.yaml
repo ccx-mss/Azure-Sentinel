@@ -9,7 +9,7 @@ requiredDataConnectors:
   - connectorId: Office365
     dataTypes:
       - OfficeActivity
-queryFrequency: 1d
+queryFrequency: 1h
 queryPeriod: 14d
 triggerOperator: gt
 triggerThreshold: 0
@@ -22,7 +22,7 @@ query: |
   let szSharePointFileOperation = "SharePointFileOperation";
   let szOperations = dynamic(["FileDownloaded", "FileUploaded"]);
   let starttime = 14d;
-  let endtime = 1d;
+  let endtime = 1h;
   let historicalActivity =
   OfficeActivity
   | where TimeGenerated between(ago(starttime)..ago(endtime))

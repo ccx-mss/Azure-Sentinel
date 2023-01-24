@@ -23,7 +23,7 @@ relevantTechniques:
   - T1136
   - T1068
 query: |
-  let current = 1d;
+  let current = 1h;
   let auditLookback = 7d;
   // Setting threshold to 3 as a default, change as needed.
   // Any operation that has been initiated by a user or app more than 3 times in the past 7 days will be excluded

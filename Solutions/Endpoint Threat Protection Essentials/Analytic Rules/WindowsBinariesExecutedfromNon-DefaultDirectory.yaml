@@ -20,7 +20,7 @@ relevantTechniques:
 query: |
    let procList = externaldata(Process:string) [@"https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Sample%20Data/Microsoft_Lolbas_Execution_Binaries.csv"] with (format="csv", ignoreFirstRecord=True);
    SecurityEvent
-   | where EventID == 4688 and Process has_any (procList) and not (NewProcessName has ("C:\\Windows\\"))
+   | where EventID == 4688 and Process has_any (procList) and not (NewProcessName has ("C:\\Windows\\")) and not (Process has 'MSBuild.exe' or Process has 'bash.exe')
    | summarize StartTime = min(TimeGenerated), EndTime = max(TimeGenerated) by EventID, Computer, SubjectUserName, NewProcessName, Process, CommandLine
 entityMappings:
   - entityType: Account
