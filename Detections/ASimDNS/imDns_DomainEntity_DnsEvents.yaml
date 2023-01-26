@@ -81,7 +81,8 @@ entityMappings:
     fieldMappings:
       - identifier: Url
         columnName: URLCustomEntity
-customDetails:
+
+customDetailsDomain:
   LatestIndicatorTime: LatestIndicatorTime
   Description: Description
   ActivityGroupNames: ActivityGroupNames
@@ -93,5 +94,18 @@ customDetails:
   SourceIPAddress: SrcIpAddr
   DnsQuery: DnsQuery
   QueryType: DnsQueryType
+
+eventGroupingSettings:
+  aggregationKind: AlertPerResult
+incidentConfiguration:
+  createIncident: true
+  groupingConfiguration:
+    enabled: true
+    groupByAlertDetails: ["DisplayName"]
+    groupByCustomDetails": []
+    groupByEntities: ["URL"]
+    lookbackDuration: 1d
+    matchingMethod: Selected
+    reopenClosedIncident: false
 version: 1.1.2
 kind: Scheduled

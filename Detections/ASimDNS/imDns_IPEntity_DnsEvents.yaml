@@ -100,6 +100,19 @@ customDetails:
   SourceIPAddress: SrcIpAddr
   DnsQuery: DnsQuery
 
+eventGroupingSettings:
+  aggregationKind: AlertPerResult
+incidentConfiguration:
+  createIncident: true
+  groupingConfiguration:
+    enabled: true
+    groupByAlertDetails: ["DisplayName"]
+    groupByCustomDetails": []
+    groupByEntities: ["IP"]
+    lookbackDuration: 1d
+    matchingMethod: Selected
+    reopenClosedIncident: false
+
 alertDetailsOverride:
   alertDisplayNameFormat: The response {{IoC}} to DNS query matched an IoC 
   alertDescriptionFormat: The response address {{IoC}} to a DNS query matched a known indicator of compromise of {{ThreatType}}. Consult the threat intelligence blade for more information on the indicator.
