@@ -17,10 +17,13 @@ tactics:
 relevantTechniques:
   - T1110
 query: |
-  let failureCountThreshold = 5;
+  let failureCountThreshold = 10;
   let successCountThreshold = 1;
-  let authenticationWindow = 20m;
-  let successCodes = ((_GetWatchlist('logon_result_codes')) | project SuccessCodes);
+  let authenticationWindow = 10m;
+  let successCodes = (
+      (_GetWatchlist('signin_status_codes')) 
+      | where Type == "Success"
+      | project StatusCode);
   SigninLogs
   | extend OS = DeviceDetail.operatingSystem, Browser = DeviceDetail.browser
   | extend StatusCode = tostring(Status.errorCode), StatusDetails = tostring(Status.additionalDetails)
@@ -28,9 +31,9 @@ query: |
   | where AppDisplayName =~ "Windows Sign In"
   // Split out failure versus non-failure types
   | extend FailureOrSuccess = iff(ResultType in (successCodes), "Success", "Failure")
-  | summarize StartTime = min(TimeGenerated), EndTime = max(TimeGenerated), IPAddress = make_set(IPAddress), make_set(OS), make_set(Browser), make_set(City), 
-  make_set(ResultType), make_set(Status.failureReason), FailureCount = countif(FailureOrSuccess=="Failure"), SuccessCount = countif(FailureOrSuccess=="Success") 
-  by bin(TimeGenerated, authenticationWindow), UserDisplayName, UserPrincipalName, AppDisplayName
+  | summarize StartTime = min(TimeGenerated), EndTime = max(TimeGenerated), IPAddress = make_set(IPAddress), make_set(OS), make_set(Browser), make_set(City),
+      make_set(ResultType), make_set(Status.failureReason), FailureCount = countif(FailureOrSuccess == "Failure"), SuccessCount = countif(FailureOrSuccess == "Success")
+      by bin(TimeGenerated, authenticationWindow), UserDisplayName, UserPrincipalName, AppDisplayName
   | where FailureCount >= failureCountThreshold and SuccessCount >= successCountThreshold
   | mvexpand IPAddress
   | extend IPAddress = tostring(IPAddress)
