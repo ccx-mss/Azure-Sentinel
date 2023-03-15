@@ -32,6 +32,10 @@ query: |
   let threshold_FailedwithSingleIP = 20;
   let threshold_IPAddressCount = 2;
   let isGUID = "[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}";
+  let successCodes = (
+      (_GetWatchlist('signin_status_codes'))
+      | where Type == "Success"
+      | project StatusCode);
   let aadFunc = (tableName:string){
   let azPortalSignins = materialize(table(tableName)
   | where TimeGenerated >= ago(lookBack)
@@ -49,7 +53,7 @@ query: |
   let failPortalSignins = azPortalSignins
   | where TimeGenerated >= ago(timeRange)
   // Azure Portal only and exclude non-failure Result Types
-  | where ResultType !in ("0", "50125", "50140", "70044", "70043")
+  | where ResultType !in (successCodes)
   // Tagging identities not resolved to friendly names
   | extend Unresolved = iff(Identity matches regex isGUID, true, false)
   ;
