@@ -100,6 +100,34 @@
                 "uri": "https://docs.microsoft.com/azure/sentinel/tutorial-monitor-your-data"
               }
             }
+          },
+          {
+            "name": "workbook1",
+            "type": "Microsoft.Common.Section",
+            "label": "Azure AD Audit logs",
+            "elements": [
+              {
+                "name": "workbook1-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Gain insights into Azure Active Directory by connecting Microsoft Sentinel and using the audit logs to gather insights around Azure AD scenarios. \nYou can learn about user operations, including password and group management, device activities, and top active users and apps."
+                }
+              }
+            ]
+          },
+          {
+            "name": "workbook2",
+            "type": "Microsoft.Common.Section",
+            "label": "Azure AD Sign-in logs",
+            "elements": [
+              {
+                "name": "workbook2-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Gain insights into Azure Active Directory by connecting Microsoft Sentinel and using the sign-in logs to gather insights around Azure AD scenarios. \nYou can learn about sign-in operations, such as user sign-ins and locations, email addresses, and  IP addresses of your users, as well as failed activities and the errors that triggered the failures."
+                }
+              }
+            ]
           }
         ]
       },
@@ -432,7 +460,7 @@
                 "name": "analytic22-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "This will alert when a user consents to provide a previously-unknown Azure application with the same OAuth permissions used by the MDSec O365 Attack Toolkit (https://github.com/mdsecactivebreach/o365-attack-toolkit).\nThe default permissions/scope for the MDSec O365 Attack toolkit are contacts.read, user.read, mail.read, notes.read.all, mailboxsettings.readwrite, and files.readwrite.all.\nConsent to applications with these permissions should be rare, especially as the knownApplications list is expanded, especially as the knownApplications list is expanded. Public contributions to expand this filter are welcome!\nFor further information on AuditLogs please see https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-audit-activities."
+                  "text": "This will alert when a user consents to provide a previously-unknown Azure application with the same OAuth permissions used by the MDSec O365 Attack Toolkit (https://github.com/mdsecactivebreach/o365-attack-toolkit).\nThe default permissions/scope for the MDSec O365 Attack toolkit change sometimes but often include contacts.read, user.read, mail.read, notes.read.all, mailboxsettings.readwrite, files.readwrite.all, mail.send, files.read, and files.read.all.\nConsent to applications with these permissions should be rare, especially as the knownApplications list is expanded, especially as the knownApplications list is expanded. Public contributions to expand this filter are welcome!\nFor further information on AuditLogs please see https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-audit-activities."
                 }
               }
             ]
