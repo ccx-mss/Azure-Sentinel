@@ -63,19 +63,19 @@ query: |
   | extend Reason = "Previously unseen app granted consent";
   RareConsentBy | union RareConsentApp
   | summarize Reason = makeset(Reason) by TimeGenerated, InitiatedBy, IpAddress, TargetResourceName, Category, OperationName, ConsentType, UserAgent, CorrelationId, Type
-  | extend timestamp = TimeGenerated, AccountCustomEntity = InitiatedBy, HostCustomEntity = TargetResourceName, IPCustomEntity = IpAddress
+  | extend timestamp = TimeGenerated, AccountCustomEntity = InitiatedBy, ApplicationCustomEntity = TargetResourceName, IPCustomEntity = IpAddress
 entityMappings:
   - entityType: Account
     fieldMappings:
       - identifier: FullName
         columnName: AccountCustomEntity
-  - entityType: Host
+  - entityType: CloudApplication
     fieldMappings:
-      - identifier: FullName
-        columnName: HostCustomEntity
+      - identifier: Name
+        columnName: ApplicationCustomEntity
   - entityType: IP
     fieldMappings:
       - identifier: Address
         columnName: IPCustomEntity
-version: 1.1.2
+version: 1.1.3
 kind: Scheduled
