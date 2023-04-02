@@ -33,6 +33,8 @@ relevantTechniques:
   - T1098
 query: |
   let threshold = 1; // Modify this threshold value to reduce false positives based on your environment
+  let UserCodeWL = ((_GetWatchlist('aad_conditional_bypass_user_with_resulttype') | project UserPrincipalName, ResultType | summarize make_list(strcat(UserPrincipalName, "|", ResultType))));
+  let ConditionalPolicyWL = ((_GetWatchlist('aad_conditional_bypass_user_with_resulttype') | project ConditionalAccessPolicy ));
   let aadFunc = (tableName:string){
   table(tableName)
   | where ConditionalAccessStatus == 1 or ConditionalAccessStatus =~ "failure"

@@ -105,5 +105,15 @@ entityMappings:
     fieldMappings:
       - identifier: Address
         columnName: IPAddress
+eventGroupingSettings:
+  aggregationKind: SingleAlert
+incidentConfiguration:
+  createIncident: true
+  groupingConfiguration:
+    enabled: true
+    groupByEntities: [ "Account" ]
+    lookbackDuration: 2h
+    matchingMethod: Selected
+    reopenClosedIncident: false
 version: 1.0.4
 kind: Scheduled

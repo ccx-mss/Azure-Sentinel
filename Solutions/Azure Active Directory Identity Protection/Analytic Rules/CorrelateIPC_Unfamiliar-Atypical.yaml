@@ -26,7 +26,7 @@ query: |
     SecurityAlert
     | where TimeGenerated > ago(1d)
     | where ProductName =~ "Azure Active Directory Identity Protection"
-    | where AlertName =~ "Unfamiliar sign-in properties"
+    | where AlertName =~ "Unfamiliar sign-in properties" and Status == "New"
     | mv-expand Entity = todynamic(Entities)
     | where Entity.Type =~ "account"
     | extend AadTenantId = tostring(Entity.AadTenantId)
@@ -52,7 +52,7 @@ query: |
     SecurityAlert
     | where TimeGenerated > ago(1d)
     | where ProductName =~ "Azure Active Directory Identity Protection"
-    | where AlertName =~ "Atypical travel"
+    | where AlertName =~ "Atypical travel" and Status == "New"
     | mv-expand Entity = todynamic(Entities)
     | where Entity.Type =~ "account"
     | extend AadTenantId = tostring(Entity.AadTenantId)

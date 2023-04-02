@@ -17,11 +17,15 @@ tactics:
 relevantTechniques:
   - T1110
 query: |
-  let authenticationWindow = 20m;
+  let authenticationWindow = 10m;
   let sensitivity = 2.5;
+  let successCodes = (
+      (_GetWatchlist('signin_status_codes')) 
+      | where Type == "Success"
+      | project StatusCode);
   SigninLogs
   | where AppDisplayName =~ "Windows Sign In"
-  | extend FailureOrSuccess = iff(ResultType in ("0", "50125", "50140", "70043", "70044"), "Success", "Failure")
+  | extend FailureOrSuccess = iff(ResultType in (successCodes), "Success", "Failure")
   | summarize FailureCount = countif(FailureOrSuccess=="Failure"), SuccessCount = countif(FailureOrSuccess=="Success"), IPAddresses = make_set(IPAddress,1000)
                             by bin(TimeGenerated, authenticationWindow), UserDisplayName, UserPrincipalName
   | extend FailureSuccessDiff = FailureCount - SuccessCount
