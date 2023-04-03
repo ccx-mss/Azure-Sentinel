@@ -101,12 +101,12 @@ entityMappings:
       - identifier: Address
         columnName: PreviousIPAddress
 customDetails:
-    Alert_UnfamiliarSignInProps_Name: Alert_UnfamiliarSignInProps_Name
-    Alert_UnfamiliarSignInProps_Time: Alert_UnfamiliarSignInProps_Time
-    Alert_UnfamiliarSignInProps_Severity: Alert_UnfamiliarSignInProps_Severity
-    Alert_AtypicalTravels_Name: Alert_AtypicalTravels_Name
-    Alert_AtypicalTravels_Time: Alert_AtypicalTravels_Time
-    Alert_AtypicalTravels_Severity: Alert_AtypicalTravels_Severity
+    UnfamiliarSignInName: Alert_UnfamiliarSignInProps_Name
+    UnfamiliarSignInTime: Alert_UnfamiliarSignInProps_Time
+    UnfamiliarSignInSev: Alert_UnfamiliarSignInProps_Severity
+    AtypicalTravels_Name: Alert_AtypicalTravels_Name
+    AtypicalTravels_Time: Alert_AtypicalTravels_Time
+    AtypicalTravels_Sev: Alert_AtypicalTravels_Severity
     TimeDelta: TimeDelta
     CurrentLocation: CurrentLocation
     PreviousLocation: PreviousLocation
