@@ -32,10 +32,6 @@ query: |
       by UserPrincipalName, IPAddress, Type
   | where applicationCount >= threshold
   | extend timestamp = StartTime, Name = tostring(split(UserPrincipalName,'@',0)[0]), UPNSuffix = tostring(split(UserPrincipalName,'@',1)[0])
-  };
-  let aadSignin = aadFunc("SigninLogs");
-  let aadNonInt = aadFunc("AADNonInteractiveUserSignInLogs");
-  union isfuzzy=true aadSignin, aadNonInt
 entityMappings:
   - entityType: Account
     fieldMappings:
