@@ -85,6 +85,18 @@ entityMappings:
       - identifier: Address
         columnName: SrcIpAddr
 
+eventGroupingSettings:
+  aggregationKind: AlertPerResult
+incidentConfiguration:
+  createIncident: true
+  groupingConfiguration:
+    enabled: true
+    groupByAlertDetails: [ "DisplayName" ]
+    groupByEntities: [ "IP" ]
+    lookbackDuration: 1d
+    matchingMethod: Selected
+    reopenClosedIncident: false
+
 customDetails:
   LatestIndicatorTime: LatestIndicatorTime
   Description: Description

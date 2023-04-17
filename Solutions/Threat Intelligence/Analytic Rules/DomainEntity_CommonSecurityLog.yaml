@@ -79,7 +79,7 @@ query: |
 entityMappings:
   - entityType: Host
     fieldMappings:
-      - identifier: Name
+      - identifier: HostName
         columnName: DeviceName
   - entityType: IP
     fieldMappings:
