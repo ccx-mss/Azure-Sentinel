@@ -36,7 +36,7 @@ tags:
 query:  |
   let ADFSPolicyStoreDKMGroupobject = (
         (_GetWatchlist('adfs_dkm_group_object_inclusion'))
-        | project ADFSPolicyStoreDKMGroupobject)
+        | project ADFSPolicyStoreDKMGroupobject);
   (union isfuzzy=true 
   (SecurityEvent 
   | where EventID == 4662 // You need to create a SACL on the ADFS Policy Store DKM group for this event to be created. 
