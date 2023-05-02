@@ -34,12 +34,15 @@ tags:
   - Solorigate
   - NOBELIUM
 query:  |
+  let ADFSPolicyStoreDKMGroupobject = (
+        (_GetWatchlist('adfs_dkm_group_object_inclusion'))
+        | project ADFSPolicyStoreDKMGroupobject)
   (union isfuzzy=true 
   (SecurityEvent 
   | where EventID == 4662 // You need to create a SACL on the ADFS Policy Store DKM group for this event to be created. 
   | where ObjectServer == 'DS'
   | where OperationType == 'Object Access'
-  //| where ObjectName contains '<GUID of ADFS Policy Store DKM Group object' This is unique to the domain. Check description for more details.
+  | where ObjectName contains ADFSPolicyStoreDKMGroupobject // This is unique to the customers domain. Check description for more details.
   | where ObjectType contains '5cb41ed0-0e4c-11d0-a286-00aa003049e2' // Contact Class
   | where Properties contains '8d3bca50-1d7e-11d0-a081-00aa006c33ed' // Picture Attribute - Ldap-Display-Name: thumbnailPhoto
   | extend timestamp = TimeGenerated, HostCustomEntity = Computer, AccountCustomEntity = SubjectAccount
@@ -51,7 +54,7 @@ query:  |
   | where ObjectServer == 'DS'
   | extend OperationType = tostring(EventData.OperationType)
   | where OperationType == 'Object Access'
-  //| where ObjectName contains '<GUID of ADFS Policy Store DKM Group object' This is unique to the domain. Check description for more details.
+  | where ObjectName contains ADFSPolicyStoreDKMGroupobject // This is unique to the customers domain. Check description for more details.
   | extend ObjectType = tostring(EventData.ObjectType)
   | where ObjectType contains '5cb41ed0-0e4c-11d0-a286-00aa003049e2' // Contact Class
   | extend Properties = tostring(EventData.Properties)
