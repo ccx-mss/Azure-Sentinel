@@ -35,43 +35,50 @@ tags:
   - NOBELIUM
 query:  |
   let ADFSDKMObjectNameGUID = (
-        (_GetWatchlist('adfs_dkm_group_object_inclusion'))
-        | distinct ADFSDKMObjectNameGUID);
+      (_GetWatchlist('adfs_dkm_group_object_inclusion'))
+      | distinct ADFSDKMObjectNameGUID);
   (union isfuzzy=true 
-  (SecurityEvent 
-  | where EventID == 4662 // You need to create a SACL on the ADFS Policy Store DKM group for this event to be created. 
-  | where ObjectServer == 'DS'
-  | where OperationType == 'Object Access'
-  | where ObjectName contains (ADFSDKMObjectNameGUID) // This is unique to the customers domain. Check description for more details.
-  | where ObjectType contains '5cb41ed0-0e4c-11d0-a286-00aa003049e2' // Contact Class
-  | where Properties contains '8d3bca50-1d7e-11d0-a081-00aa006c33ed' // Picture Attribute - Ldap-Display-Name: thumbnailPhoto
-  | extend timestamp = TimeGenerated, HostCustomEntity = Computer, AccountCustomEntity = SubjectAccount
-  ),
-  ( WindowsEvent 
-  | where EventID == 4662 // You need to create a SACL on the ADFS Policy Store DKM group for this event to be created. 
-  | where EventData has_all('Object Access', '5cb41ed0-0e4c-11d0-a286-00aa003049e2','8d3bca50-1d7e-11d0-a081-00aa006c33ed') 
-  | extend ObjectServer = tostring(EventData.ObjectServer)
-  | where ObjectServer == 'DS'
-  | extend OperationType = tostring(EventData.OperationType)
-  | where OperationType == 'Object Access'
-  | where ObjectName contains (ADFSDKMObjectNameGUID) // This is unique to the customers domain. Check description for more details.
-  | extend ObjectType = tostring(EventData.ObjectType)
-  | where ObjectType contains '5cb41ed0-0e4c-11d0-a286-00aa003049e2' // Contact Class
-  | extend Properties = tostring(EventData.Properties)
-  | where Properties contains '8d3bca50-1d7e-11d0-a081-00aa006c33ed' // Picture Attribute - Ldap-Display-Name: thumbnailPhoto
-  | extend SubjectAccount = strcat(tostring(EventData.SubjectDomainName), "\\", tostring(EventData.SubjectUserName))
-  | extend 
-      timestamp = TimeGenerated,
-      HostCustomEntity = Computer,
-      AccountCustomEntity = SubjectAccount
-  ),
-  (DeviceEvents
-  | where ActionType =~ "LdapSearch"
-  | where AdditionalFields.AttributeList contains "thumbnailPhoto"
-  | where AdditionalFields.DistinguishedName contains "CN=ADFS,CN=Microsoft,CN=Program Data" // Filter results to show only hits related to the ADFS AD container
-  | where InitiatingProcessVersionInfoOriginalFileName != @"Microsoft.Tri.Sensor.exe" // Avoid Defender for Identity false-positive
-  | extend timestamp = TimeGenerated, HostCustomEntity = DeviceName, AccountCustomEntity = InitiatingProcessAccountName
-  )
+      (SecurityEvent 
+      | where EventID == 4662 // You need to create a SACL on the ADFS Policy Store DKM group for this event to be created. 
+      | where ObjectServer == 'DS'
+      | where OperationType == 'Object Access'
+      | where ObjectName in (ADFSDKMObjectNameGUID) // This is unique to the customers domain. Check description for more details.
+      | where ObjectType == '5cb41ed0-0e4c-11d0-a286-00aa003049e2' // Contact Class
+      | where Properties == '8d3bca50-1d7e-11d0-a081-00aa006c33ed' // Picture Attribute - Ldap-Display-Name: thumbnailPhoto
+      | extend
+          timestamp = TimeGenerated,
+          HostCustomEntity = Computer,
+          AccountCustomEntity = SubjectAccount
+      ),
+      (WindowsEvent 
+      | where EventID == 4662 // You need to create a SACL on the ADFS Policy Store DKM group for this event to be created. 
+      | where EventData has_all('Object Access', '5cb41ed0-0e4c-11d0-a286-00aa003049e2', '8d3bca50-1d7e-11d0-a081-00aa006c33ed') 
+      | extend ObjectServer = tostring(EventData.ObjectServer)
+      | where ObjectServer == 'DS'
+      | extend OperationType = tostring(EventData.OperationType)
+      | where OperationType == 'Object Access'
+      | extend ObjectName = tostring(EventData.ObjectName)
+      | where ObjectName in (ADFSDKMObjectNameGUID) // This is unique to the customers domain. Check description for more details.
+      | extend ObjectType = tostring(EventData.ObjectType)
+      | where ObjectType == '5cb41ed0-0e4c-11d0-a286-00aa003049e2' // Contact Class
+      | extend Properties = tostring(EventData.Properties)
+      | where Properties == '8d3bca50-1d7e-11d0-a081-00aa006c33ed' // Picture Attribute - Ldap-Display-Name: thumbnailPhoto
+      | extend SubjectAccount = strcat(tostring(EventData.SubjectDomainName), "\\", tostring(EventData.SubjectUserName))
+      | extend 
+          timestamp = TimeGenerated,
+          HostCustomEntity = Computer,
+          AccountCustomEntity = SubjectAccount
+      ),
+      (DeviceEvents
+      | where ActionType =~ "LdapSearch"
+      | where AdditionalFields.AttributeList contains "thumbnailPhoto"
+      | where AdditionalFields.DistinguishedName contains "CN=ADFS,CN=Microsoft,CN=Program Data" // Filter results to show only hits related to the ADFS AD container
+      | where InitiatingProcessVersionInfoOriginalFileName != @"Microsoft.Tri.Sensor.exe" // Avoid Defender for Identity false-positive
+      | extend
+          timestamp = TimeGenerated,
+          HostCustomEntity = DeviceName,
+          AccountCustomEntity = InitiatingProcessAccountName
+      )
   )
 entityMappings:
   - entityType: Account
