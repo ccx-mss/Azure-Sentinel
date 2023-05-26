@@ -59,14 +59,22 @@
     "_dataConnectorId2": "[variables('dataConnectorId2')]",
     "dataConnectorTemplateSpecName2": "[concat(parameters('workspace'),'-dc-',uniquestring(variables('_dataConnectorContentId2')))]",
     "dataConnectorVersion2": "1.0.0",
-    "uiConfigId3": "MicrosoftDefenderThreatIntelligence",
+    "uiConfigId3": "ThreatIntelligenceUploadIndicatorsAPI",
     "_uiConfigId3": "[variables('uiConfigId3')]",
-    "dataConnectorContentId3": "MicrosoftDefenderThreatIntelligence",
+    "dataConnectorContentId3": "ThreatIntelligenceUploadIndicatorsAPI",
     "_dataConnectorContentId3": "[variables('dataConnectorContentId3')]",
     "dataConnectorId3": "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/dataConnectors', variables('_dataConnectorContentId3'))]",
     "_dataConnectorId3": "[variables('dataConnectorId3')]",
     "dataConnectorTemplateSpecName3": "[concat(parameters('workspace'),'-dc-',uniquestring(variables('_dataConnectorContentId3')))]",
     "dataConnectorVersion3": "1.0.0",
+    "uiConfigId4": "MicrosoftDefenderThreatIntelligence",
+    "_uiConfigId4": "[variables('uiConfigId4')]",
+    "dataConnectorContentId4": "MicrosoftDefenderThreatIntelligence",
+    "_dataConnectorContentId4": "[variables('dataConnectorContentId4')]",
+    "dataConnectorId4": "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/dataConnectors', variables('_dataConnectorContentId4'))]",
+    "_dataConnectorId4": "[variables('dataConnectorId4')]",
+    "dataConnectorTemplateSpecName4": "[concat(parameters('workspace'),'-dc-',uniquestring(variables('_dataConnectorContentId4')))]",
+    "dataConnectorVersion4": "1.0.0",
     "TemplateEmptyArray": "[json('[]')]",
     "blanks": "[replace('b', 'b', '')]",
     "workbookVersion1": "5.0.0",
@@ -74,221 +82,222 @@
     "workbookId1": "[resourceId('Microsoft.Insights/workbooks', variables('workbookContentId1'))]",
     "workbookTemplateSpecName1": "[concat(parameters('workspace'),'-wb-',uniquestring(variables('_workbookContentId1')))]",
     "_workbookContentId1": "[variables('workbookContentId1')]",
-    "huntingQueryVersion1": "1.0.1",
+    "huntingQueryVersion1": "1.0.2",
     "huntingQuerycontentId1": "410da56d-4a63-4d22-b68c-9fb1a303be6d",
     "_huntingQuerycontentId1": "[variables('huntingQuerycontentId1')]",
     "huntingQueryId1": "[resourceId('Microsoft.OperationalInsights/savedSearches', variables('_huntingQuerycontentId1'))]",
     "huntingQueryTemplateSpecName1": "[concat(parameters('workspace'),'-hq-',uniquestring(variables('_huntingQuerycontentId1')))]",
-    "huntingQueryVersion2": "1.0.1",
+    "huntingQueryVersion2": "1.0.2",
     "huntingQuerycontentId2": "233441b9-cc92-4c9b-87fa-73b855fcd4b8",
     "_huntingQuerycontentId2": "[variables('huntingQuerycontentId2')]",
     "huntingQueryId2": "[resourceId('Microsoft.OperationalInsights/savedSearches', variables('_huntingQuerycontentId2'))]",
     "huntingQueryTemplateSpecName2": "[concat(parameters('workspace'),'-hq-',uniquestring(variables('_huntingQuerycontentId2')))]",
-    "huntingQueryVersion3": "1.0.1",
+    "huntingQueryVersion3": "1.0.2",
     "huntingQuerycontentId3": "18f7de84-de55-4983-aca3-a18bc846b4e0",
     "_huntingQuerycontentId3": "[variables('huntingQuerycontentId3')]",
     "huntingQueryId3": "[resourceId('Microsoft.OperationalInsights/savedSearches', variables('_huntingQuerycontentId3'))]",
     "huntingQueryTemplateSpecName3": "[concat(parameters('workspace'),'-hq-',uniquestring(variables('_huntingQuerycontentId3')))]",
-    "huntingQueryVersion4": "1.0.1",
+    "huntingQueryVersion4": "1.0.2",
     "huntingQuerycontentId4": "172a321b-c46b-4508-87c6-e2691c778107",
     "_huntingQuerycontentId4": "[variables('huntingQuerycontentId4')]",
     "huntingQueryId4": "[resourceId('Microsoft.OperationalInsights/savedSearches', variables('_huntingQuerycontentId4'))]",
     "huntingQueryTemplateSpecName4": "[concat(parameters('workspace'),'-hq-',uniquestring(variables('_huntingQuerycontentId4')))]",
-    "huntingQueryVersion5": "1.0.1",
+    "huntingQueryVersion5": "1.0.2",
     "huntingQuerycontentId5": "689a9475-440b-4e69-8ab1-a5e241685f39",
     "_huntingQuerycontentId5": "[variables('huntingQuerycontentId5')]",
     "huntingQueryId5": "[resourceId('Microsoft.OperationalInsights/savedSearches', variables('_huntingQuerycontentId5'))]",
     "huntingQueryTemplateSpecName5": "[concat(parameters('workspace'),'-hq-',uniquestring(variables('_huntingQuerycontentId5')))]",
-    "analyticRuleVersion1": "1.3.2",
+    "analyticRuleVersion1": "1.3.3",
     "analyticRulecontentId1": "dd0a6029-ecef-4507-89c4-fc355ac52111",
     "_analyticRulecontentId1": "[variables('analyticRulecontentId1')]",
     "analyticRuleId1": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId1'))]",
     "analyticRuleTemplateSpecName1": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId1')))]",
-    "analyticRuleVersion2": "1.3.3",
+    "analyticRuleVersion2": "1.3.4",
     "analyticRulecontentId2": "85aca4d1-5d15-4001-abd9-acb86ca1786a",
     "_analyticRulecontentId2": "[variables('analyticRulecontentId2')]",
     "analyticRuleId2": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId2'))]",
     "analyticRuleTemplateSpecName2": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId2')))]",
-    "analyticRuleVersion3": "1.0.1",
+    "analyticRuleVersion3": "1.0.2",
     "analyticRulecontentId3": "b1832f60-6c3d-4722-a0a5-3d564ee61a63",
     "_analyticRulecontentId3": "[variables('analyticRulecontentId3')]",
     "analyticRuleId3": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId3'))]",
     "analyticRuleTemplateSpecName3": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId3')))]",
-    "analyticRuleVersion4": "1.3.2",
+    "analyticRuleVersion4": "1.3.3",
     "analyticRulecontentId4": "ec21493c-2684-4acd-9bc2-696dbad72426",
     "_analyticRulecontentId4": "[variables('analyticRulecontentId4')]",
     "analyticRuleId4": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId4'))]",
     "analyticRuleTemplateSpecName4": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId4')))]",
-    "analyticRuleVersion5": "1.3.5",
+    "analyticRuleVersion5": "1.3.6",
     "analyticRulecontentId5": "87890d78-3e05-43ec-9ab9-ba32f4e01250",
     "_analyticRulecontentId5": "[variables('analyticRulecontentId5')]",
     "analyticRuleId5": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId5'))]",
     "analyticRuleTemplateSpecName5": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId5')))]",
-    "analyticRuleVersion6": "1.3.2",
+    "analyticRuleVersion6": "1.3.3",
     "analyticRulecontentId6": "532f62c1-fba6-4baa-bbb6-4a32a4ef32fa",
     "_analyticRulecontentId6": "[variables('analyticRulecontentId6')]",
     "analyticRuleId6": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId6'))]",
     "analyticRuleTemplateSpecName6": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId6')))]",
-    "analyticRuleVersion7": "1.2.3",
+    "analyticRuleVersion7": "1.2.4",
     "analyticRulecontentId7": "cca3b4d9-ac39-4109-8b93-65bb284003e6",
     "_analyticRulecontentId7": "[variables('analyticRulecontentId7')]",
     "analyticRuleId7": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId7'))]",
     "analyticRuleTemplateSpecName7": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId7')))]",
-    "analyticRuleVersion8": "1.2.3",
+    "analyticRuleVersion8": "1.2.4",
     "analyticRulecontentId8": "4a3f5ed7-8da5-4ce2-af6f-c9ada45060f2",
     "_analyticRulecontentId8": "[variables('analyticRulecontentId8')]",
     "analyticRuleId8": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId8'))]",
     "analyticRuleTemplateSpecName8": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId8')))]",
-    "analyticRuleVersion9": "1.2.3",
+    "analyticRuleVersion9": "1.2.4",
     "analyticRulecontentId9": "ffcd575b-3d54-482a-a6d8-d0de13b6ac63",
     "_analyticRulecontentId9": "[variables('analyticRulecontentId9')]",
     "analyticRuleId9": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId9'))]",
     "analyticRuleTemplateSpecName9": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId9')))]",
-    "analyticRuleVersion10": "1.2.4",
+    "analyticRuleVersion10": "1.2.5",
     "analyticRulecontentId10": "a2e36ce0-da4d-4b6e-88c6-4e40161c5bfc",
     "_analyticRulecontentId10": "[variables('analyticRulecontentId10')]",
     "analyticRuleId10": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId10'))]",
     "analyticRuleTemplateSpecName10": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId10')))]",
-    "analyticRuleVersion11": "1.3.3",
+    "analyticRuleVersion11": "1.3.4",
     "analyticRulecontentId11": "2fc5d810-c9cc-491a-b564-841427ae0e50",
     "_analyticRulecontentId11": "[variables('analyticRulecontentId11')]",
     "analyticRuleId11": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId11'))]",
     "analyticRuleTemplateSpecName11": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId11')))]",
-    "analyticRuleVersion12": "1.2.3",
+    "analyticRuleVersion12": "1.2.4",
     "analyticRulecontentId12": "30fa312c-31eb-43d8-b0cc-bcbdfb360822",
     "_analyticRulecontentId12": "[variables('analyticRulecontentId12')]",
     "analyticRuleId12": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId12'))]",
     "analyticRuleTemplateSpecName12": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId12')))]",
-    "analyticRuleVersion13": "1.3.2",
+    "analyticRuleVersion13": "1.3.3",
     "analyticRulecontentId13": "5d33fc63-b83b-4913-b95e-94d13f0d379f",
     "_analyticRulecontentId13": "[variables('analyticRulecontentId13')]",
     "analyticRuleId13": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId13'))]",
     "analyticRuleTemplateSpecName13": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId13')))]",
-    "analyticRuleVersion14": "1.4.2",
+    "analyticRuleVersion14": "1.4.3",
     "analyticRulecontentId14": "a7427ed7-04b4-4e3b-b323-08b981b9b4bf",
     "_analyticRulecontentId14": "[variables('analyticRulecontentId14')]",
     "analyticRuleId14": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId14'))]",
     "analyticRuleTemplateSpecName14": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId14')))]",
-    "analyticRuleVersion15": "1.3.4",
+    "analyticRuleVersion15": "1.3.5",
     "analyticRulecontentId15": "f9949656-473f-4503-bf43-a9d9890f7d08",
     "_analyticRulecontentId15": "[variables('analyticRulecontentId15')]",
     "analyticRuleId15": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId15'))]",
     "analyticRuleTemplateSpecName15": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId15')))]",
-    "analyticRuleVersion16": "1.3.2",
+    "analyticRuleVersion16": "1.3.3",
     "analyticRulecontentId16": "f110287e-1358-490d-8147-ed804b328514",
     "_analyticRulecontentId16": "[variables('analyticRulecontentId16')]",
     "analyticRuleId16": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId16'))]",
     "analyticRuleTemplateSpecName16": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId16')))]",
-    "analyticRuleVersion17": "1.3.2",
+    "analyticRuleVersion17": "1.3.3",
     "analyticRulecontentId17": "2441bce9-02e4-407b-8cc7-7d597f38b8b0",
     "_analyticRulecontentId17": "[variables('analyticRulecontentId17')]",
     "analyticRuleId17": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId17'))]",
     "analyticRuleTemplateSpecName17": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId17')))]",
-    "analyticRuleVersion18": "1.2.3",
+    "analyticRuleVersion18": "1.2.4",
     "analyticRulecontentId18": "0b904747-1336-4363-8d84-df2710bfe5e7",
     "_analyticRulecontentId18": "[variables('analyticRulecontentId18')]",
     "analyticRuleId18": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId18'))]",
     "analyticRuleTemplateSpecName18": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId18')))]",
-    "analyticRuleVersion19": "1.2.1",
+    "analyticRuleVersion19": "1.2.2",
     "analyticRulecontentId19": "57c7e832-64eb-411f-8928-4133f01f4a25",
     "_analyticRulecontentId19": "[variables('analyticRulecontentId19')]",
     "analyticRuleId19": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId19'))]",
     "analyticRuleTemplateSpecName19": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId19')))]",
-    "analyticRuleVersion20": "1.3.2",
+    "analyticRuleVersion20": "1.3.3",
     "analyticRulecontentId20": "a4025a76-6490-4e6b-bb69-d02be4b03f07",
     "_analyticRulecontentId20": "[variables('analyticRulecontentId20')]",
     "analyticRuleId20": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId20'))]",
     "analyticRuleTemplateSpecName20": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId20')))]",
-    "analyticRuleVersion21": "1.2.2",
+    "analyticRuleVersion21": "1.2.3",
     "analyticRulecontentId21": "d0aa8969-1bbe-4da3-9e76-09e5f67c9d85",
     "_analyticRulecontentId21": "[variables('analyticRulecontentId21')]",
     "analyticRuleId21": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId21'))]",
     "analyticRuleTemplateSpecName21": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId21')))]",
-    "analyticRuleVersion22": "1.1.1",
+    "analyticRuleVersion22": "1.1.2",
     "analyticRulecontentId22": "66c81ae2-1f89-4433-be00-2fbbd9ba5ebe",
     "_analyticRulecontentId22": "[variables('analyticRulecontentId22')]",
     "analyticRuleId22": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId22'))]",
     "analyticRuleTemplateSpecName22": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId22')))]",
-    "analyticRuleVersion23": "1.3.4",
+    "analyticRuleVersion23": "1.3.5",
     "analyticRulecontentId23": "69b7723c-2889-469f-8b55-a2d355ed9c87",
     "_analyticRulecontentId23": "[variables('analyticRulecontentId23')]",
     "analyticRuleId23": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId23'))]",
     "analyticRuleTemplateSpecName23": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId23')))]",
-    "analyticRuleVersion24": "1.1.0",
+    "analyticRuleVersion24": "1.1.1",
     "analyticRulecontentId24": "e2559891-383c-4caf-ae67-55a008b9f89e",
     "_analyticRulecontentId24": "[variables('analyticRulecontentId24')]",
     "analyticRuleId24": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId24'))]",
     "analyticRuleTemplateSpecName24": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId24')))]",
-    "analyticRuleVersion25": "1.3.4",
+    "analyticRuleVersion25": "1.3.5",
     "analyticRulecontentId25": "f15370f4-c6fa-42c5-9be4-1d308f40284e",
     "_analyticRulecontentId25": "[variables('analyticRulecontentId25')]",
     "analyticRuleId25": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId25'))]",
     "analyticRuleTemplateSpecName25": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId25')))]",
-    "analyticRuleVersion26": "1.2.4",
+    "analyticRuleVersion26": "1.2.5",
     "analyticRulecontentId26": "f2eb15bd-8a88-4b24-9281-e133edfba315",
     "_analyticRulecontentId26": "[variables('analyticRulecontentId26')]",
     "analyticRuleId26": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId26'))]",
     "analyticRuleTemplateSpecName26": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId26')))]",
-    "analyticRuleVersion27": "1.3.2",
+    "analyticRuleVersion27": "1.3.3",
     "analyticRulecontentId27": "9713e3c0-1410-468d-b79e-383448434b2d",
     "_analyticRulecontentId27": "[variables('analyticRulecontentId27')]",
     "analyticRuleId27": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId27'))]",
     "analyticRuleTemplateSpecName27": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId27')))]",
-    "analyticRuleVersion28": "1.3.3",
+    "analyticRuleVersion28": "1.3.4",
     "analyticRulecontentId28": "5e45930c-09b1-4430-b2d1-cc75ada0dc0f",
     "_analyticRulecontentId28": "[variables('analyticRulecontentId28')]",
     "analyticRuleId28": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId28'))]",
     "analyticRuleTemplateSpecName28": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId28')))]",
-    "analyticRuleVersion29": "1.2.3",
+    "analyticRuleVersion29": "1.2.4",
     "analyticRulecontentId29": "712fab52-2a7d-401e-a08c-ff939cc7c25e",
     "_analyticRulecontentId29": "[variables('analyticRulecontentId29')]",
     "analyticRuleId29": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId29'))]",
     "analyticRuleTemplateSpecName29": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId29')))]",
-    "analyticRuleVersion30": "1.2.4",
+    "analyticRuleVersion30": "1.2.5",
     "analyticRulecontentId30": "36a9c9e5-3dc1-4ed9-afaa-1d13617bfc2b",
     "_analyticRulecontentId30": "[variables('analyticRulecontentId30')]",
     "analyticRuleId30": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId30'))]",
     "analyticRuleTemplateSpecName30": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId30')))]",
-    "analyticRuleVersion31": "1.2.2",
+    "analyticRuleVersion31": "1.2.3",
     "analyticRulecontentId31": "106813db-679e-4382-a51b-1bfc463befc3",
     "_analyticRulecontentId31": "[variables('analyticRulecontentId31')]",
     "analyticRuleId31": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId31'))]",
     "analyticRuleTemplateSpecName31": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId31')))]",
-    "analyticRuleVersion32": "1.2.4",
+    "analyticRuleVersion32": "1.2.5",
     "analyticRulecontentId32": "f30a47c1-65fb-42b1-a7f4-00941c12550b",
     "_analyticRulecontentId32": "[variables('analyticRulecontentId32')]",
     "analyticRuleId32": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId32'))]",
     "analyticRuleTemplateSpecName32": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId32')))]",
-    "analyticRuleVersion33": "1.2.3",
+    "analyticRuleVersion33": "1.2.4",
     "analyticRulecontentId33": "b31037ea-6f68-4fbd-bab2-d0d0f44c2fcf",
     "_analyticRulecontentId33": "[variables('analyticRulecontentId33')]",
     "analyticRuleId33": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId33'))]",
     "analyticRuleTemplateSpecName33": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId33')))]",
-    "analyticRuleVersion34": "1.0.2",
+    "analyticRuleVersion34": "1.0.3",
     "analyticRulecontentId34": "d23ed927-5be3-4902-a9c1-85f841eb4fa1",
     "_analyticRulecontentId34": "[variables('analyticRulecontentId34')]",
     "analyticRuleId34": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId34'))]",
     "analyticRuleTemplateSpecName34": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId34')))]",
-    "analyticRuleVersion35": "1.1.2",
+    "analyticRuleVersion35": "1.1.3",
     "analyticRulecontentId35": "999e9f5d-db4a-4b07-a206-29c4e667b7e8",
     "_analyticRulecontentId35": "[variables('analyticRulecontentId35')]",
     "analyticRuleId35": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId35'))]",
     "analyticRuleTemplateSpecName35": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId35')))]",
-    "analyticRuleVersion36": "1.2.0",
+    "analyticRuleVersion36": "1.2.1",
     "analyticRulecontentId36": "67775878-7f8b-4380-ac54-115e1e828901",
     "_analyticRulecontentId36": "[variables('analyticRulecontentId36')]",
     "analyticRuleId36": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId36'))]",
     "analyticRuleTemplateSpecName36": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId36')))]",
-    "analyticRuleVersion37": "1.2.2",
+    "analyticRuleVersion37": "1.2.4",
     "analyticRulecontentId37": "e2399891-383c-4caf-ae67-68a008b9f89e",
     "_analyticRulecontentId37": "[variables('analyticRulecontentId37')]",
     "analyticRuleId37": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId37'))]",
     "analyticRuleTemplateSpecName37": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId37')))]",
-    "analyticRuleVersion38": "1.0.1",
+    "analyticRuleVersion38": "1.0.2",
     "analyticRulecontentId38": "aac495a9-feb1-446d-b08e-a1164a539452",
     "_analyticRulecontentId38": "[variables('analyticRulecontentId38')]",
     "analyticRuleId38": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', variables('analyticRulecontentId38'))]",
-    "analyticRuleTemplateSpecName38": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId38')))]"
+    "analyticRuleTemplateSpecName38": "[concat(parameters('workspace'),'-ar-',uniquestring(variables('_analyticRulecontentId38')))]",
+    "management": "[concat('https://management','.azure','.com/')]"
   },
   "resources": [
     {
@@ -318,7 +327,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('dataConnectorTemplateSpecName1'))]"
       ],
       "properties": {
-        "description": "Threat Intelligence data connector with template version 2.0.3",
+        "description": "Threat Intelligence data connector with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('dataConnectorVersion1')]",
@@ -484,7 +493,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('dataConnectorTemplateSpecName2'))]"
       ],
       "properties": {
-        "description": "Threat Intelligence data connector with template version 2.0.3",
+        "description": "Threat Intelligence data connector with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('dataConnectorVersion2')]",
@@ -650,7 +659,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('dataConnectorTemplateSpecName3'))]"
       ],
       "properties": {
-        "description": "Threat Intelligence data connector with template version 2.0.3",
+        "description": "Threat Intelligence data connector with template version 2.0.1",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('dataConnectorVersion3')]",
@@ -662,32 +671,74 @@
               "apiVersion": "2021-03-01-preview",
               "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
               "location": "[parameters('workspace-location')]",
-              "kind": "StaticUI",
+              "kind": "GenericUI",
               "properties": {
                 "connectorUiConfig": {
                   "id": "[variables('_uiConfigId3')]",
-                  "title": "Microsoft Defender Threat Intelligence (Preview)",
+                  "title": "Threat Intelligence Upload Indicators API (Preview)",
                   "publisher": "Microsoft",
-                  "descriptionMarkdown": "Microsoft Sentinel provides you the capability to import threat intelligence generated by Microsoft to enable monitoring, alerting and hunting. Use this data connector to import Indicators of Compromise (IOCs) from Microsoft Defender Threat Intelligence (MDTI) into Microsoft Sentinel. Threat indicators can include IP addresses, domains, URLs, and file hashes, etc.",
+                  "descriptionMarkdown": "Microsoft Sentinel offer a data plane API to bring in threat intelligence from your Threat Intelligence Platform (TIP), such as Threat Connect, Palo Alto Networks MineMeld, MISP, or other integrated applications. Threat indicators can include IP addresses, domains, URLs, file hashes and email addresses.",
                   "graphQueries": [
                     {
-                      "metricName": "Total data received",
-                      "legend": "ThreatIntelligenceIndicator",
-                      "baseQuery": "ThreatIntelligenceIndicator\n                      | where SourceSystem in (\"Microsoft Defender Threat Intelligence\", \"Microsoft Emerging Threat Feed\")"
+                      "metricName": "Total indicators received",
+                      "legend": "Connection Events",
+                      "baseQuery": "ThreatIntelligenceIndicator | where SourceSystem != 'Microsoft Sentinel'"
                     }
                   ],
-                  "connectivityCriterias": [
+                  "sampleQueries": [
                     {
-                      "type": "SentinelKinds",
-                      "value": [
-                        "MicrosoftThreatIntelligence"
-                      ]
+                      "description": "All Threat Intelligence APIs Indicators",
+                      "query": "ThreatIntelligenceIndicator | where SourceSystem !in ('SecurityGraph', 'Azure Sentinel', 'Microsoft Sentinel')| sort by TimeGenerated desc"
                     }
                   ],
                   "dataTypes": [
                     {
                       "name": "ThreatIntelligenceIndicator",
-                      "lastDataReceivedQuery": "ThreatIntelligenceIndicator \n                | where SourceSystem in (\"Microsoft Defender Threat Intelligence\", \"Microsoft Emerging Threat Feed\")\n            | summarize Time = max(TimeGenerated)\n            | where isnotempty(Time)"
+                      "lastDataReceivedQuery": "ThreatIntelligenceIndicator| where isnotempty(TimeGenerated) and SourceSystem !in ('SecurityGraph', 'Azure Sentinel', 'Microsoft Sentinel')| summarize Time = max(TimeGenerated)"
+                    }
+                  ],
+                  "connectivityCriterias": [
+                    {
+                      "type": "IsConnectedQuery",
+                      "value": [
+                        "ThreatIntelligenceIndicator| where SourceSystem !in ('SecurityGraph', 'Azure Sentinel', 'Microsoft Sentinel') | summarize LastLogReceived = max(TimeGenerated) | project IsConnected = LastLogReceived > ago(30d)"
+                      ]
+                    }
+                  ],
+                  "availability": {
+                    "status": 1,
+                    "isPreview": false
+                  },
+                  "permissions": {
+                    "resourceProvider": [
+                      {
+                        "provider": "Microsoft.OperationalInsights/workspaces",
+                        "permissionsDisplayText": "read and write permissions are required.",
+                        "providerDisplayName": "Workspace",
+                        "scope": "Workspace",
+                        "requiredPermissions": {
+                          "read": true,
+                          "write": true,
+                          "delete": true
+                        }
+                      }
+                    ]
+                  },
+                  "instructionSteps": [
+                    {
+                      "description": "\n>Using an integrated Threat Intelligence Platform (TIP), such as Threat Connect, Palo Alto Networks MineMeld, MISP, and others. \n\n>Calling the Microsoft Sentinel data plane API directly from another application. ",
+                      "title": "You can connect your threat intelligence data sources to Microsoft Sentinel by either: "
+                    },
+                    {
+                      "title": "Follow These Steps to Connect to your Threat Intelligence: "
+                    },
+                    {
+                      "description": "[concat('To send request to the APIs, you need to acquire Azure Active Directory access token. You can follow instruction in this page: https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/aad/app-aad-token#get-an-azure-ad-access-token \n  - Notice: Please request AAD access token with scope value: ', variables('management'), '.default')]",
+                      "title": "1. Get AAD Access Token"
+                    },
+                    {
+                      "description": "You can send indicators by calling our Upload Indicators API. For more information about the API, click here. \n\n>HTTP method: POST \n\n>Endpoint: https://apis.sentinelus.net/[WorkspaceID]/threatintelligence:upload-indicators?api-version=2022-07-01 \n\n>WorkspaceID: the workspace that the indicators are uploaded to.  \n\n\n>Header Value 1: \"Authorization\" = \"Bearer [AAD Access Token from step 1]\" \n\n\n> Header Value 2: \"Content-Type\" = \"application/json\"  \n \n>Body: The body is a JSON object containing an array of indicators in STIX format. For more information about the API, click here",
+                      "title": "2. Send indicators to Sentinel"
                     }
                   ]
                 }
@@ -758,6 +809,214 @@
       "apiVersion": "2021-03-01-preview",
       "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
       "location": "[parameters('workspace-location')]",
+      "kind": "GenericUI",
+      "properties": {
+        "connectorUiConfig": {
+          "title": "Threat Intelligence Upload Indicators API (Preview)",
+          "publisher": "Microsoft",
+          "descriptionMarkdown": "Microsoft Sentinel offer a data plane API to bring in threat intelligence from your Threat Intelligence Platform (TIP), such as Threat Connect, Palo Alto Networks MineMeld, MISP, or other integrated applications. Threat indicators can include IP addresses, domains, URLs, file hashes and email addresses.",
+          "graphQueries": [
+            {
+              "metricName": "Total indicators received",
+              "legend": "Connection Events",
+              "baseQuery": "ThreatIntelligenceIndicator | where SourceSystem != 'Microsoft Sentinel'"
+            }
+          ],
+          "dataTypes": [
+            {
+              "name": "ThreatIntelligenceIndicator",
+              "lastDataReceivedQuery": "ThreatIntelligenceIndicator| where isnotempty(TimeGenerated) and SourceSystem !in ('SecurityGraph', 'Azure Sentinel', 'Microsoft Sentinel')| summarize Time = max(TimeGenerated)"
+            }
+          ],
+          "connectivityCriterias": [
+            {
+              "type": "IsConnectedQuery",
+              "value": [
+                "ThreatIntelligenceIndicator| where SourceSystem !in ('SecurityGraph', 'Azure Sentinel', 'Microsoft Sentinel') | summarize LastLogReceived = max(TimeGenerated) | project IsConnected = LastLogReceived > ago(30d)"
+              ]
+            }
+          ],
+          "sampleQueries": [
+            {
+              "description": "All Threat Intelligence APIs Indicators",
+              "query": "ThreatIntelligenceIndicator | where SourceSystem !in ('SecurityGraph', 'Azure Sentinel', 'Microsoft Sentinel')| sort by TimeGenerated desc"
+            }
+          ],
+          "availability": {
+            "status": 1,
+            "isPreview": false
+          },
+          "permissions": {
+            "resourceProvider": [
+              {
+                "provider": "Microsoft.OperationalInsights/workspaces",
+                "permissionsDisplayText": "read and write permissions are required.",
+                "providerDisplayName": "Workspace",
+                "scope": "Workspace",
+                "requiredPermissions": {
+                  "read": true,
+                  "write": true,
+                  "delete": true
+                }
+              }
+            ]
+          },
+          "instructionSteps": [
+            {
+              "description": "\n>Using an integrated Threat Intelligence Platform (TIP), such as Threat Connect, Palo Alto Networks MineMeld, MISP, and others. \n\n>Calling the Microsoft Sentinel data plane API directly from another application. ",
+              "title": "You can connect your threat intelligence data sources to Microsoft Sentinel by either: "
+            },
+            {
+              "title": "Follow These Steps to Connect to your Threat Intelligence: "
+            },
+            {
+              "description": "[concat('To send request to the APIs, you need to acquire Azure Active Directory access token. You can follow instruction in this page: https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/aad/app-aad-token#get-an-azure-ad-access-token \n  - Notice: Please request AAD access token with scope value: ', variables('management'), '.default')]",
+              "title": "1. Get AAD Access Token"
+            },
+            {
+              "description": "You can send indicators by calling our Upload Indicators API. For more information about the API, click here. \n\n>HTTP method: POST \n\n>Endpoint: https://apis.sentinelus.net/[WorkspaceID]/threatintelligence:upload-indicators?api-version=2022-07-01 \n\n>WorkspaceID: the workspace that the indicators are uploaded to.  \n\n\n>Header Value 1: \"Authorization\" = \"Bearer [AAD Access Token from step 1]\" \n\n\n> Header Value 2: \"Content-Type\" = \"application/json\"  \n \n>Body: The body is a JSON object containing an array of indicators in STIX format. For more information about the API, click here",
+              "title": "2. Send indicators to Sentinel"
+            }
+          ],
+          "id": "[variables('_uiConfigId3')]"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/templateSpecs",
+      "apiVersion": "2022-02-01",
+      "name": "[variables('dataConnectorTemplateSpecName4')]",
+      "location": "[parameters('workspace-location')]",
+      "tags": {
+        "hidden-sentinelWorkspaceId": "[variables('workspaceResourceId')]",
+        "hidden-sentinelContentType": "DataConnector"
+      },
+      "properties": {
+        "description": "Threat Intelligence data connector with template",
+        "displayName": "Threat Intelligence template"
+      }
+    },
+    {
+      "type": "Microsoft.Resources/templateSpecs/versions",
+      "apiVersion": "2022-02-01",
+      "name": "[concat(variables('dataConnectorTemplateSpecName4'),'/',variables('dataConnectorVersion4'))]",
+      "location": "[parameters('workspace-location')]",
+      "tags": {
+        "hidden-sentinelWorkspaceId": "[variables('workspaceResourceId')]",
+        "hidden-sentinelContentType": "DataConnector"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/templateSpecs', variables('dataConnectorTemplateSpecName4'))]"
+      ],
+      "properties": {
+        "description": "Threat Intelligence data connector with template version 2.0.4",
+        "mainTemplate": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "[variables('dataConnectorVersion4')]",
+          "parameters": {},
+          "variables": {},
+          "resources": [
+            {
+              "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',variables('_dataConnectorContentId4'))]",
+              "apiVersion": "2021-03-01-preview",
+              "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
+              "location": "[parameters('workspace-location')]",
+              "kind": "StaticUI",
+              "properties": {
+                "connectorUiConfig": {
+                  "id": "[variables('_uiConfigId4')]",
+                  "title": "Microsoft Defender Threat Intelligence (Preview)",
+                  "publisher": "Microsoft",
+                  "descriptionMarkdown": "Microsoft Sentinel provides you the capability to import threat intelligence generated by Microsoft to enable monitoring, alerting and hunting. Use this data connector to import Indicators of Compromise (IOCs) from Microsoft Defender Threat Intelligence (MDTI) into Microsoft Sentinel. Threat indicators can include IP addresses, domains, URLs, and file hashes, etc.",
+                  "graphQueries": [
+                    {
+                      "metricName": "Total data received",
+                      "legend": "ThreatIntelligenceIndicator",
+                      "baseQuery": "ThreatIntelligenceIndicator\n                      | where SourceSystem in (\"Microsoft Defender Threat Intelligence\", \"Microsoft Emerging Threat Feed\")"
+                    }
+                  ],
+                  "connectivityCriterias": [
+                    {
+                      "type": "SentinelKinds",
+                      "value": [
+                        "MicrosoftThreatIntelligence"
+                      ]
+                    }
+                  ],
+                  "dataTypes": [
+                    {
+                      "name": "ThreatIntelligenceIndicator",
+                      "lastDataReceivedQuery": "ThreatIntelligenceIndicator \n                | where SourceSystem in (\"Microsoft Defender Threat Intelligence\", \"Microsoft Emerging Threat Feed\")\n            | summarize Time = max(TimeGenerated)\n            | where isnotempty(Time)"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "type": "Microsoft.OperationalInsights/workspaces/providers/metadata",
+              "apiVersion": "2022-01-01-preview",
+              "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat('DataConnector-', last(split(variables('_dataConnectorId4'),'/'))))]",
+              "properties": {
+                "parentId": "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/dataConnectors', variables('_dataConnectorContentId4'))]",
+                "contentId": "[variables('_dataConnectorContentId4')]",
+                "kind": "DataConnector",
+                "version": "[variables('dataConnectorVersion4')]",
+                "source": {
+                  "kind": "Solution",
+                  "name": "Threat Intelligence",
+                  "sourceId": "[variables('_solutionId')]"
+                },
+                "author": {
+                  "name": "Microsoft",
+                  "email": "[variables('_email')]"
+                },
+                "support": {
+                  "tier": "Microsoft",
+                  "name": "Microsoft Corporation",
+                  "email": "support@microsoft.com",
+                  "link": "https://support.microsoft.com/"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/providers/metadata",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat('DataConnector-', last(split(variables('_dataConnectorId4'),'/'))))]",
+      "dependsOn": [
+        "[variables('_dataConnectorId4')]"
+      ],
+      "location": "[parameters('workspace-location')]",
+      "properties": {
+        "parentId": "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/dataConnectors', variables('_dataConnectorContentId4'))]",
+        "contentId": "[variables('_dataConnectorContentId4')]",
+        "kind": "DataConnector",
+        "version": "[variables('dataConnectorVersion4')]",
+        "source": {
+          "kind": "Solution",
+          "name": "Threat Intelligence",
+          "sourceId": "[variables('_solutionId')]"
+        },
+        "author": {
+          "name": "Microsoft",
+          "email": "[variables('_email')]"
+        },
+        "support": {
+          "tier": "Microsoft",
+          "name": "Microsoft Corporation",
+          "email": "support@microsoft.com",
+          "link": "https://support.microsoft.com/"
+        }
+      }
+    },
+    {
+      "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',variables('_dataConnectorContentId4'))]",
+      "apiVersion": "2021-03-01-preview",
+      "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
+      "location": "[parameters('workspace-location')]",
       "kind": "StaticUI",
       "properties": {
         "connectorUiConfig": {
@@ -785,7 +1044,7 @@
               ]
             }
           ],
-          "id": "[variables('_uiConfigId3')]"
+          "id": "[variables('_uiConfigId4')]"
         }
       }
     },
@@ -816,7 +1075,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('workbookTemplateSpecName1'))]"
       ],
       "properties": {
-        "description": "ThreatIntelligenceWorkbook with template version 2.0.3",
+        "description": "ThreatIntelligenceWorkbook with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('workbookVersion1')]",
@@ -919,7 +1178,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('huntingQueryTemplateSpecName1'))]"
       ],
       "properties": {
-        "description": "FileEntity_OfficeActivity_HuntingQueries Hunting Query with template version 2.0.3",
+        "description": "FileEntity_OfficeActivity_HuntingQueries Hunting Query with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryVersion1')]",
@@ -1007,7 +1266,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('huntingQueryTemplateSpecName2'))]"
       ],
       "properties": {
-        "description": "FileEntity_SecurityEvent_HuntingQueries Hunting Query with template version 2.0.3",
+        "description": "FileEntity_SecurityEvent_HuntingQueries Hunting Query with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryVersion2')]",
@@ -1095,7 +1354,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('huntingQueryTemplateSpecName3'))]"
       ],
       "properties": {
-        "description": "FileEntity_Syslog_HuntingQueries Hunting Query with template version 2.0.3",
+        "description": "FileEntity_Syslog_HuntingQueries Hunting Query with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryVersion3')]",
@@ -1183,7 +1442,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('huntingQueryTemplateSpecName4'))]"
       ],
       "properties": {
-        "description": "FileEntity_VMConnection_HuntingQueries Hunting Query with template version 2.0.3",
+        "description": "FileEntity_VMConnection_HuntingQueries Hunting Query with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryVersion4')]",
@@ -1271,7 +1530,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('huntingQueryTemplateSpecName5'))]"
       ],
       "properties": {
-        "description": "FileEntity_WireData_HuntingQueries Hunting Query with template version 2.0.3",
+        "description": "FileEntity_WireData_HuntingQueries Hunting Query with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryVersion5')]",
@@ -1359,7 +1618,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName1'))]"
       ],
       "properties": {
-        "description": "DomainEntity_CommonSecurityLog_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "DomainEntity_CommonSecurityLog_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion1')]",
@@ -1397,6 +1656,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -1406,8 +1671,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "DeviceName"
+                        "columnName": "DeviceName",
+                        "identifier": "HostName"
                       }
                     ],
                     "entityType": "Host"
@@ -1415,8 +1680,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "SourceIP"
+                        "columnName": "SourceIP",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -1424,8 +1689,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "PA_Url"
+                        "columnName": "PA_Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -1491,7 +1756,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName2'))]"
       ],
       "properties": {
-        "description": "DomainEntity_DnsEvents_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "DomainEntity_DnsEvents_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion2')]",
@@ -1535,6 +1800,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -1544,12 +1815,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "DnsDomain"
+                        "columnName": "DnsDomain",
+                        "identifier": "DnsDomain"
                       }
                     ],
                     "entityType": "Host"
@@ -1557,8 +1828,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "ClientIP"
+                        "columnName": "ClientIP",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -1566,8 +1837,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -1633,7 +1904,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName3'))]"
       ],
       "properties": {
-        "description": "DomainEntity_imWebSession_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "DomainEntity_imWebSession_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion3')]",
@@ -1677,6 +1948,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -1686,8 +1963,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "SrcIpAddr"
+                        "columnName": "SrcIpAddr",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -1695,20 +1972,20 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
                   }
                 ],
                 "customDetails": {
-                  "IoCConfidenceScore": "ConfidenceScore",
-                  "IoCDescription": "Description",
-                  "EventTime": "Event_TimeGenerated",
-                  "ActivityGroupNames": "ActivityGroupNames",
-                  "IndicatorId": "IndicatorId",
                   "IoCExpirationTime": "ExpirationDateTime",
+                  "IoCDescription": "Description",
+                  "IoCConfidenceScore": "ConfidenceScore",
+                  "ActivityGroupNames": "ActivityGroupNames",
+                  "EventTime": "Event_TimeGenerated",
+                  "IndicatorId": "IndicatorId",
                   "ThreatType": "ThreatType"
                 },
                 "alertDetailsOverride": {
@@ -1775,7 +2052,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName4'))]"
       ],
       "properties": {
-        "description": "DomainEntity_PaloAlto_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "DomainEntity_PaloAlto_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion4')]",
@@ -1819,6 +2096,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -1828,8 +2111,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "DeviceName"
+                        "columnName": "DeviceName",
+                        "identifier": "HostName"
                       }
                     ],
                     "entityType": "Host"
@@ -1837,8 +2120,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "SourceIP"
+                        "columnName": "SourceIP",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -1846,8 +2129,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "PA_Url"
+                        "columnName": "PA_Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -1913,7 +2196,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName5'))]"
       ],
       "properties": {
-        "description": "DomainEntity_SecurityAlert_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "DomainEntity_SecurityAlert_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion5')]",
@@ -1963,6 +2246,12 @@
                     "dataTypes": [
                       "SecurityAlert"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -1972,8 +2261,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       }
                     ],
                     "entityType": "Host"
@@ -1981,8 +2270,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "IP_addr"
+                        "columnName": "IP_addr",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -1990,8 +2279,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -2057,7 +2346,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName6'))]"
       ],
       "properties": {
-        "description": "DomainEntity_Syslog_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "DomainEntity_Syslog_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion6')]",
@@ -2101,6 +2390,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -2110,12 +2405,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "DnsDomain"
+                        "columnName": "DnsDomain",
+                        "identifier": "DnsDomain"
                       }
                     ],
                     "entityType": "Host"
@@ -2123,8 +2418,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "HostIP"
+                        "columnName": "HostIP",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -2132,8 +2427,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -2199,7 +2494,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName7'))]"
       ],
       "properties": {
-        "description": "EmailEntity_AzureActivity_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "EmailEntity_AzureActivity_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion7')]",
@@ -2243,6 +2538,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -2252,12 +2553,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Name",
-                        "columnName": "Name"
+                        "columnName": "Name",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "UPNSuffix",
-                        "columnName": "UPNSuffix"
+                        "columnName": "UPNSuffix",
+                        "identifier": "UPNSuffix"
                       }
                     ],
                     "entityType": "Account"
@@ -2265,8 +2566,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "CallerIpAddress"
+                        "columnName": "CallerIpAddress",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -2274,8 +2575,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -2341,7 +2642,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName8'))]"
       ],
       "properties": {
-        "description": "EmailEntity_OfficeActivity_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "EmailEntity_OfficeActivity_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion8')]",
@@ -2385,6 +2686,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -2394,12 +2701,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Name",
-                        "columnName": "Name"
+                        "columnName": "Name",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "UPNSuffix",
-                        "columnName": "UPNSuffix"
+                        "columnName": "UPNSuffix",
+                        "identifier": "UPNSuffix"
                       }
                     ],
                     "entityType": "Account"
@@ -2407,8 +2714,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "ClientIP"
+                        "columnName": "ClientIP",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -2416,8 +2723,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -2483,7 +2790,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName9'))]"
       ],
       "properties": {
-        "description": "EmailEntity_PaloAlto_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "EmailEntity_PaloAlto_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion9')]",
@@ -2527,6 +2834,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -2536,8 +2849,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Name",
-                        "columnName": "DestinationUserID"
+                        "columnName": "DestinationUserID",
+                        "identifier": "Name"
                       }
                     ],
                     "entityType": "Account"
@@ -2545,8 +2858,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "SourceIP"
+                        "columnName": "SourceIP",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -2554,8 +2867,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -2621,7 +2934,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName10'))]"
       ],
       "properties": {
-        "description": "EmailEntity_SecurityAlert_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "EmailEntity_SecurityAlert_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion10')]",
@@ -2665,6 +2978,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -2674,12 +2993,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Name",
-                        "columnName": "Name"
+                        "columnName": "Name",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "UPNSuffix",
-                        "columnName": "UPNSuffix"
+                        "columnName": "UPNSuffix",
+                        "identifier": "UPNSuffix"
                       }
                     ],
                     "entityType": "Account"
@@ -2687,8 +3006,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -2754,7 +3073,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName11'))]"
       ],
       "properties": {
-        "description": "EmailEntity_SecurityEvent_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "EmailEntity_SecurityEvent_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion11')]",
@@ -2810,6 +3129,12 @@
                     "dataTypes": [
                       "WindowsEvent"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -2819,8 +3144,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Name",
-                        "columnName": "TargetUserName"
+                        "columnName": "TargetUserName",
+                        "identifier": "Name"
                       }
                     ],
                     "entityType": "Account"
@@ -2828,12 +3153,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "DnsDomain"
+                        "columnName": "DnsDomain",
+                        "identifier": "DnsDomain"
                       }
                     ],
                     "entityType": "Host"
@@ -2841,8 +3166,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "IpAddress"
+                        "columnName": "IpAddress",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -2850,8 +3175,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -2917,7 +3242,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName12'))]"
       ],
       "properties": {
-        "description": "EmailEntity_SigninLogs_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "EmailEntity_SigninLogs_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion12')]",
@@ -2967,6 +3292,12 @@
                     "dataTypes": [
                       "AADNonInteractiveUserSignInLogs"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -2976,12 +3307,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Name",
-                        "columnName": "Name"
+                        "columnName": "Name",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "UPNSuffix",
-                        "columnName": "UPNSuffix"
+                        "columnName": "UPNSuffix",
+                        "identifier": "UPNSuffix"
                       }
                     ],
                     "entityType": "Account"
@@ -2989,8 +3320,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "IPAddress"
+                        "columnName": "IPAddress",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -2998,8 +3329,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -3065,7 +3396,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName13'))]"
       ],
       "properties": {
-        "description": "FileHashEntity_CommonSecurityLog_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "FileHashEntity_CommonSecurityLog_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion13')]",
@@ -3109,6 +3440,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -3118,12 +3455,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Name",
-                        "columnName": "Name"
+                        "columnName": "Name",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "UPNSuffix",
-                        "columnName": "UPNSuffix"
+                        "columnName": "UPNSuffix",
+                        "identifier": "UPNSuffix"
                       }
                     ],
                     "entityType": "Account"
@@ -3131,12 +3468,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "DnsDomain"
+                        "columnName": "DnsDomain",
+                        "identifier": "DnsDomain"
                       }
                     ],
                     "entityType": "Host"
@@ -3144,8 +3481,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "SourceIP"
+                        "columnName": "SourceIP",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -3153,8 +3490,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -3162,12 +3499,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Value",
-                        "columnName": "FileHashValue"
+                        "columnName": "FileHashValue",
+                        "identifier": "Value"
                       },
                       {
-                        "identifier": "Algorithm",
-                        "columnName": "FileHashType"
+                        "columnName": "FileHashType",
+                        "identifier": "Algorithm"
                       }
                     ],
                     "entityType": "FileHash"
@@ -3233,7 +3570,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName14'))]"
       ],
       "properties": {
-        "description": "FileHashEntity_SecurityEvent_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "FileHashEntity_SecurityEvent_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion14')]",
@@ -3289,6 +3626,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -3298,12 +3641,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Name",
-                        "columnName": "Name"
+                        "columnName": "Name",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "NTDomain"
+                        "columnName": "NTDomain",
+                        "identifier": "NTDomain"
                       }
                     ],
                     "entityType": "Account"
@@ -3311,12 +3654,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "DnsDomain"
+                        "columnName": "DnsDomain",
+                        "identifier": "DnsDomain"
                       }
                     ],
                     "entityType": "Host"
@@ -3324,8 +3667,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -3333,12 +3676,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Value",
-                        "columnName": "FileHashValue"
+                        "columnName": "FileHashValue",
+                        "identifier": "Value"
                       },
                       {
-                        "identifier": "Algorithm",
-                        "columnName": "FileHashType"
+                        "columnName": "FileHashType",
+                        "identifier": "Algorithm"
                       }
                     ],
                     "entityType": "FileHash"
@@ -3404,7 +3747,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName15'))]"
       ],
       "properties": {
-        "description": "IPEntity_AppServiceHTTPLogs_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPEntity_AppServiceHTTPLogs_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion15')]",
@@ -3442,6 +3785,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -3451,12 +3800,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "DnsDomain"
+                        "columnName": "DnsDomain",
+                        "identifier": "DnsDomain"
                       }
                     ],
                     "entityType": "Host"
@@ -3464,8 +3813,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Name",
-                        "columnName": "CsUsername"
+                        "columnName": "CsUsername",
+                        "identifier": "Name"
                       }
                     ],
                     "entityType": "Account"
@@ -3473,8 +3822,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "CIp"
+                        "columnName": "CIp",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -3482,8 +3831,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -3491,8 +3840,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "ResourceId",
-                        "columnName": "_ResourceId"
+                        "columnName": "_ResourceId",
+                        "identifier": "ResourceId"
                       }
                     ],
                     "entityType": "AzureResource"
@@ -3558,7 +3907,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName16'))]"
       ],
       "properties": {
-        "description": "IPEntity_AWSCloudTrail_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPEntity_AWSCloudTrail_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion16')]",
@@ -3602,6 +3951,12 @@
                     "dataTypes": [
                       "AWSCloudTrail"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -3611,8 +3966,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "ObjectGuid",
-                        "columnName": "UserIdentityUserName"
+                        "columnName": "UserIdentityUserName",
+                        "identifier": "ObjectGuid"
                       }
                     ],
                     "entityType": "Account"
@@ -3620,8 +3975,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "SourceIpAddress"
+                        "columnName": "SourceIpAddress",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -3629,8 +3984,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -3696,7 +4051,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName17'))]"
       ],
       "properties": {
-        "description": "IPEntity_AzureActivity_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPEntity_AzureActivity_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion17')]",
@@ -3740,6 +4095,12 @@
                     "dataTypes": [
                       "AzureActivity"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -3749,16 +4110,16 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Name",
-                        "columnName": "Name"
+                        "columnName": "Name",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "UPNSuffix",
-                        "columnName": "UPNSuffix"
+                        "columnName": "UPNSuffix",
+                        "identifier": "UPNSuffix"
                       },
                       {
-                        "identifier": "AadUserId",
-                        "columnName": "AadUserId"
+                        "columnName": "AadUserId",
+                        "identifier": "AadUserId"
                       }
                     ],
                     "entityType": "Account"
@@ -3766,8 +4127,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "CallerIpAddress"
+                        "columnName": "CallerIpAddress",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -3775,8 +4136,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -3784,8 +4145,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "ResourceId",
-                        "columnName": "ResourceId"
+                        "columnName": "ResourceId",
+                        "identifier": "ResourceId"
                       }
                     ],
                     "entityType": "AzureResource"
@@ -3851,7 +4212,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName18'))]"
       ],
       "properties": {
-        "description": "IPEntity_AzureFirewall_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPEntity_AzureFirewall_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion18')]",
@@ -3895,6 +4256,12 @@
                     "dataTypes": [
                       "AzureDiagnostics"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -3904,8 +4271,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "TI_ipEntity"
+                        "columnName": "TI_ipEntity",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -3913,8 +4280,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -3980,7 +4347,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName19'))]"
       ],
       "properties": {
-        "description": "IPEntity_AzureKeyVault_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPEntity_AzureKeyVault_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion19')]",
@@ -4024,6 +4391,12 @@
                     "dataTypes": [
                       "KeyVaultData"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -4033,8 +4406,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "ClientIP"
+                        "columnName": "ClientIP",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -4042,8 +4415,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "ResourceId",
-                        "columnName": "ResourceId"
+                        "columnName": "ResourceId",
+                        "identifier": "ResourceId"
                       }
                     ],
                     "entityType": "AzureResource"
@@ -4109,7 +4482,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName20'))]"
       ],
       "properties": {
-        "description": "IPEntity_AzureNetworkAnalytics_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPEntity_AzureNetworkAnalytics_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion20')]",
@@ -4147,6 +4520,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -4156,12 +4535,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "DnsDomain"
+                        "columnName": "DnsDomain",
+                        "identifier": "DnsDomain"
                       }
                     ],
                     "entityType": "Host"
@@ -4169,8 +4548,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "TI_ipEntity"
+                        "columnName": "TI_ipEntity",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -4178,8 +4557,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -4245,7 +4624,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName21'))]"
       ],
       "properties": {
-        "description": "IPEntity_AzureSQL_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPEntity_AzureSQL_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion21')]",
@@ -4289,6 +4668,12 @@
                     "dataTypes": [
                       "AzureDiagnostics"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -4298,8 +4683,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "ClientIP"
+                        "columnName": "ClientIP",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -4365,7 +4750,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName22'))]"
       ],
       "properties": {
-        "description": "IPEntity_CustomSecurityLog_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPEntity_CustomSecurityLog_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion22')]",
@@ -4409,6 +4794,12 @@
                     "dataTypes": [
                       "CommonSecurityLog"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -4418,8 +4809,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "CS_ipEntity"
+                        "columnName": "CS_ipEntity",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -4485,7 +4876,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName23'))]"
       ],
       "properties": {
-        "description": "IPEntity_DnsEvents_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPEntity_DnsEvents_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion23')]",
@@ -4529,6 +4920,12 @@
                     "dataTypes": [
                       "DnsEvents"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -4538,12 +4935,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "DnsDomain"
+                        "columnName": "DnsDomain",
+                        "identifier": "DnsDomain"
                       }
                     ],
                     "entityType": "Host"
@@ -4551,8 +4948,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "ClientIP"
+                        "columnName": "ClientIP",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -4560,8 +4957,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -4627,7 +5024,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName24'))]"
       ],
       "properties": {
-        "description": "IPEntity_imWebSession_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPEntity_imWebSession_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion24')]",
@@ -4677,6 +5074,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -4686,20 +5089,20 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "DstIpAddr"
+                        "columnName": "DstIpAddr",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
                   }
                 ],
                 "customDetails": {
-                  "IoCConfidenceScore": "ConfidenceScore",
-                  "IoCDescription": "Description",
-                  "EventTime": "imNWS_TimeGenerated",
-                  "ActivityGroupNames": "ActivityGroupNames",
-                  "IndicatorId": "IndicatorId",
                   "IoCExpirationTime": "ExpirationDateTime",
+                  "IoCDescription": "Description",
+                  "IoCConfidenceScore": "ConfidenceScore",
+                  "ActivityGroupNames": "ActivityGroupNames",
+                  "EventTime": "imNWS_TimeGenerated",
+                  "IndicatorId": "IndicatorId",
                   "ThreatType": "ThreatType"
                 },
                 "alertDetailsOverride": {
@@ -4766,7 +5169,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName25'))]"
       ],
       "properties": {
-        "description": "IPEntity_OfficeActivity_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPEntity_OfficeActivity_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion25')]",
@@ -4806,6 +5209,12 @@
                     ]
                   },
                   {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
+                  },
+                  {
                     "connectorId": "Office365",
                     "dataTypes": [
                       "OfficeActivity"
@@ -4819,12 +5228,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Name",
-                        "columnName": "Name"
+                        "columnName": "Name",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "UPNSuffix",
-                        "columnName": "UPNSuffix"
+                        "columnName": "UPNSuffix",
+                        "identifier": "UPNSuffix"
                       }
                     ],
                     "entityType": "Account"
@@ -4832,8 +5241,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "TI_ipEntity"
+                        "columnName": "TI_ipEntity",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -4841,8 +5250,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -4908,7 +5317,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName26'))]"
       ],
       "properties": {
-        "description": "IPentity_SigninLogs_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPentity_SigninLogs_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion26')]",
@@ -4958,6 +5367,12 @@
                     "dataTypes": [
                       "AADNonInteractiveUserSignInLogs"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -4967,12 +5382,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Name",
-                        "columnName": "Name"
+                        "columnName": "Name",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "UPNSuffix",
-                        "columnName": "UPNSuffix"
+                        "columnName": "UPNSuffix",
+                        "identifier": "UPNSuffix"
                       }
                     ],
                     "entityType": "Account"
@@ -4980,8 +5395,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "IPAddress"
+                        "columnName": "IPAddress",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -4989,8 +5404,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -5056,7 +5471,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName27'))]"
       ],
       "properties": {
-        "description": "IPEntity_VMConnection_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPEntity_VMConnection_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion27')]",
@@ -5096,6 +5511,12 @@
                     ]
                   },
                   {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
+                  },
+                  {
                     "connectorId": "AzureMonitor(VMInsights)",
                     "dataTypes": [
                       "VMConnection"
@@ -5109,12 +5530,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "DnsDomain"
+                        "columnName": "DnsDomain",
+                        "identifier": "DnsDomain"
                       }
                     ],
                     "entityType": "Host"
@@ -5122,8 +5543,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "RemoteIp"
+                        "columnName": "RemoteIp",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -5131,8 +5552,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -5198,7 +5619,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName28'))]"
       ],
       "properties": {
-        "description": "IPEntity_W3CIISLog_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPEntity_W3CIISLog_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion28')]",
@@ -5238,6 +5659,12 @@
                     ]
                   },
                   {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
+                  },
+                  {
                     "connectorId": "AzureMonitor(IIS)",
                     "dataTypes": [
                       "W3CIISLog"
@@ -5251,8 +5678,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Name",
-                        "columnName": "csUserName"
+                        "columnName": "csUserName",
+                        "identifier": "Name"
                       }
                     ],
                     "entityType": "Account"
@@ -5260,8 +5687,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "HostName"
                       }
                     ],
                     "entityType": "Host"
@@ -5269,8 +5696,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "cIP"
+                        "columnName": "cIP",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -5278,8 +5705,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -5345,7 +5772,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName29'))]"
       ],
       "properties": {
-        "description": "URLEntity_AuditLogs_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "URLEntity_AuditLogs_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion29')]",
@@ -5389,6 +5816,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -5398,8 +5831,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "AccountCustomEntity"
+                        "columnName": "AccountCustomEntity",
+                        "identifier": "FullName"
                       }
                     ],
                     "entityType": "Account"
@@ -5407,8 +5840,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "HostCustomEntity"
+                        "columnName": "HostCustomEntity",
+                        "identifier": "FullName"
                       }
                     ],
                     "entityType": "Host"
@@ -5416,8 +5849,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "URLCustomEntity"
+                        "columnName": "URLCustomEntity",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -5483,7 +5916,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName30'))]"
       ],
       "properties": {
-        "description": "URLEntity_OfficeActivity_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "URLEntity_OfficeActivity_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion30')]",
@@ -5521,6 +5954,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -5530,12 +5969,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Name",
-                        "columnName": "Name"
+                        "columnName": "Name",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "UPNSuffix",
-                        "columnName": "UPNSuffix"
+                        "columnName": "UPNSuffix",
+                        "identifier": "UPNSuffix"
                       }
                     ],
                     "entityType": "Account"
@@ -5543,8 +5982,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -5610,7 +6049,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName31'))]"
       ],
       "properties": {
-        "description": "URLEntity_PaloAlto_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "URLEntity_PaloAlto_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion31')]",
@@ -5654,6 +6093,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -5663,8 +6108,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "DeviceName"
+                        "columnName": "DeviceName",
+                        "identifier": "HostName"
                       }
                     ],
                     "entityType": "Host"
@@ -5672,8 +6117,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "SourceIP"
+                        "columnName": "SourceIP",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -5681,8 +6126,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "PA_Url"
+                        "columnName": "PA_Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -5748,7 +6193,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName32'))]"
       ],
       "properties": {
-        "description": "URLEntity_SecurityAlerts_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "URLEntity_SecurityAlerts_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion32')]",
@@ -5798,6 +6243,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -5807,8 +6258,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "Compromised_Host"
+                        "columnName": "Compromised_Host",
+                        "identifier": "HostName"
                       }
                     ],
                     "entityType": "Host"
@@ -5816,8 +6267,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -5883,7 +6334,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName33'))]"
       ],
       "properties": {
-        "description": "URLEntity_Syslog_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "URLEntity_Syslog_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion33')]",
@@ -5927,6 +6378,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -5936,8 +6393,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "HostName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "HostName"
                       }
                     ],
                     "entityType": "Host"
@@ -5945,8 +6402,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "HostIP"
+                        "columnName": "HostIP",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -5954,8 +6411,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "Url"
+                        "columnName": "Url",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -6021,7 +6478,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName34'))]"
       ],
       "properties": {
-        "description": "IPEntity_DuoSecurity_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPEntity_DuoSecurity_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion34')]",
@@ -6065,6 +6522,12 @@
                     "dataTypes": [
                       "CiscoDuo"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -6074,12 +6537,12 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Name",
-                        "columnName": "Name"
+                        "columnName": "Name",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "UPNSuffix",
-                        "columnName": "UPNSuffix"
+                        "columnName": "UPNSuffix",
+                        "identifier": "UPNSuffix"
                       }
                     ],
                     "entityType": "Account"
@@ -6087,8 +6550,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "access_device_ip_s"
+                        "columnName": "access_device_ip_s",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -6154,7 +6617,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName35'))]"
       ],
       "properties": {
-        "description": "imDns_DomainEntity_DnsEvents_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "imDns_DomainEntity_DnsEvents_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion35')]",
@@ -6230,6 +6693,12 @@
                     ]
                   },
                   {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
+                  },
+                  {
                     "connectorId": "CiscoUmbrellaDataConnector",
                     "dataTypes": [
                       "Cisco_Umbrella_dns_CL"
@@ -6249,8 +6718,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "HostCustomEntity"
+                        "columnName": "HostCustomEntity",
+                        "identifier": "FullName"
                       }
                     ],
                     "entityType": "Host"
@@ -6258,8 +6727,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "IPCustomEntity"
+                        "columnName": "IPCustomEntity",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -6267,8 +6736,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Url",
-                        "columnName": "URLCustomEntity"
+                        "columnName": "URLCustomEntity",
+                        "identifier": "Url"
                       }
                     ],
                     "entityType": "URL"
@@ -6276,16 +6745,16 @@
                 ],
                 "customDetails": {
                   "ExpirationDateTime": "ExpirationDateTime",
-                  "DnsQuery": "DnsQuery",
-                  "DNSRequestTime": "DNS_TimeGenerated",
-                  "LatestIndicatorTime": "LatestIndicatorTime",
-                  "ActivityGroupNames": "ActivityGroupNames",
                   "SourceIPAddress": "SrcIpAddr",
-                  "IndicatorId": "IndicatorId",
-                  "ConfidenceScore": "ConfidenceScore",
-                  "Description": "Description",
+                  "QueryType": "DnsQueryType",
+                  "ActivityGroupNames": "ActivityGroupNames",
+                  "DnsQuery": "DnsQuery",
+                  "LatestIndicatorTime": "LatestIndicatorTime",
                   "ThreatType": "ThreatType",
-                  "QueryType": "DnsQueryType"
+                  "ConfidenceScore": "ConfidenceScore",
+                  "IndicatorId": "IndicatorId",
+                  "DNSRequestTime": "DNS_TimeGenerated",
+                  "Description": "Description"
                 }
               }
             },
@@ -6347,7 +6816,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName36'))]"
       ],
       "properties": {
-        "description": "imDns_IPEntity_DnsEvents_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "imDns_IPEntity_DnsEvents_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion36')]",
@@ -6429,6 +6898,12 @@
                     ]
                   },
                   {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
+                  },
+                  {
                     "connectorId": "Corelight",
                     "dataTypes": [
                       "Corelight_CL"
@@ -6442,8 +6917,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Dvc"
+                        "columnName": "Dvc",
+                        "identifier": "FullName"
                       }
                     ],
                     "entityType": "Host"
@@ -6451,8 +6926,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "IoC"
+                        "columnName": "IoC",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -6460,8 +6935,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "SrcIpAddr"
+                        "columnName": "SrcIpAddr",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -6469,15 +6944,15 @@
                 ],
                 "customDetails": {
                   "ExpirationDateTime": "ExpirationDateTime",
-                  "DnsQuery": "DnsQuery",
-                  "DNSRequestTime": "imDns_mintime",
-                  "LatestIndicatorTime": "LatestIndicatorTime",
-                  "ActivityGroupNames": "ActivityGroupNames",
                   "SourceIPAddress": "SrcIpAddr",
-                  "IndicatorId": "IndicatorId",
+                  "ActivityGroupNames": "ActivityGroupNames",
+                  "DnsQuery": "DnsQuery",
+                  "LatestIndicatorTime": "LatestIndicatorTime",
+                  "ThreatType": "ThreatType",
                   "ConfidenceScore": "ConfidenceScore",
-                  "Description": "Description",
-                  "ThreatType": "ThreatType"
+                  "IndicatorId": "IndicatorId",
+                  "DNSRequestTime": "imDns_mintime",
+                  "Description": "Description"
                 },
                 "alertDetailsOverride": {
                   "alertDisplayNameFormat": "The response {{IoC}} to DNS query matched an IoC",
@@ -6543,7 +7018,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName37'))]"
       ],
       "properties": {
-        "description": "IPEntity_imNetworkSession_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "IPEntity_imNetworkSession_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion37')]",
@@ -6557,7 +7032,7 @@
               "kind": "Scheduled",
               "location": "[parameters('workspace-location')]",
               "properties": {
-                "description": "This rule identifies a match Network Sessions for which the source of destination IP address is a known IoC. <br><br>\nThis analytic rule uses [ASIM](https://aka.ms/AboutASIM) and supports any built-in or custom source that supports the ASIM NetworkSession schema",
+                "description": "This rule identifies a match Network Sessions for which the source or destination IP address is a known IoC. <br><br>\nThis analytic rule uses [ASIM](https://aka.ms/AboutASIM) and supports any built-in or custom source that supports the ASIM NetworkSession schema",
                 "displayName": "TI map IP entity to Network Session Events (ASIM Network Session schema)",
                 "enabled": false,
                 "query": "let dt_lookBack = 1h;\nlet ioc_lookBack = 14d;\nlet IP_TI = materialize (\n  ThreatIntelligenceIndicator\n  | where TimeGenerated >= ago(ioc_lookBack) and ExpirationDateTime > now()\n  | summarize LatestIndicatorTime = arg_max(TimeGenerated, *) by IndicatorId\n  | where Active == true\n  | extend TI_ipEntity = coalesce(NetworkIP, NetworkDestinationIP, NetworkSourceIP,EmailSourceIpAddress,\"NO_IP\")\n  | where TI_ipEntity != \"NO_IP\"\n);\nIP_TI\n  // using innerunique to keep perf fast and result set low, we only need one match to indicate potential malicious activity that needs to be investigated\n| join kind=innerunique \n(\n  _Im_NetworkSession (starttime=ago(dt_lookBack))\n  | where isnotempty(SrcIpAddr)\n  | summarize imNWS_mintime=min(TimeGenerated), imNWS_maxtime=max(TimeGenerated) by SrcIpAddr, DstIpAddr, Dvc, EventProduct, EventVendor  \n  | lookup (IP_TI | project TI_ipEntity, Active) on $left.SrcIpAddr == $right.TI_ipEntity\n  | project-rename SrcMatch = Active\n  | lookup (IP_TI | project TI_ipEntity, Active) on $left.DstIpAddr == $right.TI_ipEntity\n  | project-rename DstMatch = Active\n  | where SrcMatch or DstMatch\n  | extend \n      IoCIP = iff(SrcMatch, SrcIpAddr, DstIpAddr),\n      IoCDirection = iff(SrcMatch, \"Source\", \"Destination\")\n)on $left.TI_ipEntity == $right.IoCIP\n| where imNWS_mintime < ExpirationDateTime\n| project imNWS_mintime, imNWS_maxtime, Description, ActivityGroupNames, IndicatorId, ThreatType, ExpirationDateTime, ConfidenceScore, SrcIpAddr, DstIpAddr, IoCDirection, IoCIP, Dvc, EventVendor, EventProduct\n",
@@ -6661,6 +7136,12 @@
                     ]
                   },
                   {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
+                  },
+                  {
                     "connectorId": "CiscoMeraki",
                     "dataTypes": [
                       "Syslog",
@@ -6675,23 +7156,23 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "IoCIP"
+                        "columnName": "IoCIP",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
                   }
                 ],
                 "customDetails": {
-                  "EventEndTime": "imNWS_maxtime",
-                  "IoCIPDirection": "IoCDirection",
-                  "IoCDescription": "Description",
-                  "ActivityGroupNames": "ActivityGroupNames",
-                  "ThreatType": "ThreatType",
                   "IoCExpirationTime": "ExpirationDateTime",
-                  "EventStartTime": "imNWS_mintime",
+                  "IoCDescription": "Description",
+                  "IoCIPDirection": "IoCDirection",
                   "IoCConfidenceScore": "ConfidenceScore",
-                  "IndicatorId": "IndicatorId"
+                  "ActivityGroupNames": "ActivityGroupNames",
+                  "EventEndTime": "imNWS_maxtime",
+                  "ThreatType": "ThreatType",
+                  "IndicatorId": "IndicatorId",
+                  "EventStartTime": "imNWS_mintime"
                 },
                 "alertDetailsOverride": {
                   "alertDisplayNameFormat": "A network session {{IoCDirection}} address {{IoCIP}} matched an IoC.",
@@ -6757,7 +7238,7 @@
         "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName38'))]"
       ],
       "properties": {
-        "description": "Threat Intel Matches to GitHub Audit Logs_AnalyticalRules Analytics Rule with template version 2.0.3",
+        "description": "Threat Intel Matches to GitHub Audit Logs_AnalyticalRules Analytics Rule with template version 2.0.4",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleVersion38')]",
@@ -6795,6 +7276,12 @@
                     "dataTypes": [
                       "ThreatIntelligenceIndicator"
                     ]
+                  },
+                  {
+                    "connectorId": "MicrosoftDefenderThreatIntelligence",
+                    "dataTypes": [
+                      "ThreatIntelligenceIndicator"
+                    ]
                   }
                 ],
                 "tactics": [
@@ -6804,8 +7291,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "AccountCustomEntity"
+                        "columnName": "AccountCustomEntity",
+                        "identifier": "FullName"
                       }
                     ],
                     "entityType": "Account"
@@ -6813,8 +7300,8 @@
                   {
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "IPCustomEntity"
+                        "columnName": "IPCustomEntity",
+                        "identifier": "Address"
                       }
                     ],
                     "entityType": "IP"
@@ -6858,7 +7345,7 @@
       "apiVersion": "2022-01-01-preview",
       "location": "[parameters('workspace-location')]",
       "properties": {
-        "version": "2.0.3",
+        "version": "2.0.4",
         "kind": "Solution",
         "contentSchemaVersion": "2.0.0",
         "contentId": "[variables('_solutionId')]",
@@ -6895,6 +7382,11 @@
               "kind": "DataConnector",
               "contentId": "[variables('_dataConnectorContentId3')]",
               "version": "[variables('dataConnectorVersion3')]"
+            },
+            {
+              "kind": "DataConnector",
+              "contentId": "[variables('_dataConnectorContentId4')]",
+              "version": "[variables('dataConnectorVersion4')]"
             },
             {
               "kind": "Workbook",
