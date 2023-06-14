@@ -50,7 +50,7 @@ incidentConfiguration:
   groupingConfiguration:
     enabled: true
     groupByAlertDetails: []
-    groupByCustomDetails": []
+    groupByCustomDetails: []
     groupByEntities: ["Account"]
     lookbackDuration: 1d
     matchingMethod: Selected
