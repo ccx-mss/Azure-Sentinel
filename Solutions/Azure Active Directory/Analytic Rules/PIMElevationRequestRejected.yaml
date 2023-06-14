@@ -22,7 +22,7 @@ tags:
 query: |
   AuditLogs
   | where ActivityDisplayName =~'Add member to role completed (PIM activation)'
-  | where Result =~ "failure"
+  | where Result =~ "failure" and ResultDescription != "RoleAssignmentExists"
   | mv-apply ResourceItem = TargetResources on 
     (
         where ResourceItem.type =~ "Role"
