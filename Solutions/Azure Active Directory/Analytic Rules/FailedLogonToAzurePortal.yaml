@@ -41,6 +41,9 @@ query: |
   | where TimeGenerated >= ago(lookBack)
   // Azure Portal only
   | where AppDisplayName =~ "Azure Portal")
+  | extend additionalDetails2 = tostring(parse_json(Status).additionalDetails)
+  | where additionalDetails2 != "MFA denied; duplicate authentication attempt"
+  | project-away additionalDetails2
   ;
   let successPortalSignins = azPortalSignins
   | where TimeGenerated >= ago(timeRange)
