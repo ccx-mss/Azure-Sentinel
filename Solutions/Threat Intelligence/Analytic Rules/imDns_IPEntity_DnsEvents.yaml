@@ -83,10 +83,6 @@ entityMappings:
     fieldMappings:
       - identifier: Address
         columnName: IoC
-  - entityType: IP
-    fieldMappings:
-      - identifier: Address
-        columnName: SrcIpAddr
   - entityType: DNS
     fieldMappings:
       - identifier: DomainName
