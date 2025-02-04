@@ -12,7 +12,9 @@ Threat hunting is the proactive and iterative process of searching for and detec
 ## RecordedFuture-ThreatMap-Importer
 Type: **Threat Hunt**\
 Included in Recorded Future Intelligence Solution: **Yes**\
-Requires [**/RecordedFuture-CustomConnector**](../Connectors/RecordedFuture-CustomConnector/readme.md) and API keys as described in the [Connector authorization](../readme.md#connectors-authorization) section. 
+Requires [**/RecordedFuture-CustomConnector**](../Connectors/RecordedFuture-CustomConnector/readme.md) and API keys as described in the [Connector authorization](../readme.md#connectors-authorization) section. \
+Connectors used: ***RecordedFuture-CustomConnector*** and ***azureloganalyticsdatacollector*** see [Connector authorization](../readme.md#connectors-authorization) for guidance. 
+
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FRecorded%2520Future%2FPlaybooks%2FThreatHunting%2FRecordedFuture-ThreatMap-Importer%2Fazuredeploy.json" target="_blank">![Deploy to Azure](https://aka.ms/deploytoazurebutton)</a>
 <a href="https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FRecorded%2520Future%2FPlaybooks%2FThreatHunting%2FRecordedFuture-ThreatMap-Importer%2Fazuredeploy.json" target="_blank">![Deploy to Azure Gov](https://aka.ms/deploytoazuregovbutton)</a>
@@ -22,7 +24,8 @@ Import Recorded Future Actor Threat Map data and stores it in a custom table. Di
 ## RecordedFuture-ThreatMapMalware-Importer
 Type: **Threat Hunt**\
 Included in Recorded Future Intelligence Solution: **Yes**\
-Requires [**/RecordedFuture-CustomConnector**](../Connectors/RecordedFuture-CustomConnector/readme.md) and API keys as described in the [Connector authorization](../readme.md#connectors-authorization) section. 
+Requires [**/RecordedFuture-CustomConnector**](../Connectors/RecordedFuture-CustomConnector/readme.md) and API keys as described in the [Connector authorization](../readme.md#connectors-authorization) section.\
+Connectors used: ***RecordedFuture-CustomConnector*** and ***azureloganalyticsdatacollector*** see [Connector authorization](../readme.md#connectors-authorization) for guidance.  
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FRecorded%2520Future%2FPlaybooks%2FThreatHunting%2FRecordedFuture-ThreatMapMalware-Importer%2Fazuredeploy.json" target="_blank">![Deploy to Azure](https://aka.ms/deploytoazurebutton)</a>
 <a href="https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FRecorded%2520Future%2FPlaybooks%2FThreatHunting%2FRecordedFuture-ThreatMapMalware-Importer%2Fazuredeploy.json" target="_blank">![Deploy to Azure Gov](https://aka.ms/deploytoazuregovbutton)</a>
@@ -34,7 +37,8 @@ Import Recorded Future Malware Threat Map data and stores it in a custom table. 
 ## RecordedFuture-ActorThreatHunt-IndicatorImport
 Type: **Threat Hunt**\
 Included in Recorded Future Intelligence Solution: **Yes**\
-Requires [**/RecordedFuture-CustomConnector**](../Connectors/RecordedFuture-CustomConnector/readme.md) and API keys as described in the [Connector authorization](../readme.md#connectors-authorization) section. 
+Requires [**/RecordedFuture-CustomConnector**](../Connectors/RecordedFuture-CustomConnector/readme.md) and API keys as described in the [Connector authorization](../readme.md#connectors-authorization) section. \
+Connectors used: ***RecordedFuture-CustomConnector*** see [Connector authorization](../readme.md#connectors-authorization) for guidance. 
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FRecorded%2520Future%2FPlaybooks%2FThreatHunting%2FRecordedFuture-ActorThreatHunt-IndicatorImport%2Fazuredeploy.json" target="_blank">![Deploy to Azure](https://aka.ms/deploytoazurebutton)</a>
 <a href="https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FRecorded%2520Future%2FPlaybooks%2FThreatHunting%2FRecordedFuture-ActorThreatHunt-IndicatorImport%2Fazuredeploy.json" target="_blank">![Deploy to Azure Gov](https://aka.ms/deploytoazuregovbutton)</a>
@@ -51,7 +55,8 @@ After successful installation, automate incidents creation by setup Analytic Rul
 ## RecordedFuture-MalwareThreatHunt-IndicatorImport
 Type: **Threat Hunt**\
 Included in Recorded Future Intelligence Solution: **Yes**\
-Requires [**/RecordedFuture-CustomConnector**](../Connectors/RecordedFuture-CustomConnector/readme.md) and API keys as described in the [Connector authorization](../readme.md#connectors-authorization) section. 
+Requires [**/RecordedFuture-CustomConnector**](../Connectors/RecordedFuture-CustomConnector/readme.md) and API keys as described in the [Connector authorization](../readme.md#connectors-authorization) section. \
+Connectors used: ***RecordedFuture-CustomConnector*** see [Connector authorization](../readme.md#connectors-authorization) for guidance. 
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FRecorded%2520Future%2FPlaybooks%2FThreatHunting%2FRecordedFuture-MalwareThreatHunt-IndicatorImport%2Fazuredeploy.json" target="_blank">![Deploy to Azure](https://aka.ms/deploytoazurebutton)</a>
 <a href="https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FRecorded%2520Future%2FPlaybooks%2FThreatHunting%2FRecordedFuture-MalwareThreatHunt-IndicatorImport%2Fazuredeploy.json" target="_blank">![Deploy to Azure Gov](https://aka.ms/deploytoazuregovbutton)</a>
@@ -92,7 +97,7 @@ If recurrence is changed from default (24h), also change `valid_until_delta_hour
 <br/>
 <br/>
 <details>
-<summary>Expand Advance parameters</summary>
+<summary>Expand Advanced parameters</summary>
 It's possible to restrict indicators downloaded by actor or malware. If several downloads are running use the `Threat Hunt description` field to keep them apart. 
 
 ![alt text](Images/advanceindicatorconfig.png)
@@ -101,3 +106,10 @@ Find individual Ids the treat map workbook once it setup by open `Open Generic D
 
 ![alt text](Images/GenericDetails.png)
 </details>
+
+## Threat hunting for multi-orgs
+
+If your Recorded Future Enterprise is using [multi-org](https://support.recordedfuture.com/hc/articles/4402787600787-Multi-Org-for-Modules), then which threat map you see depends on which API key is used.
+
+- If the API key is tied to one specific organisation, then you will see that organisation's threat map.
+- If the API key is tied to multiple organisations (not recommended), then you will see the first threat map available, which could belong to any of your organisations.
