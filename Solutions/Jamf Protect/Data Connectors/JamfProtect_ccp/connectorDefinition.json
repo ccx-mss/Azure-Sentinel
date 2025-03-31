@@ -174,29 +174,29 @@
               },
               {
                 "parameters": {
-                  "label": "Telemetry Stream ID",
-                  "value": "Custom-jamfprotecttelemetryv1_CL"
+                  "label": "Telemetry (Legacy) Stream ID",
+                  "value": "Custom-jamfprotecttelemetryv1"
                 },
                 "type": "CopyableLabel"
               },
               {
                 "parameters": {
                   "label": "Unified Logs Stream ID",
-                  "value": "Custom-jamfprotectunifiedlogs_CL"
+                  "value": "Custom-jamfprotectunifiedlogs"
                 },
                 "type": "CopyableLabel"
               },
               {
                 "parameters": {
-                  "label": "Telemetry (Legacy) Stream ID",
-                  "value": "Custom-jamfprotecttelemetryv2_CL"
+                  "label": "Telemetry Stream ID",
+                  "value": "Custom-jamfprotecttelemetryv2"
                 },
                 "type": "CopyableLabel"
               },
               {
                 "parameters": {
                   "label": "Alerts Stream ID",
-                  "value": "Custom-jamfprotectalerts_CL"
+                  "value": "Custom-jamfprotectalerts"
                 },
                 "type": "CopyableLabel"
               }
