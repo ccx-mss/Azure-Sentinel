@@ -41,6 +41,26 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2020-10-01",
+      "name": "linkedASimAlertEventAWSGuardDuty",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Parsers/ASimAlertEvent/ARM/ASimAlertEventAWSGuardDuty/ASimAlertEventAWSGuardDuty.json",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "Workspace": {
+            "value": "[parameters('Workspace')]"
+          },
+          "WorkspaceRegion": {
+            "value": "[parameters('WorkspaceRegion')]"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
       "name": "linkedASimAlertEventBitdefenderGravityZone",
       "properties": {
         "mode": "Incremental",
@@ -86,6 +106,46 @@
         "mode": "Incremental",
         "templateLink": {
           "uri": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Parsers/ASimAlertEvent/ARM/ASimAlertEventCrowdStrikeFalcon/ASimAlertEventCrowdStrikeFalcon.json",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "Workspace": {
+            "value": "[parameters('Workspace')]"
+          },
+          "WorkspaceRegion": {
+            "value": "[parameters('WorkspaceRegion')]"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "linkedASimAlertEventGoogleSecOps",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Parsers/ASimAlertEvent/ARM/ASimAlertEventGoogleSecOps/ASimAlertEventGoogleSecOps.json",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "Workspace": {
+            "value": "[parameters('Workspace')]"
+          },
+          "WorkspaceRegion": {
+            "value": "[parameters('WorkspaceRegion')]"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "linkedASimAlertEventGoogleThreatIntelligence",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Parsers/ASimAlertEvent/ARM/ASimAlertEventGoogleThreatIntelligence/ASimAlertEventGoogleThreatIntelligence.json",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -181,11 +241,51 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2020-10-01",
+      "name": "linkedASimAlertEventSentinelOneSingularityAlerts",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Parsers/ASimAlertEvent/ARM/ASimAlertEventSentinelOneSingularityAlerts/ASimAlertEventSentinelOneSingularityAlerts.json",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "Workspace": {
+            "value": "[parameters('Workspace')]"
+          },
+          "WorkspaceRegion": {
+            "value": "[parameters('WorkspaceRegion')]"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
       "name": "linkedimAlertEvent",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
           "uri": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Parsers/ASimAlertEvent/ARM/imAlertEvent/imAlertEvent.json",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "Workspace": {
+            "value": "[parameters('Workspace')]"
+          },
+          "WorkspaceRegion": {
+            "value": "[parameters('WorkspaceRegion')]"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "linkedvimAlertEventAWSGuardDuty",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Parsers/ASimAlertEvent/ARM/vimAlertEventAWSGuardDuty/vimAlertEventAWSGuardDuty.json",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -281,6 +381,46 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2020-10-01",
+      "name": "linkedvimAlertEventGoogleSecOps",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Parsers/ASimAlertEvent/ARM/vimAlertEventGoogleSecOps/vimAlertEventGoogleSecOps.json",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "Workspace": {
+            "value": "[parameters('Workspace')]"
+          },
+          "WorkspaceRegion": {
+            "value": "[parameters('WorkspaceRegion')]"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "linkedvimAlertEventGoogleThreatIntelligence",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Parsers/ASimAlertEvent/ARM/vimAlertEventGoogleThreatIntelligence/vimAlertEventGoogleThreatIntelligence.json",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "Workspace": {
+            "value": "[parameters('Workspace')]"
+          },
+          "WorkspaceRegion": {
+            "value": "[parameters('WorkspaceRegion')]"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
       "name": "linkedvimAlertEventMicrosoftDefenderXDR",
       "properties": {
         "mode": "Incremental",
@@ -346,6 +486,26 @@
         "mode": "Incremental",
         "templateLink": {
           "uri": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Parsers/ASimAlertEvent/ARM/vimAlertEventSentinelOneSingularity/vimAlertEventSentinelOneSingularity.json",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "Workspace": {
+            "value": "[parameters('Workspace')]"
+          },
+          "WorkspaceRegion": {
+            "value": "[parameters('WorkspaceRegion')]"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "linkedvimAlertEventSentinelOneSingularityAlerts",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Parsers/ASimAlertEvent/ARM/vimAlertEventSentinelOneSingularityAlerts/vimAlertEventSentinelOneSingularityAlerts.json",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {

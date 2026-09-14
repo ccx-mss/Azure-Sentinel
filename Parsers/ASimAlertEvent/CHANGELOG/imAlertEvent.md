@@ -1,5 +1,21 @@
 # Changelog for imAlertEvent.yaml
 
+## Version 0.1.9
+
+- (2026-09-09) AWS GuardDuty - AlertEvent ASIM Parser - [PR #15079](https://github.com/Azure/Azure-Sentinel/pull/15079)
+
+## Version 0.1.8
+
+- (2026-08-17) SentinelOne Singularity Alerts - AlertEvent ASIM Parser - [PR #14927](https://github.com/Azure/Azure-Sentinel/pull/14927)
+
+## Version 0.1.7
+
+- (2026-07-01) Google Threat Intelligence - AlertEvent ASIM Parser - [PR #14420](https://github.com/Azure/Azure-Sentinel/pull/14420)
+
+## Version 0.1.6
+
+- (2026-06-19) Alert Schema Parsers - [PR #14221](https://github.com/Azure/Azure-Sentinel/pull/14221)
+
 ## Version 0.1.5
 
 - (2026-06-19) CrowdStrike Falcon - AlertEvent ASIM Parser - [PR #14488](https://github.com/Azure/Azure-Sentinel/pull/14488)
