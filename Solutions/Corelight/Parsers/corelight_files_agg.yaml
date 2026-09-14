@@ -1,0 +1,92 @@
+id: db9b0306-2100-4bb3-b731-50ae5c8b8fea
+Function:
+  Title: Corelight Files Aggregated Events
+  Version: '2.0.0'
+  LastUpdated: '2026-08-17'
+Category: Microsoft Sentinel Parser
+FunctionName: corelight_files_agg
+FunctionAlias: corelight_files_agg
+FunctionQuery: |
+    let dummy_table = datatable(TimeGenerated: datetime, uids: dynamic) [];
+    let corelight_files_agg = view () {
+        union isfuzzy=true
+            Corelight_v3_files_agg_CL,
+            dummy_table
+        | summarize arg_max(TimeGenerated, *) by uids_key = tostring(uids)
+        | join kind=leftouter 
+            ( corelight_conn
+            | project uid, local_orig, local_resp    
+            ) on $left.uids_key == $right.uid
+        | project-away uids_key, uid
+        | extend
+            uid=tostring(uids),
+            mime_type = todynamic(mime_types),
+            timedout = timedouts
+        | extend
+            EventVendor = "Corelight",
+            EventProduct = "CorelightSensor",
+            EventType = "files_agg",
+            ts = TimeGenerated,
+            bytes = seen_bytes,
+            file_size = total_bytes,
+            file_name = filename,
+            object = filename,
+            src = id_orig_h,
+            src_ip = id_orig_h,
+            src_port = id_orig_p,
+            dest = id_resp_h,
+            dest_ip = id_resp_h,
+            dest_port = id_resp_p,
+            app = source,
+            file_hash = coalesce(md5, sha1, sha256, "unknown"),
+            sensor_name = coalesce(system_name, "unknown")
+        | extend
+            is_broadcast =iff(src in("0.0.0.0", "255.255.255.255") or dest in("255.255.255.255", "0.0.0.0"),"true","false"),
+            is_dest_internal_ip = iff(local_resp == true, "true", "false"),
+            is_src_internal_ip = iff(local_orig == true, "true", "false")
+        | project
+            TimeGenerated,
+            path,
+            system_name,
+            id_orig_h,
+            id_orig_p,
+            id_resp_h,
+            id_resp_p,
+            source,
+            analyzers,
+            filename,
+            md5,
+            is_orig,
+            local_orig,
+            sha1,
+            sha256,
+            fuid,
+            uid,
+            parent_fuid,
+            mime_type,
+            duration,
+            seen_bytes,
+            total_bytes,
+            missing_bytes,
+            overflow_bytes,
+            timedout,
+            depth,
+            bytes,
+            file_size,
+            file_name,
+            object,
+            src,
+            src_ip,
+            src_port,
+            dest,
+            dest_ip,
+            dest_port,
+            app,
+            file_hash,
+            sensor_name,
+            EventVendor,
+            EventProduct,
+            EventType,
+            ts
+    };
+    corelight_files_agg

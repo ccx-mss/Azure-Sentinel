@@ -1,12 +1,12 @@
 Parser:
   Title: DNS activity ASIM schema function
-  Version: '0.4'
-  LastUpdated: Jan 09 2023
+  Version: '1.0.0'
+  LastUpdated: Aug 06, 2026
 Product:
   Name: Microsoft
 Normalization:
   Schema: Dns
-  Version: '0.1.7'
+  Version: '1.0.0'
 References:
 - Title: ASIM DNS Schema
   Link: https://aka.ms/ASimDnsDoc
@@ -18,7 +18,12 @@ ParserName: vimDnsEmpty
 EquivalentBuiltInParser: _Im_Dns_Empty
 ParserQuery: |
   let EmptyNewDnsEvents=datatable(
+    TimeGenerated: datetime,
     _ResourceId: string,
+    Type: string,
+    SrcUserAdditionalIds: dynamic,
+    SrcUserEntityKey: string,
+    AdditionalEntities: dynamic,
     AdditionalFields: dynamic,
     DnsFlags: string,
     DnsFlagsAuthenticated: bool,
@@ -52,8 +57,8 @@ ParserQuery: |
     DstDomainType: string,
     DstDvcId: string,
     DstDvcIdType: string,
-    DstDvcScopeId: string,
     DstDvcScope: string,
+    DstDvcScopeId: string,
     DstFQDN: string,
     DstGeoCity: string,
     DstGeoCountry: string,
@@ -62,15 +67,16 @@ ParserQuery: |
     DstGeoRegion: string,
     DstHostname: string,
     DstIpAddr: string,
+    DstOriginalRiskLevel: string,
     DstPortNumber: int,
     DstRiskLevel: int,
-    DstOriginalRiskLevel: string,
     Duration: int,
     Dvc: string,
     DvcAction: string,
     DvcDescription: string,
     DvcDomain: string,
     DvcDomainType: string,
+    DvcEntityKey: string,
     DvcFQDN: string,
     DvcHostname: string,
     DvcId: string,
@@ -87,6 +93,7 @@ ParserQuery: |
     EventCount: int,
     EventEndTime: datetime,
     EventMessage: string,
+    EventOriginalResultDetails: string,
     EventOriginalSeverity: string,
     EventOriginalSubType: string,
     EventOriginalType: string,
@@ -134,24 +141,26 @@ ParserQuery: |
     SrcOriginalRiskLevel: string,
     SrcOriginalUserType: string,
     SrcPortNumber: int,
+    SrcProcessEntityKey: string,
     SrcProcessGuid: string,
     SrcProcessId: string,
     SrcProcessName: string,
     SrcRiskLevel: int,
-    SrcUserId: string,
+    SrcSystemEntityKey: string,
     SrcUserAadId: string,
-    SrcUserSid: string,
     SrcUserAWSId: string,
-    SrcUserOktaId: string,
-    SrcUserUid: string,
+    SrcUserId: string,
     SrcUserIdType: string,
-    SrcUserScope: string,
-    SrcUserScopeId: string,
     SrcUsername: string,
     SrcUsernameType: string,
-    SrcUserType: string,
+    SrcUserOktaId: string,
+    SrcUserScope: string,
+    SrcUserScopeId: string,
     SrcUserSessionId: string,
-    TenantId: string,
+    SrcUserSid: string,
+    SrcUserType: string,
+    SrcUserUid: string,
+    DstSystemEntityKey: string,
     ThreatCategory: string,
     ThreatConfidence: int,
     ThreatField: string,
@@ -164,9 +173,7 @@ ParserQuery: |
     ThreatOriginalConfidence: string,
     ThreatOriginalRiskLevel: string,
     ThreatRiskLevel: int,
-    TimeGenerated: datetime,
     TransactionIdHex: string,
-    Type: string,
     UrlCategory: string,
     User: string
   )[];

@@ -1,8 +1,8 @@
 id: 2757535d-ca8d-4083-8ea2-ac9ba5237b95
 Function:
   Title: Parser for Snowflake
-  Version: '1.0.1'
-  LastUpdated: '2025-10-13'
+  Version: '1.1.0'
+  LastUpdated: '2026-08-04'
 Category: Microsoft Sentinel Parser
 FunctionName: Snowflake
 FunctionAlias: Snowflake
@@ -11,7 +11,7 @@ FunctionQuery: |
     Snowflake_CL
     | extend EventVendor = 'Snowflake'
     | extend EventProduct = 'Snowflake'
-    | extend 
+    | extend
       EventStartTime = column_ifexists('START_TIME_t', ''),
       EventType = column_ifexists('EVENT_TYPE_s', ''),
       TargetUsername = column_ifexists('USER_NAME_s', ''),
@@ -21,10 +21,10 @@ FunctionQuery: |
       QueryExecutionStatus = column_ifexists('EXECUTION_STATUS_s', ''),
       QueryTotalElapsedTime = toreal(column_ifexists('TOTAL_ELAPSED_TIME_d', '0')),
       LoginIsSuccess = column_ifexists('IS_SUCCESS_s',''),
-      QueryCreditsUsedCloudServices = toreal(column_ifexists('CREDITS_USED_CLOUD_SERVICES_d','0')),
+      QueryCreditsUsedCloudServices = iff(isempty(CREDITS_USED_CLOUD_SERVICES_d), toreal(0), toreal(CREDITS_USED_CLOUD_SERVICES_d)),
       QueryExecutionTime = toreal(column_ifexists('EXECUTION_TIME_d','0')),
       RoleName = column_ifexists('ROLE_NAME_s','')
-    | extend 
+    | extend
       User=TargetUsername,
       EventEndTime=iff(isnotempty(EVENT_TIMESTAMP_t), EVENT_TIMESTAMP_t, END_TIME_t)
   };
@@ -32,14 +32,385 @@ FunctionQuery: |
     SnowflakeLogin_CL
     | extend EventVendor = 'Snowflake'
     | extend EventProduct = 'Snowflake'
+    | mv-expand OuterArray = todynamic(Data)
+    | mv-expand innerArray = OuterArray
+    | extend JsonString = tostring(innerArray)
+    | extend Time = extractjson("$.EVENT_TIMESTAMP", JsonString)
+    | extend
+      SrcDvcIpAddr = extractjson("$.CLIENT_IP", JsonString),
+      LoginClientPrivateLinkId = extractjson("$.CLIENT_PRIVATE_LINK_ID", JsonString),
+      LoginConnection = extractjson("$.CONNECTION", JsonString),
+      LoginErrorCode = extractjson("$.ERROR_CODE", JsonString),
+      LoginErrorMessage = extractjson("$.ERROR_MESSAGE", JsonString),
+      LoginEventId = extractjson("$.EVENT_ID", JsonString),
+      LoginEventEndTime = todatetime(substring(Time, 0, 23)) - tolong(substring(Time, 24, 3)) * 1h,
+      LoginEventType = extractjson("$.EVENT_TYPE", JsonString),
+      LoginFirstAuthenticationFactor = extractjson("$.FIRST_AUTHENTICATION_FACTOR", JsonString),
+      LoginIsSuccess = extractjson("$.IS_SUCCESS", JsonString),
+      LoginRelatedEventId = extractjson("$.RELATED_EVENT_ID", JsonString),
+      LoginReportedClientType = extractjson("$.REPORTED_CLIENT_TYPE", JsonString),
+      LoginReportedClientVersion = extractjson("$.REPORTED_CLIENT_VERSION", JsonString),
+      LoginSecondAuthenticationFactor = extractjson("$.SECOND_AUTHENTICATION_FACTOR", JsonString),
+      TargetUsername = extractjson("$.USER_NAME", JsonString)
+    | extend User = TargetUsername
+  };
+  let SnowflakeUserGrant_view = view () {
+  SnowflakeUserGrant_CL
+    | extend EventVendor = 'Snowflake'
+    | extend EventProduct = 'Snowflake'
+    | mv-expand OuterArray = todynamic(Data)
+    | mv-expand innerArray = OuterArray
+    | extend JsonString = tostring(innerArray)
+    | extend
+      CTime = extractjson("$.CREATED_ON", JsonString),
+      DTime = extractjson("$.DELETED_ON", JsonString)
+    | extend
+      UserGrantCreatedOn = todatetime(substring(CTime, 0, 23)) - tolong(substring(CTime, 24, 3)) * 1h,
+      UserGrantDeletedOn = todatetime(substring(DTime, 0, 23)) - tolong(substring(DTime, 24, 3)) * 1h,
+      UserRole = extractjson("$.ROLE", JsonString),
+      UserGrantGrantedTo = extractjson("$.GRANTED_TO", JsonString),
+      UserGrantGranteeName = extractjson("$.GRANTEE_NAME", JsonString),
+      UserGrantGrantedBy = extractjson("$.GRANTED_BY", JsonString)
+  };
+  let SnowflakeMaterializedView_view = view () {
+    SnowflakeMaterializedView_CL
+    | extend EventVendor = 'Snowflake'
+    | extend EventProduct = 'Snowflake'
+    | mv-expand OuterArray = todynamic(Data)
+    | mv-expand innerArray = OuterArray
+    | extend JsonString = tostring(innerArray)
+    | extend
+      STime = extractjson("$.START_TIME", JsonString),
+      ETime = extractjson("$.END_TIME", JsonString)
+    | extend
+      MaterializedViewStartTime = todatetime(substring(STime, 0, 23)) - tolong(substring(STime, 24, 3)) * 1h,
+      MaterializedViewEndTime = todatetime(substring(ETime, 0, 23)) - tolong(substring(ETime, 24, 3)) * 1h,
+      MaterializedViewCreditsUsed = extractjson("$.CREDITS_USED", JsonString),
+      MaterializedViewTableId = extractjson("$.TABLE_ID", JsonString),
+      MaterializedViewTableName = extractjson("$.TABLE_NAME", JsonString),
+      MaterializedViewSchemaId = extractjson("$.SCHEMA_ID", JsonString),
+      MaterializedViewSchemaName = extractjson("$.SCHEMA_NAME", JsonString),
+      MaterializedViewDatabaseId = extractjson("$.DATABASE_ID", JsonString),
+      MaterializedViewDatabaseName = extractjson("$.DATABASE_NAME", JsonString)
+  };
+  let SnowflakeRoles_view = view () {
+    SnowflakeRoles_CL
+    | extend EventVendor = 'Snowflake'
+    | extend EventProduct = 'Snowflake'
+    | mv-expand OuterArray = todynamic(Data)
+    | mv-expand innerArray = OuterArray
+    | extend JsonString = tostring(innerArray)
+    | extend
+      CTime = extractjson("$.CREATED_ON", JsonString),
+      DTime = extractjson("$.DELETED_ON", JsonString)
+    | extend
+      RoleId = extractjson("$.ROLE_ID", JsonString),
+      RoleCreatedOn = todatetime(substring(CTime, 0, 23)) - tolong(substring(CTime, 24, 3)) * 1h,
+      RoleDeletedOn = todatetime(substring(DTime, 0, 23)) - tolong(substring(DTime, 24, 3)) * 1h,
+      RoleName = extractjson("$.NAME", JsonString),
+      RoleComment = extractjson("$.COMMENT", JsonString),
+      RoleOwner = extractjson("$.OWNER", JsonString),
+      RoleType = extractjson("$.ROLE_TYPE", JsonString),
+      RoleDatabaseName = extractjson("$.ROLE_DATABASE_NAME", JsonString),
+      RoleInstanceId = extractjson("$.ROLE_INSTANCE_ID", JsonString),
+      OwnerRoleType = extractjson("$.OWNER_ROLE_TYPE", JsonString)
+  };
+  let SnowflakeRoleGrant_view = view () {
+    SnowflakeRoleGrant_CL
+    | extend EventVendor = 'Snowflake'
+    | extend EventProduct = 'Snowflake'
+    | mv-expand OuterArray = todynamic(Data)
+    | mv-expand innerArray = OuterArray
+    | extend JsonString = tostring(innerArray)
+    | extend
+      CTime = extractjson("$.CREATED_ON", JsonString),
+      MTime = extractjson("$.MODIFIED_ON", JsonString),
+      DTime = extractjson("$.DELETED_ON", JsonString)
+    | extend
+      RoleGrantCreatedOn = todatetime(substring(CTime, 0, 23)) - tolong(substring(CTime, 24, 3)) * 1h,
+      RoleGrantModifiedOn = todatetime(substring(MTime, 0, 23)) - tolong(substring(MTime, 24, 3)) * 1h,
+      RoleGrantPrivilege = extractjson("$.PRIVILEGE", JsonString),
+      RoleGrantGrantedOn = extractjson("$.GRANTED_ON", JsonString),
+      RoleGrantName = extractjson("$.NAME", JsonString),
+      RoleGrantTableCatalog = extractjson("$.TABLE_CATALOG", JsonString),
+      RoleGrantTableSchema = extractjson("$.TABLE_SCHEMA", JsonString),
+      RoleGrantGrantedTo = extractjson("$.GRANTED_TO", JsonString),
+      RoleGrantGranteeName = extractjson("$.GRANTEE_NAME", JsonString),
+      RoleGrantGrantOption = extractjson("$.GRANT_OPTION", JsonString),
+      RoleGrantGrantedBy = extractjson("$.GRANTED_BY", JsonString),
+      RoleGrantDeletedOn = todatetime(substring(DTime, 0, 23)) - tolong(substring(DTime, 24, 3)) * 1h,
+      RoleGrantGrantedByRoleType = extractjson("$.GRANTED_BY_ROLE_TYPE", JsonString),
+      RoleGrantObjectInstance = extractjson("$.OBJECT_INSTANCE", JsonString)
+  };
+  let SnowflakeLoad_view = view () {
+    SnowflakeLoad_CL
+    | extend EventVendor = 'Snowflake'
+    | extend EventProduct = 'Snowflake'
+    | mv-expand OuterArray = todynamic(Data)
+    | mv-expand innerArray = OuterArray
+    | extend JsonString = tostring(innerArray)
+    | extend LTime = extractjson("$.LAST_LOAD_TIME", JsonString)
+    | extend
+      LoadTableId = extractjson("$.TABLE_ID", JsonString),
+      LoadTableName = extractjson("$.TABLE_NAME", JsonString),
+      LoadSchemaId = extractjson("$.SCHEMA_ID", JsonString),
+      LoadSchemaName = extractjson("$.SCHEMA_NAME", JsonString),
+      LoadCatalogId = extractjson("$.CATALOG_ID", JsonString),
+      LoadCatalogName = extractjson("$.CATALOG_NAME", JsonString),
+      LoadFileName = extractjson("$.FILE_NAME", JsonString),
+      LastLoadTime = todatetime(substring(LTime, 0, 23)) - tolong(substring(LTime, 24, 3)) * 1h,
+      LoadStatus = extractjson("$.STATUS", JsonString),
+      LoadRowCount = extractjson("$.ROW_COUNT", JsonString),
+      LoadRowParsed = extractjson("$.ROW_PARSED", JsonString),
+      LoadFirstErrorMessage = extractjson("$.FIRST_ERROR_MESSAGE", JsonString),
+      LoadFirstErrorLineNumber = extractjson("$.FIRST_ERROR_LINE_NUMBER", JsonString),
+      LoadFirstErrorCharacterPosition = extractjson("$.FIRST_ERROR_CHARACTER_POSITION", JsonString),
+      LoadFirstErrorColName = extractjson("$.FIRST_ERROR_COL_NAME", JsonString),
+      LoadErrorCount = extractjson("$.ERROR_COUNT", JsonString),
+      LoadErrorLimit = extractjson("$.ERROR_LIMIT", JsonString)
+  };
+  let SnowflakeTableStorageMetrics_view = view () {
+    SnowflakeTableStorageMetrics_CL
+    | extend EventVendor = 'Snowflake'
+    | extend EventProduct = 'Snowflake'
+    | mv-expand OuterArray = todynamic(Data)
+    | mv-expand innerArray = OuterArray
+    | extend JsonString = tostring(innerArray)
+    | extend
+      TCTime = extractjson("$.TABLE_CREATED", JsonString),
+      TDTime = extractjson("$.TABLE_DROPPED", JsonString),
+      TFTime = extractjson("$.TABLE_ENTERED_FAILSAFE", JsonString),
+      SCTime = extractjson("$.SCHEMA_CREATED", JsonString),
+      SDTime = extractjson("$.SCHEMA_DROPPED", JsonString),
+      CCTime = extractjson("$.CATALOG_CREATED", JsonString),
+      CDTime = extractjson("$.CATALOG_DROPPED", JsonString)
+    | extend
+      TableStorageMetricsId = extractjson("$.ID", JsonString),
+      TableStorageMetricsTableName = extractjson("$.TABLE_NAME", JsonString),
+      TableStorageMetricsTableSchemaId = extractjson("$.TABLE_SCHEMA_ID", JsonString),
+      TableStorageMetricsTableSchema = extractjson("$.TABLE_SCHEMA", JsonString),
+      TableStorageMetricsTableCatalogId = extractjson("$.TABLE_CATALOG_ID", JsonString),
+      TableStorageMetricsTableCatalog = extractjson("$.TABLE_CATALOG", JsonString),
+      TableStorageMetricsCloneGroupId = extractjson("$.CLONE_GROUP_ID", JsonString),
+      TableStorageMetricsIsTransient = extractjson("$.IS_TRANSIENT", JsonString),
+      TableStorageMetricsActiveBytes = extractjson("$.ACTIVE_BYTES", JsonString),
+      TableStorageMetricsTimeTravelBytes = extractjson("$.TIME_TRAVEL_BYTES", JsonString),
+      TableStorageMetricsFailsafeBytes = extractjson("$.FAILSAFE_BYTES", JsonString),
+      TableStorageMetricsRetainedForCloneBytes = extractjson("$.RETAINED_FOR_CLONE_BYTES", JsonString),
+      TableStorageMetricsDeleted = extractjson("$.DELETED", JsonString),
+      TableStorageMetricsTableCreated = todatetime(substring(TCTime, 0, 23)) - tolong(substring(TCTime, 24, 3)) * 1h,
+      TableStorageMetricsTableDropped = todatetime(substring(TDTime, 0, 23)) - tolong(substring(TDTime, 24, 3)) * 1h,
+      TableStorageMetricsTableEnteredFailsafe = todatetime(substring(TFTime, 0, 23)) - tolong(substring(TFTime, 24, 3)) * 1h,
+      TableStorageMetricsSchemaCreated = todatetime(substring(SCTime, 0, 23)) - tolong(substring(SCTime, 24, 3)) * 1h,
+      TableStorageMetricsSchemaDropped = todatetime(substring(SDTime, 0, 23)) - tolong(substring(SDTime, 24, 3)) * 1h,
+      TableStorageMetricsCatalogCreated = todatetime(substring(CCTime, 0, 23)) - tolong(substring(CCTime, 24, 3)) * 1h,
+      TableStorageMetricsCatalogDropped = todatetime(substring(CDTime, 0, 23)) - tolong(substring(CDTime, 24, 3)) * 1h,
+      TableStorageMetricsComment = extractjson("$.COMMENT", JsonString),
+      TableStorageMetricsInstanceId = extractjson("$.INSTANCE_ID", JsonString)
+  };
+  let SnowflakeTables_view = view () {
+    SnowflakeTables_CL
+    | extend EventVendor = 'Snowflake'
+    | extend EventProduct = 'Snowflake'
+    | mv-expand OuterArray = todynamic(Data)
+    | mv-expand innerArray = OuterArray
+    | extend JsonString = tostring(innerArray)
+    | extend
+      TCTime = extractjson("$.CREATED", JsonString),
+      LATime = extractjson("$.LAST_ALTERED", JsonString),
+      LDTime = extractjson("$.LAST_DDL", JsonString),
+      TDTime = extractjson("$.DELETED", JsonString)
+    | extend
+      TableId = extractjson("$.TABLE_ID", JsonString),
+      TableName = extractjson("$.TABLE_NAME", JsonString),
+      TableSchemaId = extractjson("$.TABLE_SCHEMA_ID", JsonString),
+      TableSchema = extractjson("$.TABLE_SCHEMA", JsonString),
+      TableCatalogId = extractjson("$.TABLE_CATALOG_ID", JsonString),
+      TableCatalog = extractjson("$.TABLE_CATALOG", JsonString),
+      TableOwner = extractjson("$.TABLE_OWNER", JsonString),
+      TableType = extractjson("$.TABLE_TYPE", JsonString),
+      TableIsTransient = extractjson("$.IS_TRANSIENT", JsonString),
+      TableIsIceberg = extractjson("$.IS_ICEBERG", JsonString),
+      TableIsDynamic = extractjson("$.IS_DYNAMIC", JsonString),
+      TableIsHybrid = extractjson("$.IS_HYBRID", JsonString),
+      TableClusteringKey = extractjson("$.CLUSTERING_KEY", JsonString),
+      TableRowCount = extractjson("$.ROW_COUNT", JsonString),
+      TableBytes = extractjson("$.BYTES", JsonString),
+      TableRetentionTime = extractjson("$.RETENTION_TIME", JsonString),
+      TableSelfReferencingColumnName = extractjson("$.SELF_REFERENCING_COLUMN_NAME", JsonString),
+      TableReferenceGeneration = extractjson("$.REFERENCE_GENERATION", JsonString),
+      TableUserDefinedTypeCatalog = extractjson("$.USER_DEFINED_TYPE_CATALOG", JsonString),
+      TableUserDefinedTypeSchema = extractjson("$.USER_DEFINED_TYPE_SCHEMA", JsonString),
+      TableUserDefinedTypeName = extractjson("$.USER_DEFINED_TYPE_NAME", JsonString),
+      TableIsInsertableInto = extractjson("$.IS_INSERTABLE_INTO", JsonString),
+      TableIsTyped = extractjson("$.IS_TYPED", JsonString),
+      TableCommitAction = extractjson("$.COMMIT_ACTION", JsonString),
+      TableCreated = todatetime(substring(TCTime, 0, 23)) - tolong(substring(TCTime, 24, 3)) * 1h,
+      TableLastAltered = todatetime(substring(LATime, 0, 23)) - tolong(substring(LATime, 24, 3)) * 1h,
+      TableLastDDL = todatetime(substring(LDTime, 0, 23)) - tolong(substring(LDTime, 24, 3)) * 1h,
+      TableLastDDLBy = extractjson("$.LAST_DDL_BY", JsonString),
+      TableDeleted = todatetime(substring(TDTime, 0, 23)) - tolong(substring(TDTime, 24, 3)) * 1h,
+      TableAutoClusteringOn = extractjson("$.AUTO_CLUSTERING_ON", JsonString),
+      TableComment = extractjson("$.COMMENT", JsonString),
+      TableOwnerRoleType = extractjson("$.OWNER_ROLE_TYPE", JsonString),
+      TableInstanceId = extractjson("$.INSTANCE_ID", JsonString)
+  };
+  let SnowflakeUsers_view = view () {
+    SnowflakeUsers_CL
+    | extend EventVendor = 'Snowflake'
+    | extend EventProduct = 'Snowflake'
+    | mv-expand OuterArray = todynamic(Data)
+    | mv-expand innerArray = OuterArray
+    | extend JsonString = tostring(innerArray)
+    | extend
+      CTime = extractjson("$.CREATED_ON", JsonString),
+      DTime = extractjson("$.DELETED_ON", JsonString),
+      BMTime = extractjson("$.BYPASS_MFA_UNTIL", JsonString),
+      LSLTime = extractjson("$.LAST_SUCCESS_LOGIN", JsonString),
+      ETime = extractjson("$.EXPIRES_AT", JsonString),
+      LUTime = extractjson("$.LOCKED_UNTIL_TIME", JsonString),
+      PLSTime = extractjson("$.PASSWORD_LAST_SET_TIME", JsonString)
+    | extend
+      UserId = extractjson("$.USER_ID", JsonString),
+      UserName = extractjson("$.NAME", JsonString),
+      UserCreatedOn = todatetime(substring(CTime, 0, 23)) - tolong(substring(CTime, 24, 3)) * 1h,
+      UserDeletedOn = todatetime(substring(DTime, 0, 23)) - tolong(substring(DTime, 24, 3)) * 1h,
+      UserLoginName = extractjson("$.LOGIN_NAME", JsonString),
+      UserDisplayName = extractjson("$.DISPLAY_NAME", JsonString),
+      UserFirstName = extractjson("$.FIRST_NAME", JsonString),
+      UserLastName = extractjson("$.LAST_NAME", JsonString),
+      UserEmail = extractjson("$.EMAIL", JsonString),
+      UserMustChangePassword = extractjson("$.MUST_CHANGE_PASSWORD", JsonString),
+      UserHasPassword = extractjson("$.HAS_PASSWORD", JsonString),
+      UserComment = extractjson("$.COMMENT", JsonString),
+      UserDisabled = extractjson("$.DISABLED", JsonString),
+      UserSnowflakeLock = extractjson("$.SNOWFLAKE_LOCK", JsonString),
+      UserDefaultWarehouse = extractjson("$.DEFAULT_WAREHOUSE", JsonString),
+      UserDefaultNamespace = extractjson("$.DEFAULT_NAMESPACE", JsonString),
+      UserDefaultRole = extractjson("$.DEFAULT_ROLE", JsonString),
+      UserExtAuthnDuo = extractjson("$.EXT_AUTHN_DUO", JsonString),
+      UserExtAuthnUid = extractjson("$.EXT_AUTHN_UID", JsonString),
+      UserHasMFA = extractjson("$.HAS_MFA", JsonString),
+      UserBypassMFAUntil = todatetime(substring(BMTime, 0, 23)) - tolong(substring(BMTime, 24, 3)) * 1h,
+      UserLastSuccessLogin = todatetime(substring(LSLTime, 0, 23)) - tolong(substring(LSLTime, 24, 3)) * 1h,
+      UserExpiresAt = todatetime(substring(ETime, 0, 23)) - tolong(substring(ETime, 24, 3)) * 1h,
+      UserLockedUntilTime = todatetime(substring(LUTime, 0, 23)) - tolong(substring(LUTime, 24, 3)) * 1h,
+      UserHasRSAPublicKey = extractjson("$.HAS_RSA_PUBLIC_KEY", JsonString),
+      UserPasswordLastSetTime = todatetime(substring(PLSTime, 0, 23)) - tolong(substring(PLSTime, 24, 3)) * 1h,
+      UserOwner = extractjson("$.OWNER", JsonString),
+      UserDefaultSecondaryRole = extractjson("$.DEFAULT_SECONDARY_ROLE", JsonString),
+      UserType = extractjson("$.TYPE", JsonString),
+      UserDatabaseName = extractjson("$.DATABASE_NAME", JsonString),
+      UserDatabaseId = extractjson("$.DATABASE_ID", JsonString),
+      UserSchemaName = extractjson("$.SCHEMA_NAME", JsonString),
+      UserSchemaId = extractjson("$.SCHEMA_ID", JsonString)
+  };
+  let SnowflakeQuery_view = view () {
+    SnowflakeQuery_CL
+    | extend EventVendor = 'Snowflake'
+    | extend EventProduct = 'Snowflake'
+    | mv-expand OuterArray = todynamic(Data)
+    | mv-expand innerArray = OuterArray
+    | extend JsonString = tostring(innerArray)
+    | extend
+      QSTime = extractjson("$.START_TIME", JsonString),
+      QETime = extractjson("$.END_TIME", JsonString),
+      QueryTotalElapsedTime = toreal(extractjson("$.TOTAL_ELAPSED_TIME", JsonString)),
+      QueryExecutionTime = toreal(extractjson("$.EXECUTION_TIME", JsonString))
+    | extend
+      QueryStartTime = todatetime(substring(QSTime, 0, 23)) - tolong(substring(QSTime, 24, 3)) * 1h,
+      QueryEndTime = todatetime(substring(QETime, 0, 23)) - tolong(substring(QETime, 24, 3)) * 1h
+    | extend
+      QueryId = extractjson("$.QUERY_ID", JsonString),
+      QueryText = extractjson("$.QUERY_TEXT", JsonString),
+      QueryDatabaseId = extractjson("$.DATABASE_ID", JsonString),
+      QueryDatabaseName = extractjson("$.DATABASE_NAME", JsonString),
+      QuerySchemaId = extractjson("$.SCHEMA_ID", JsonString),
+      QuerySchemaName = extractjson("$.SCHEMA_NAME", JsonString),
+      QueryType = extractjson("$.QUERY_TYPE", JsonString),
+      QuerySessionId = extractjson("$.SESSION_ID", JsonString),
+      QueryUserName = extractjson("$.USER_NAME", JsonString),
+      QueryRoleName = extractjson("$.ROLE_NAME", JsonString),
+      QueryWarehouseId = extractjson("$.WAREHOUSE_ID", JsonString),
+      QueryWarehouseName = extractjson("$.WAREHOUSE_NAME", JsonString),
+      QueryWarehouseSize = extractjson("$.WAREHOUSE_SIZE", JsonString),
+      QueryWarehouseType = extractjson("$.WAREHOUSE_TYPE", JsonString),
+      QueryClusterNumber = extractjson("$.CLUSTER_NUMBER", JsonString),
+      QueryTag = extractjson("$.TAG", JsonString),
+      QueryBytesScanned = extractjson("$.BYTES_SCANNED", JsonString),
+      QueryPercentageScannedFromCache = extractjson("$.PERCENTAGE_SCANNED_FROM_CACHE", JsonString),
+      QueryBytesWritten = extractjson("$.BYTES_WRITTEN", JsonString),
+      QueryBytesWrittenToResult = extractjson("$.BYTES_WRITTEN_TO_RESULT", JsonString),
+      QueryBytesReadFromResult = extractjson("$.BYTES_READ_FROM_RESULT", JsonString),
+      QueryRowsProduced = extractjson("$.ROWS_PRODUCED", JsonString),
+      QueryRowsInserted = extractjson("$.ROWS_INSERTED", JsonString),
+      QueryRowsUpdated = extractjson("$.ROWS_UPDATED", JsonString),
+      QueryRowsDeleted = extractjson("$.ROWS_DELETED", JsonString),
+      QueryRowsUnloaded = extractjson("$.ROWS_UNLOADED", JsonString),
+      QueryBytesDeleted = extractjson("$.BYTES_DELETED", JsonString),
+      QueryQueuedProvisioningTime = extractjson("$.PROVISIONING_TIME", JsonString),
+      QueryQueuedRepairTime = extractjson("$.QUEUED_REPAIR_TIME", JsonString),
+      QueryQueuedOverloadTime = extractjson("$.QUEUED_OVERLOAD_TIME", JsonString),
+      QueryTransactionBlockedTime = extractjson("$.TRANSACTION_BLOCKED_TIME", JsonString),
+      QueryOutboundDataTransferCloud = extractjson("$.OUTBOUND_DATA_TRANSFER_CLOUD", JsonString),
+      QueryOutboundDataTransferRegion = extractjson("$.OUTBOUND_DATA_TRANSFER_REGION", JsonString),
+      QueryOutboundDataTransferBytes = extractjson("$.OUTBOUND_DATA_TRANSFER_BYTES", JsonString),
+      QueryInboundDataTransferCloud = extractjson("$.INBOUND_DATA_TRANSFER_CLOUD", JsonString),
+      QueryInboundDataTransferRegion = extractjson("$.INBOUND_DATA_TRANSFER_REGION", JsonString),
+      QueryInboundDataTransferBytes = extractjson("$.INBOUND_DATA_TRANSFER_BYTES", JsonString),
+      QueryPartitionsScanned = extractjson("$.PARTITIONS_SCANNED", JsonString),
+      QueryPartitionsTotal = extractjson("$.PARTITIONS_TOTAL", JsonString),
+      QueryBytesSpilledToLocalStorage = extractjson("$.BYTES_SPILLED_TO_LOCAL_STORAGE", JsonString),
+      QueryBytesSpilledToRemoteStorage = extractjson("$.BYTES_SPILLED_TO_REMOTE_STORAGE", JsonString),
+      QueryBytesSentOverTheNetwork = extractjson("$.BYTES_SENT_OVER_THE_NETWORK", JsonString),
+      QueryCompilationTime = extractjson("$.COMPILATION_TIME", JsonString),
+      QueryExecutionStatus = extractjson("$.EXECUTION_STATUS", JsonString),
+      QueryErrorCode = extractjson("$.ERROR_CODE", JsonString),
+      QueryErrorMessage = extractjson("$.ERROR_MESSAGE", JsonString),
+      QueryListExternalFilesTime = extractjson("$.LIST_EXTERNAL_FILES_TIME", JsonString),
+      QueryCreditsUsedCloudServices = iff(isempty(extractjson("$.CREDITS_USED_CLOUD_SERVICES", JsonString)), toreal(0), toreal(extractjson("$.CREDITS_USED_CLOUD_SERVICES", JsonString))),
+      QueryReleaseVersion = extractjson("$.RELEASE_VERSION", JsonString),
+      QueryExternalFunctionTotalInvocations = extractjson("$.EXTERNAL_FUNCTION_TOTAL_INVOCATIONS", JsonString),
+      QueryExternalFunctionTotalSentRows = extractjson("$.EXTERNAL_FUNCTION_TOTAL_SENT_ROWS", JsonString),
+      QueryExternalFunctionTotalReceivedRows = extractjson("$.EXTERNAL_FUNCTION_TOTAL_RECEIVED_ROWS", JsonString),
+      QueryExternalFunctionTotalSentBytes = extractjson("$.EXTERNAL_FUNCTION_TOTAL_SENT_BYTES", JsonString),
+      QueryExternalFunctionTotalReceivedBytes = extractjson("$.EXTERNAL_FUNCTION_TOTAL_RECEIVED_BYTES", JsonString),
+      QueryIsClientGeneratedStatement = extractjson("$.IS_CLIENT_GENERATED_STATEMENT", JsonString),
+      QueryAccelerationBytesScanned = extractjson("$.ACCELERATION_BYTES_SCANNED", JsonString),
+      QueryAccelerationPartitionsScanned = extractjson("$.ACCELERATION_PARTITIONS_SCANNED", JsonString),
+      QueryAccelerationUpperLimitScaleFactor = extractjson("$.ACCELERATION_UPPER_LIMIT_SCALE_FACTOR", JsonString),
+      QueryTransactionId = extractjson("$.TRANSACTION_ID", JsonString),
+      QueryLoadPercent = extractjson("$.QUERY_LOAD_PERCENT", JsonString),
+      ChildQueriesWaitTime = extractjson("$.CHILD_QUERIES_WAIT_TIME", JsonString),
+      QueryRoleType = extractjson("$.ROLE_TYPE", JsonString),
+      QueryHash = extractjson("$.HASH", JsonString),
+      QueryHashVersion = extractjson("$.HASH_VERSION", JsonString),
+      QueryParameterizedHash = extractjson("$.PARAMETERIZED_HASH", JsonString),
+      QueryParameterizedHashVersion = extractjson("$.PARAMETERIZED_HASH_VERSION", JsonString),
+      QuerySecondaryRoleStats = extractjson("$.SECONDARY_ROLE_STATS", JsonString),
+      QueryRowsWrittenToResult = extractjson("$.ROWS_WRITTEN_TO_RESULT", JsonString),
+      QueryRetryTime = extractjson("$.RETRY_TIME", JsonString),
+      QueryRetryCause = extractjson("$.RETRY_CAUSE", JsonString),
+      QueryFaultHandlingTime = extractjson("$.FAULT_HANDLING_TIME", JsonString),
+      QueryUserType = extractjson("$.USER_TYPE", JsonString),
+      QueryUserDatabaseName = extractjson("$.USER_DATABASE_NAME", JsonString),
+      QueryUserDatabaseId = extractjson("$.USER_DATABASE_ID", JsonString),
+      QueryUserSchemaId = extractjson("$.USER_SCHEMA_ID", JsonString),
+      QueryUserSchemaName = extractjson("$.USER_SCHEMA_NAME", JsonString)
+  };
+  let SnowflakeLoginV2_view = view () {
+    SnowflakeLoginV2_CL
+    | extend EventVendor = 'Snowflake'
+    | extend EventProduct = 'Snowflake'
     | mv-expand DataList = todynamic(Data)
-    | extend Time = toreal(DataList[1])
+    | extend
+      LTime = toreal(DataList[1])
     | extend
       LoginEventId = tostring(DataList[0]),
-      EventEndTime = unixtime_seconds_todatetime(Time),
-      EventType = tostring(DataList[2]),
-      TargetUsername = tostring(DataList[3]),
-      SrcDvcIpAddr = tostring(DataList[4]),
+      LoginEventTimestamp = unixtime_seconds_todatetime(LTime),
+      LoginEventType = tostring(DataList[2]),
+      LoginUserName = tostring(DataList[3]),
+      LoginClientIp = tostring(DataList[4]),
       LoginReportedClientType = tostring(DataList[5]),
       LoginReportedClientVersion = tostring(DataList[6]),
       LoginFirstAuthenticationFactor = tostring(DataList[7]),
@@ -49,15 +420,23 @@ FunctionQuery: |
       LoginErrorMessage = tostring(DataList[11]),
       LoginRelatedEventId = tostring(DataList[12]),
       LoginConnection = tostring(DataList[13]),
-      LoginClientPrivateLinkId = tostring(DataList[14])
-    | extend User = TargetUsername
+      LoginClientPrivateLinkId = tostring(DataList[14]),
+      LoginFirstAuthenticationFactorId = tostring(DataList[15]),
+      LoginSecondAuthenticationFactorId = tostring(DataList[16]),
+      LoginDetails = tostring(DataList[17]),
+      LoginAuthorizingIntegrationName = tostring(DataList[18])
+    | extend
+      TargetUsername = LoginUserName,
+      SrcDvcIpAddr = LoginClientIp,
+      User = LoginUserName,
+      LoginEventEndTime = LoginEventTimestamp
   };
-  let SnowflakeUserGrant_view = view ()  {
-    SnowflakeUserGrant_CL
+  let SnowflakeUserGrantV2_view = view () {
+    SnowflakeUserGrantV2_CL
     | extend EventVendor = 'Snowflake'
     | extend EventProduct = 'Snowflake'
     | mv-expand DataList = todynamic(Data)
-    | extend 
+    | extend
       CTime = toreal(DataList[0]),
       DTime = toreal(DataList[1])
     | extend
@@ -68,12 +447,12 @@ FunctionQuery: |
       UserGrantGranteeName = tostring(DataList[4]),
       UserGrantGrantedBy = tostring(DataList[5])
   };
-  let SnowflakeMaterializedView_view = view () {
-    SnowflakeMaterializedView_CL
+  let SnowflakeMaterializedViewV2_view = view () {
+    SnowflakeMaterializedViewV2_CL
     | extend EventVendor = 'Snowflake'
     | extend EventProduct = 'Snowflake'
     | mv-expand DataList = todynamic(Data)
-    | extend 
+    | extend
       STime = toreal(DataList[0]),
       ETime = toreal(DataList[1])
     | extend
@@ -87,12 +466,12 @@ FunctionQuery: |
       MaterializedViewDatabaseId = tostring(DataList[7]),
       MaterializedViewDatabaseName = tostring(DataList[8])
   };
-  let SnowflakeRoles_view = view () {
-    SnowflakeRoles_CL
+  let SnowflakeRolesV2_view = view () {
+    SnowflakeRolesV2_CL
     | extend EventVendor = 'Snowflake'
     | extend EventProduct = 'Snowflake'
     | mv-expand DataList = todynamic(Data)
-    | extend 
+    | extend
       CTime = toreal(DataList[1]),
       DTime = toreal(DataList[2])
     | extend
@@ -105,18 +484,19 @@ FunctionQuery: |
       RoleType = tostring(DataList[6]),
       RoleDatabaseName = tostring(DataList[7]),
       RoleInstanceId = tostring(DataList[8]),
-      OwnerRoleType = tostring(DataList[9])
+      OwnerRoleType = tostring(DataList[9]),
+      RoleIsFromOrganizationUserGroup = tostring(DataList[10])
   };
-  let SnowflakeRoleGrant_view = view () {
-    SnowflakeRoleGrant_CL
+  let SnowflakeRoleGrantV2_view = view () {
+    SnowflakeRoleGrantV2_CL
     | extend EventVendor = 'Snowflake'
     | extend EventProduct = 'Snowflake'
     | mv-expand DataList = todynamic(Data)
-    | extend 
+    | extend
       CTime = toreal(DataList[0]),
       MTime = toreal(DataList[1]),
       DTime = toreal(DataList[11])
-    | extend 
+    | extend
       RoleGrantCreatedOn = unixtime_seconds_todatetime(CTime),
       RoleGrantModifiedOn = unixtime_seconds_todatetime(MTime),
       RoleGrantPrivilege = tostring(DataList[2]),
@@ -126,18 +506,19 @@ FunctionQuery: |
       RoleGrantTableSchema = tostring(DataList[6]),
       RoleGrantGrantedTo = tostring(DataList[7]),
       RoleGrantGranteeName = tostring(DataList[8]),
-      RoleGrantGrantOption = tobool(DataList[9]),
+      RoleGrantGrantOption = tostring(DataList[9]),
       RoleGrantGrantedBy = tostring(DataList[10]),
       RoleGrantDeletedOn = unixtime_seconds_todatetime(DTime),
       RoleGrantGrantedByRoleType = tostring(DataList[12]),
       RoleGrantObjectInstance = tostring(DataList[13])
   };
-  let SnowflakeLoad_view = view () {
-    SnowflakeLoad_CL
+  let SnowflakeLoadV2_view = view () {
+    SnowflakeLoadV2_CL
     | extend EventVendor = 'Snowflake'
     | extend EventProduct = 'Snowflake'
     | mv-expand DataList = todynamic(Data)
-    | extend LTime = toreal(DataList[7])
+    | extend
+      LTime = toreal(DataList[7])
     | extend
       LoadTableId = tostring(DataList[0]),
       LoadTableName = tostring(DataList[1]),
@@ -157,8 +538,8 @@ FunctionQuery: |
       LoadErrorCount = tostring(DataList[15]),
       LoadErrorLimit = tostring(DataList[16])
   };
-  let SnowflakeTableStorageMetrics_view = view () {
-    SnowflakeTableStorageMetrics_CL
+  let SnowflakeTableStorageMetricsV2_view = view () {
+    SnowflakeTableStorageMetricsV2_CL
     | extend EventVendor = 'Snowflake'
     | extend EventProduct = 'Snowflake'
     | mv-expand DataList = todynamic(Data)
@@ -170,7 +551,7 @@ FunctionQuery: |
       SDTime = toreal(DataList[17]),
       CCTime = toreal(DataList[18]),
       CDTime = toreal(DataList[19])
-    | extend 
+    | extend
       TableStorageMetricsId = tostring(DataList[0]),
       TableStorageMetricsTableName = tostring(DataList[1]),
       TableStorageMetricsTableSchemaId = tostring(DataList[2]),
@@ -183,7 +564,7 @@ FunctionQuery: |
       TableStorageMetricsTimeTravelBytes = tostring(DataList[9]),
       TableStorageMetricsFailsafeBytes = tostring(DataList[10]),
       TableStorageMetricsRetainedForCloneBytes = tostring(DataList[11]),
-      TableStorageMetricsDeleted = tobool(DataList[12]),
+      TableStorageMetricsDeleted = tostring(DataList[12]),
       TableStorageMetricsTableCreated = unixtime_seconds_todatetime(TCTime),
       TableStorageMetricsTableDropped = unixtime_seconds_todatetime(TDTime),
       TableStorageMetricsTableEnteredFailsafe = unixtime_seconds_todatetime(TFTime),
@@ -192,10 +573,18 @@ FunctionQuery: |
       TableStorageMetricsCatalogCreated = unixtime_seconds_todatetime(CCTime),
       TableStorageMetricsCatalogDropped = unixtime_seconds_todatetime(CDTime),
       TableStorageMetricsComment = tostring(DataList[20]),
-      TableStorageMetricsInstanceId = tostring(DataList[21])
+      TableStorageMetricsInstanceId = tostring(DataList[21]),
+      TableStorageMetricsArchiveStorageCoolActiveBytes = tostring(DataList[22]),
+      TableStorageMetricsArchiveStorageColdActiveBytes = tostring(DataList[23]),
+      TableStorageMetricsArchiveStorageCoolTimeTravelBytes = tostring(DataList[24]),
+      TableStorageMetricsArchiveStorageColdTimeTravelBytes = tostring(DataList[25]),
+      TableStorageMetricsArchiveStorageCoolFailsafeBytes = tostring(DataList[26]),
+      TableStorageMetricsArchiveStorageColdFailsafeBytes = tostring(DataList[27]),
+      TableStorageMetricsArchiveStorageCoolEarlyDeletionPenaltyBytes = tostring(DataList[28]),
+      TableStorageMetricsArchiveStorageColdEarlyDeletionPenaltyBytes = tostring(DataList[29])
   };
-  let SnowflakeTables_view = view () {
-    SnowflakeTables_CL
+  let SnowflakeTablesV2_view = view () {
+    SnowflakeTablesV2_CL
     | extend EventVendor = 'Snowflake'
     | extend EventProduct = 'Snowflake'
     | mv-expand DataList = todynamic(Data)
@@ -204,7 +593,7 @@ FunctionQuery: |
       LATime = toreal(DataList[25]),
       LDTime = toreal(DataList[26]),
       TDTime = toreal(DataList[28])
-    | extend 
+    | extend
       TableId = tostring(DataList[0]),
       TableName = tostring(DataList[1]),
       TableSchemaId = tostring(DataList[2]),
@@ -237,10 +626,15 @@ FunctionQuery: |
       TableAutoClusteringOn = tostring(DataList[29]),
       TableComment = tostring(DataList[30]),
       TableOwnerRoleType = tostring(DataList[31]),
-      TableInstanceId = tostring(DataList[32])
+      TableInstanceId = tostring(DataList[32]),
+      TableArchiveStorageCoolRowCount = tostring(DataList[33]),
+      TableArchiveStorageCoolBytes = tostring(DataList[34]),
+      TableArchiveStorageColdRowCount = tostring(DataList[35]),
+      TableArchiveStorageColdBytes = tostring(DataList[36]),
+      TableErrorLogging = tostring(DataList[37])
   };
-  let SnowflakeUsers_view = view () {
-    SnowflakeUsers_CL
+  let SnowflakeUsersV2_view = view () {
+    SnowflakeUsersV2_CL
     | extend EventVendor = 'Snowflake'
     | extend EventProduct = 'Snowflake'
     | mv-expand DataList = todynamic(Data)
@@ -262,42 +656,49 @@ FunctionQuery: |
       UserFirstName = tostring(DataList[6]),
       UserLastName = tostring(DataList[7]),
       UserEmail = tostring(DataList[8]),
-      UserMustChangePassword = tobool(DataList[9]),
-      UserHasPassword = tobool(DataList[10]),
+      UserMustChangePassword = tostring(DataList[9]),
+      UserHasPassword = tostring(DataList[10]),
       UserComment = tostring(DataList[11]),
       UserDisabled = tostring(DataList[12]),
       UserSnowflakeLock = tostring(DataList[13]),
       UserDefaultWarehouse = tostring(DataList[14]),
       UserDefaultNamespace = tostring(DataList[15]),
       UserDefaultRole = tostring(DataList[16]),
-      UserExtAuthnDuo = tobool(DataList[17]),
+      UserExtAuthnDuo = tostring(DataList[17]),
       UserExtAuthnUid = tostring(DataList[18]),
-      UserHasMFA = tobool(DataList[19]),
+      UserHasMFA = tostring(DataList[19]),
       UserBypassMFAUntil = unixtime_seconds_todatetime(BMTime),
       UserLastSuccessLogin = unixtime_seconds_todatetime(LSLTime),
       UserExpiresAt = unixtime_seconds_todatetime(ETime),
       UserLockedUntilTime = unixtime_seconds_todatetime(LUTime),
-      UserHasRSAPublicKey = tobool(DataList[24]),
+      UserHasRSAPublicKey = tostring(DataList[24]),
       UserPasswordLastSetTime = unixtime_seconds_todatetime(PLSTime),
       UserOwner = tostring(DataList[26]),
       UserDefaultSecondaryRole = tostring(DataList[27]),
-      UserType = tostring(DataList[28]),
-      UserDatabaseName = tostring(DataList[29]),
-      UserDatabaseId = tostring(DataList[30]),
-      UserSchemaName = tostring(DataList[31]),
-      UserSchemaId = tostring(DataList[32])
+      UserHasPAT = tostring(DataList[28]),
+      UserHasWorkloadIdentity = tostring(DataList[29]),
+      UserType = tostring(DataList[30]),
+      UserDatabaseName = tostring(DataList[31]),
+      UserDatabaseId = tostring(DataList[32]),
+      UserSchemaName = tostring(DataList[33]),
+      UserSchemaId = tostring(DataList[34]),
+      UserIsFromOrganizationUser = tostring(DataList[35]),
+      UserProvisionedBy = tostring(DataList[36]),
+      UserIsEmailVerified = tostring(DataList[37])
   };
-  let SnowflakeQuery_view = view () {
-    SnowflakeQuery_CL
+  let SnowflakeQueryV2_view = view () {
+    SnowflakeQueryV2_CL
     | extend EventVendor = 'Snowflake'
     | extend EventProduct = 'Snowflake'
     | mv-expand DataList = todynamic(Data)
     | extend
-      STime = toreal(DataList[19]),
-      ETime = toreal(DataList[20]),
-      QueryTotalElapsedTime = toreal(DataList[21]),
-      QueryExecutionTime = toreal(DataList[39]),
-      QueryCreditsUsedCloudServices = toreal(DataList[51])
+      QSTime = toreal(DataList[20]),
+      QETime = toreal(DataList[21]),
+      QueryTotalElapsedTime = toreal(DataList[22]),
+      QueryExecutionTime = toreal(DataList[40])
+    | extend
+      QueryStartTime = unixtime_seconds_todatetime(QSTime),
+      QueryEndTime = unixtime_seconds_todatetime(QETime)
     | extend
       QueryId = tostring(DataList[0]),
       QueryText = tostring(DataList[1]),
@@ -307,334 +708,380 @@ FunctionQuery: |
       QuerySchemaName = tostring(DataList[5]),
       QueryType = tostring(DataList[6]),
       QuerySessionId = tostring(DataList[7]),
-      QueryUserName = tostring(DataList[8]),
-      QueryRoleName = tostring(DataList[9]),
-      QueryWarehouseId = tostring(DataList[10]),
-      QueryWarehouseName = tostring(DataList[11]),
-      QueryWarehouseSize = tostring(DataList[12]),
-      QueryWarehouseType = tostring(DataList[13]),
-      QueryClusterNumber = tostring(DataList[14]),
-      QueryTag = tostring(DataList[15]),
-      QueryExecutionStatus = tostring(DataList[16]),
-      QueryErrorCode = tostring(DataList[17]),
-      QueryErrorMessage = tostring(DataList[18]),
-      QueryStartTime = unixtime_seconds_todatetime(STime),
-      EventEndTime = unixtime_seconds_todatetime(ETime),
-      QueryBytesScanned = tostring(DataList[22]),
-      QueryPercentageScannedFromCache = tostring(DataList[23]),
-      QueryBytesWritten = tostring(DataList[24]),
-      QueryBytesWrittenToResult = tostring(DataList[25]),
-      QueryBytesReadFromResult = tostring(DataList[26]),
-      QueryRowsProduced = tostring(DataList[27]),
-      QueryRowsInserted = tostring(DataList[28]),
-      QueryRowsUpdated = tostring(DataList[29]),
-      QueryRowsDeleted = tostring(DataList[30]),
-      QueryRowsUnloaded = tostring(DataList[31]),
-      QueryBytesDeleted = tostring(DataList[32]),
-      QueryPartitionsScanned = tostring(DataList[33]),
-      QueryPartitionsTotal = tostring(DataList[34]),
-      QueryBytesSpilledToLocalStorage = tostring(DataList[35]),
-      QueryBytesSpilledToRemoteStorage = tostring(DataList[36]),
-      QueryBytesSentOverTheNetwork = tostring(DataList[37]),
-      QueryCompilationTime = tostring(DataList[38]),
-      QueryQueuedProvisioningTime = tostring(DataList[40]),
-      QueryQueuedRepairTime = tostring(DataList[41]),
-      QueryQueuedOverloadTime = tostring(DataList[42]),
-      QueryTransactionBlockedTime = tostring(DataList[43]),
-      QueryOutboundDataTransferCloud = tostring(DataList[44]),
-      QueryOutboundDataTransferRegion = tostring(DataList[45]),
-      QueryOutboundDataTransferBytes = tostring(DataList[46]),
-      QueryInboundDataTransferCloud = tostring(DataList[47]),
-      QueryInboundDataTransferRegion = tostring(DataList[48]),
-      QueryInboundDataTransferBytes = tostring(DataList[49]),
-      QueryListExternalFilesTime = tostring(DataList[50]),
-      QueryReleaseVersion = tostring(DataList[52]),
-      QueryExternalFunctionTotalInvocations = tostring(DataList[53]),
-      QueryExternalFunctionTotalSentRows = tostring(DataList[54]),
-      QueryExternalFunctionTotalReceivedRows = tostring(DataList[55]),
-      QueryExternalFunctionTotalSentBytes = tostring(DataList[56]),
-      QueryExternalFunctionTotalReceivedBytes = tostring(DataList[57]),
-      QueryLoadPercent = tostring(DataList[58]),
-      QueryIsClientGeneratedStatement = tobool(DataList[59]),
-      QueryAccelerationBytesScanned = tostring(DataList[60]),
-      QueryAccelerationPartitionsScanned = tostring(DataList[61]),
-      QueryAccelerationUpperLimitScaleFactor = tostring(DataList[62]),
-      QueryTransactionId = tostring(DataList[63]),
-      ChildQueriesWaitTime = tostring(DataList[64]),
-      QueryRoleType = tostring(DataList[65]),
-      QueryHash = tostring(DataList[66]),
-      QueryHashVersion = tostring(DataList[67]),
-      QueryParameterizedHash = tostring(DataList[68]),
-      QueryParameterizedHashVersion = tostring(DataList[69]),
-      QuerySecondaryRoleStats = tostring(DataList[70]),
-      QueryRowsWrittenToResult = tostring(DataList[71]),
-      QueryRetryTime = tostring(DataList[72]),
-      QueryRetryCause = tostring(DataList[73]),
-      QueryFaultHandlingTime = tostring(DataList[74]),
-      QueryUserType = tostring(DataList[75]),
-      QueryUserDatabaseName = tostring(DataList[76]),
-      QueryUserDatabaseId = tostring(DataList[77]),
-      QueryUserSchemaName = tostring(DataList[78]),
-      QueryUserSchemaId = tostring(DataList[79])
+      QueryAuthnEventId = tostring(DataList[8]),
+      QueryUserName = tostring(DataList[9]),
+      QueryRoleName = tostring(DataList[10]),
+      QueryWarehouseId = tostring(DataList[11]),
+      QueryWarehouseName = tostring(DataList[12]),
+      QueryWarehouseSize = tostring(DataList[13]),
+      QueryWarehouseType = tostring(DataList[14]),
+      QueryClusterNumber = tostring(DataList[15]),
+      QueryTag = tostring(DataList[16]),
+      QueryExecutionStatus = tostring(DataList[17]),
+      QueryErrorCode = tostring(DataList[18]),
+      QueryErrorMessage = tostring(DataList[19]),
+      QueryBytesScanned = tostring(DataList[23]),
+      QueryPercentageScannedFromCache = tostring(DataList[24]),
+      QueryBytesWritten = tostring(DataList[25]),
+      QueryBytesWrittenToResult = tostring(DataList[26]),
+      QueryBytesReadFromResult = tostring(DataList[27]),
+      QueryRowsProduced = tostring(DataList[28]),
+      QueryRowsInserted = tostring(DataList[29]),
+      QueryRowsUpdated = tostring(DataList[30]),
+      QueryRowsDeleted = tostring(DataList[31]),
+      QueryRowsUnloaded = tostring(DataList[32]),
+      QueryBytesDeleted = tostring(DataList[33]),
+      QueryPartitionsScanned = tostring(DataList[34]),
+      QueryPartitionsTotal = tostring(DataList[35]),
+      QueryBytesSpilledToLocalStorage = tostring(DataList[36]),
+      QueryBytesSpilledToRemoteStorage = tostring(DataList[37]),
+      QueryBytesSentOverTheNetwork = tostring(DataList[38]),
+      QueryCompilationTime = tostring(DataList[39]),
+      QueryQueuedProvisioningTime = tostring(DataList[41]),
+      QueryQueuedRepairTime = tostring(DataList[42]),
+      QueryQueuedOverloadTime = tostring(DataList[43]),
+      QueryTransactionBlockedTime = tostring(DataList[44]),
+      QueryOutboundDataTransferCloud = tostring(DataList[45]),
+      QueryOutboundDataTransferRegion = tostring(DataList[46]),
+      QueryOutboundDataTransferBytes = tostring(DataList[47]),
+      QueryInboundDataTransferCloud = tostring(DataList[48]),
+      QueryInboundDataTransferRegion = tostring(DataList[49]),
+      QueryInboundDataTransferBytes = tostring(DataList[50]),
+      QueryListExternalFilesTime = tostring(DataList[51]),
+      QueryCreditsUsedCloudServices = iff(isempty(tostring(DataList[52])), toreal(0), toreal(DataList[52])),
+      QueryReleaseVersion = tostring(DataList[53]),
+      QueryExternalFunctionTotalInvocations = tostring(DataList[54]),
+      QueryExternalFunctionTotalSentRows = tostring(DataList[55]),
+      QueryExternalFunctionTotalReceivedRows = tostring(DataList[56]),
+      QueryExternalFunctionTotalSentBytes = tostring(DataList[57]),
+      QueryExternalFunctionTotalReceivedBytes = tostring(DataList[58]),
+      QueryLoadPercent = tostring(DataList[59]),
+      QueryIsClientGeneratedStatement = tostring(DataList[60]),
+      QueryAccelerationBytesScanned = tostring(DataList[61]),
+      QueryAccelerationPartitionsScanned = tostring(DataList[62]),
+      QueryAccelerationUpperLimitScaleFactor = tostring(DataList[63]),
+      QueryTransactionId = tostring(DataList[64]),
+      ChildQueriesWaitTime = tostring(DataList[65]),
+      QueryRoleType = tostring(DataList[66]),
+      QueryHash = tostring(DataList[67]),
+      QueryHashVersion = tostring(DataList[68]),
+      QueryParameterizedHash = tostring(DataList[69]),
+      QueryParameterizedHashVersion = tostring(DataList[70]),
+      QuerySecondaryRoleStats = tostring(DataList[71]),
+      QueryRowsWrittenToResult = tostring(DataList[72]),
+      QueryRetryTime = tostring(DataList[73]),
+      QueryRetryCause = tostring(DataList[74]),
+      QueryFaultHandlingTime = tostring(DataList[75]),
+      QueryUserType = tostring(DataList[76]),
+      QueryUserDatabaseName = tostring(DataList[77]),
+      QueryUserDatabaseId = tostring(DataList[78]),
+      QueryUserSchemaName = tostring(DataList[79]),
+      QueryUserSchemaId = tostring(DataList[80]),
+      QueryResourceConstraint = tostring(DataList[81]),
+      QueryGeneration = tostring(DataList[82]),
+      QueryBindValues = tostring(DataList[83]),
+      QueryAgentType = tostring(DataList[84])
   };
   union isfuzzy=true
-  (Snowflake_view),
-  (SnowflakeLogin_view),
-  (SnowflakeUserGrant_view),
-  (SnowflakeMaterializedView_view),
-  (SnowflakeRoles_view),
-  (SnowflakeRoleGrant_view),
-  (SnowflakeLoad_view),
-  (SnowflakeTableStorageMetrics_view),
-  (SnowflakeTables_view),
-  (SnowflakeUsers_view),
-  (SnowflakeQuery_view)
+      (Snowflake_view),
+      (SnowflakeLogin_view),
+      (SnowflakeLoginV2_view),
+      (SnowflakeUserGrant_view),
+      (SnowflakeUserGrantV2_view),
+      (SnowflakeMaterializedView_view),
+      (SnowflakeMaterializedViewV2_view),
+      (SnowflakeRoles_view),
+      (SnowflakeRolesV2_view),
+      (SnowflakeRoleGrant_view),
+      (SnowflakeRoleGrantV2_view),
+      (SnowflakeLoad_view),
+      (SnowflakeLoadV2_view),
+      (SnowflakeTableStorageMetrics_view),
+      (SnowflakeTableStorageMetricsV2_view),
+      (SnowflakeTables_view),
+      (SnowflakeTablesV2_view),
+      (SnowflakeUsers_view),
+      (SnowflakeUsersV2_view),
+      (SnowflakeQuery_view),
+      (SnowflakeQueryV2_view)
   | extend DatabaseName = coalesce(QueryDatabaseName, UserDatabaseName, RoleDatabaseName, MaterializedViewDatabaseName)
   | extend TableNames = coalesce(TableName, MaterializedViewTableName, LoadTableName, TableStorageMetricsTableName)
   | extend EventStartTime = column_ifexists('EventStartTime', '')
   | project
-    EventVendor, 
-    EventProduct, 
-    EventStartTime,
-    EventType,
-    TargetUsername,
-    SrcDvcIpAddr,
-    User,
-    EventEndTime,
-    LoginEventId,
-    LoginReportedClientType,
-    LoginReportedClientVersion,
-    LoginFirstAuthenticationFactor,
-    LoginSecondAuthenticationFactor,
-    LoginIsSuccess,
-    LoginErrorCode,
-    LoginErrorMessage,
-    LoginRelatedEventId,
-    LoginConnection,
-    LoginClientPrivateLinkId,
-    UserGrantCreatedOn,
-    UserGrantDeletedOn,
-    UserRole,
-    UserGrantGrantedTo,
-    UserGrantGranteeName,
-    UserGrantGrantedBy,
-    MaterializedViewStartTime,
-    MaterializedViewEndTime,
-    MaterializedViewCreditsUsed,
-    MaterializedViewTableId,
-    MaterializedViewTableName,
-    MaterializedViewSchemaId,
-    MaterializedViewSchemaName,
-    MaterializedViewDatabaseId,
-    MaterializedViewDatabaseName,
-    RoleId,
-    RoleCreatedOn,
-    RoleDeletedOn,
-    RoleName,
-    RoleComment,
-    RoleOwner,
-    RoleType,
-    RoleDatabaseName,
-    RoleInstanceId,
-    OwnerRoleType,
-    RoleGrantCreatedOn,
-    RoleGrantModifiedOn,
-    RoleGrantPrivilege,
-    RoleGrantGrantedOn,
-    RoleGrantName,
-    RoleGrantTableCatalog,
-    RoleGrantTableSchema,
-    RoleGrantGrantedTo,
-    RoleGrantGranteeName,
-    RoleGrantGrantOption,
-    RoleGrantGrantedBy,
-    RoleGrantDeletedOn,
-    RoleGrantGrantedByRoleType,
-    RoleGrantObjectInstance,
-    LoadTableId,
-    LoadTableName,
-    LoadSchemaId,
-    LoadSchemaName,
-    LoadCatalogId,
-    LoadCatalogName,
-    LoadFileName,
-    LastLoadTime,
-    LoadStatus,
-    LoadRowCount,
-    LoadRowParsed,
-    LoadFirstErrorMessage,
-    LoadFirstErrorLineNumber,
-    LoadFirstErrorCharacterPosition,
-    LoadFirstErrorColName,
-    LoadErrorCount,
-    LoadErrorLimit,
-    TableStorageMetricsId,
-    TableStorageMetricsTableName,
-    TableStorageMetricsTableSchemaId,
-    TableStorageMetricsTableSchema,
-    TableStorageMetricsTableCatalogId,
-    TableStorageMetricsTableCatalog,
-    TableStorageMetricsCloneGroupId,
-    TableStorageMetricsIsTransient,
-    TableStorageMetricsActiveBytes,
-    TableStorageMetricsTimeTravelBytes,
-    TableStorageMetricsFailsafeBytes,
-    TableStorageMetricsRetainedForCloneBytes,
-    TableStorageMetricsDeleted,
-    TableStorageMetricsTableCreated,
-    TableStorageMetricsTableDropped,
-    TableStorageMetricsTableEnteredFailsafe,
-    TableStorageMetricsSchemaCreated,
-    TableStorageMetricsSchemaDropped,
-    TableStorageMetricsCatalogCreated,
-    TableStorageMetricsCatalogDropped,
-    TableStorageMetricsComment,
-    TableStorageMetricsInstanceId,
-    TableId,
-    TableName,
-    TableNames,
-    TableSchemaId,
-    TableSchema,
-    TableCatalogId,
-    TableCatalog,
-    TableOwner,
-    TableType,
-    TableIsTransient,
-    TableIsIceberg,
-    TableIsDynamic,
-    TableIsHybrid,
-    TableClusteringKey,
-    TableRowCount,
-    TableBytes,
-    TableRetentionTime,
-    TableSelfReferencingColumnName,
-    TableReferenceGeneration,
-    TableUserDefinedTypeCatalog,
-    TableUserDefinedTypeSchema,
-    TableUserDefinedTypeName,
-    TableIsInsertableInto,
-    TableIsTyped,
-    TableCommitAction,
-    TableCreated,
-    TableLastAltered,
-    TableLastDDL,
-    TableLastDDLBy,
-    TableDeleted,
-    TableAutoClusteringOn,
-    TableComment,
-    TableOwnerRoleType,
-    TableInstanceId,
-    UserId,
-    UserName,
-    UserCreatedOn,
-    UserDeletedOn,
-    UserLoginName,
-    UserDisplayName,
-    UserFirstName,
-    UserLastName,
-    UserEmail,
-    UserMustChangePassword,
-    UserHasPassword,
-    UserComment,
-    UserDisabled,
-    UserSnowflakeLock,
-    UserDefaultWarehouse,
-    UserDefaultNamespace,
-    UserDefaultRole,
-    UserExtAuthnDuo,
-    UserExtAuthnUid,
-    UserHasMFA,
-    UserBypassMFAUntil,
-    UserLastSuccessLogin,
-    UserExpiresAt,
-    UserLockedUntilTime,
-    UserHasRSAPublicKey,
-    UserPasswordLastSetTime,
-    UserOwner,
-    UserDefaultSecondaryRole,
-    UserType,
-    UserDatabaseName,
-    UserDatabaseId,
-    UserSchemaName,
-    UserSchemaId,
-    QueryId,
-    QueryText,
-    QueryDatabaseId,
-    QueryDatabaseName,
-    QuerySchemaId,
-    QuerySchemaName,
-    QueryType,
-    QuerySessionId,
-    QueryUserName,
-    QueryRoleName,
-    QueryWarehouseId,
-    QueryWarehouseName,
-    QueryWarehouseSize,
-    QueryWarehouseType,
-    QueryClusterNumber,
-    QueryTag,
-    QueryExecutionStatus,
-    QueryErrorCode,
-    QueryErrorMessage,
-    QueryStartTime,
-    QueryTotalElapsedTime,
-    QueryBytesScanned,
-    QueryPercentageScannedFromCache,
-    QueryBytesWritten,
-    QueryBytesWrittenToResult,
-    QueryBytesReadFromResult,
-    QueryRowsProduced,
-    QueryRowsInserted,
-    QueryRowsUpdated,
-    QueryRowsDeleted,
-    QueryRowsUnloaded,
-    QueryBytesDeleted,
-    QueryPartitionsScanned,
-    QueryPartitionsTotal,
-    QueryBytesSpilledToLocalStorage,
-    QueryBytesSpilledToRemoteStorage,
-    QueryBytesSentOverTheNetwork,
-    QueryCompilationTime,
-    QueryExecutionTime,
-    QueryQueuedProvisioningTime,
-    QueryQueuedRepairTime,
-    QueryQueuedOverloadTime,
-    QueryTransactionBlockedTime,
-    QueryOutboundDataTransferCloud,
-    QueryOutboundDataTransferRegion,
-    QueryOutboundDataTransferBytes,
-    QueryInboundDataTransferCloud,
-    QueryInboundDataTransferRegion,
-    QueryInboundDataTransferBytes,
-    QueryListExternalFilesTime,
-    QueryCreditsUsedCloudServices,
-    QueryReleaseVersion,
-    QueryExternalFunctionTotalInvocations,
-    QueryExternalFunctionTotalSentRows,
-    QueryExternalFunctionTotalReceivedRows,
-    QueryExternalFunctionTotalSentBytes,
-    QueryExternalFunctionTotalReceivedBytes,
-    QueryLoadPercent,
-    QueryIsClientGeneratedStatement,
-    QueryAccelerationBytesScanned,
-    QueryAccelerationPartitionsScanned,
-    QueryAccelerationUpperLimitScaleFactor,
-    QueryTransactionId,
-    ChildQueriesWaitTime,
-    QueryRoleType,
-    QueryHash,
-    QueryHashVersion,
-    QueryParameterizedHash,
-    QueryParameterizedHashVersion,
-    QuerySecondaryRoleStats,
-    QueryRowsWrittenToResult,
-    QueryRetryTime,
-    QueryRetryCause,
-    QueryFaultHandlingTime,
-    QueryUserType,
-    QueryUserDatabaseName,
-    QueryUserDatabaseId,
-    QueryUserSchemaName,
-    QueryUserSchemaId,
-    DatabaseName,
-    TimeGenerated
+      EventVendor,
+      EventProduct,
+      EventStartTime,
+      LoginEventType,
+      TargetUsername,
+      SrcDvcIpAddr,
+      User,
+      LoginEventEndTime,
+      LoginEventId,
+      LoginReportedClientType,
+      LoginReportedClientVersion,
+      LoginFirstAuthenticationFactor,
+      LoginSecondAuthenticationFactor,
+      LoginIsSuccess,
+      LoginErrorCode,
+      LoginErrorMessage,
+      LoginRelatedEventId,
+      LoginConnection,
+      LoginClientPrivateLinkId,
+      LoginUserName,
+      LoginClientIp,
+      LoginEventTimestamp,
+      LoginFirstAuthenticationFactorId,
+      LoginSecondAuthenticationFactorId,
+      LoginDetails,
+      LoginAuthorizingIntegrationName,
+      UserGrantCreatedOn,
+      UserGrantDeletedOn,
+      UserRole,
+      UserGrantGrantedTo,
+      UserGrantGranteeName,
+      UserGrantGrantedBy,
+      MaterializedViewStartTime,
+      MaterializedViewEndTime,
+      MaterializedViewCreditsUsed,
+      MaterializedViewTableId,
+      MaterializedViewTableName,
+      MaterializedViewSchemaId,
+      MaterializedViewSchemaName,
+      MaterializedViewDatabaseId,
+      MaterializedViewDatabaseName,
+      RoleId,
+      RoleCreatedOn,
+      RoleDeletedOn,
+      RoleName,
+      RoleComment,
+      RoleOwner,
+      RoleType,
+      RoleDatabaseName,
+      RoleInstanceId,
+      OwnerRoleType,
+      RoleIsFromOrganizationUserGroup,
+      RoleGrantCreatedOn,
+      RoleGrantModifiedOn,
+      RoleGrantPrivilege,
+      RoleGrantGrantedOn,
+      RoleGrantName,
+      RoleGrantTableCatalog,
+      RoleGrantTableSchema,
+      RoleGrantGrantedTo,
+      RoleGrantGranteeName,
+      RoleGrantGrantOption,
+      RoleGrantGrantedBy,
+      RoleGrantDeletedOn,
+      RoleGrantGrantedByRoleType,
+      RoleGrantObjectInstance,
+      LoadTableId,
+      LoadTableName,
+      LoadSchemaId,
+      LoadSchemaName,
+      LoadCatalogId,
+      LoadCatalogName,
+      LoadFileName,
+      LastLoadTime,
+      LoadStatus,
+      LoadRowCount,
+      LoadRowParsed,
+      LoadFirstErrorMessage,
+      LoadFirstErrorLineNumber,
+      LoadFirstErrorCharacterPosition,
+      LoadFirstErrorColName,
+      LoadErrorCount,
+      LoadErrorLimit,
+      TableStorageMetricsId,
+      TableStorageMetricsTableName,
+      TableStorageMetricsTableSchemaId,
+      TableStorageMetricsTableSchema,
+      TableStorageMetricsTableCatalogId,
+      TableStorageMetricsTableCatalog,
+      TableStorageMetricsCloneGroupId,
+      TableStorageMetricsIsTransient,
+      TableStorageMetricsActiveBytes,
+      TableStorageMetricsTimeTravelBytes,
+      TableStorageMetricsFailsafeBytes,
+      TableStorageMetricsRetainedForCloneBytes,
+      TableStorageMetricsDeleted,
+      TableStorageMetricsTableCreated,
+      TableStorageMetricsTableDropped,
+      TableStorageMetricsTableEnteredFailsafe,
+      TableStorageMetricsSchemaCreated,
+      TableStorageMetricsSchemaDropped,
+      TableStorageMetricsCatalogCreated,
+      TableStorageMetricsCatalogDropped,
+      TableStorageMetricsComment,
+      TableStorageMetricsInstanceId,
+      TableStorageMetricsArchiveStorageCoolActiveBytes,
+      TableStorageMetricsArchiveStorageColdActiveBytes,
+      TableStorageMetricsArchiveStorageCoolTimeTravelBytes,
+      TableStorageMetricsArchiveStorageColdTimeTravelBytes,
+      TableStorageMetricsArchiveStorageCoolFailsafeBytes,
+      TableStorageMetricsArchiveStorageColdFailsafeBytes,
+      TableStorageMetricsArchiveStorageCoolEarlyDeletionPenaltyBytes,
+      TableStorageMetricsArchiveStorageColdEarlyDeletionPenaltyBytes,
+      TableId,
+      TableName,
+      TableNames,
+      TableSchemaId,
+      TableSchema,
+      TableCatalogId,
+      TableCatalog,
+      TableOwner,
+      TableType,
+      TableIsTransient,
+      TableIsIceberg,
+      TableIsDynamic,
+      TableIsHybrid,
+      TableClusteringKey,
+      TableRowCount,
+      TableBytes,
+      TableRetentionTime,
+      TableSelfReferencingColumnName,
+      TableReferenceGeneration,
+      TableUserDefinedTypeCatalog,
+      TableUserDefinedTypeSchema,
+      TableUserDefinedTypeName,
+      TableIsInsertableInto,
+      TableIsTyped,
+      TableCommitAction,
+      TableCreated,
+      TableLastAltered,
+      TableLastDDL,
+      TableLastDDLBy,
+      TableDeleted,
+      TableAutoClusteringOn,
+      TableComment,
+      TableOwnerRoleType,
+      TableInstanceId,
+      TableArchiveStorageCoolRowCount,
+      TableArchiveStorageCoolBytes,
+      TableArchiveStorageColdRowCount,
+      TableArchiveStorageColdBytes,
+      TableErrorLogging,
+      UserId,
+      UserName,
+      UserCreatedOn,
+      UserDeletedOn,
+      UserLoginName,
+      UserDisplayName,
+      UserFirstName,
+      UserLastName,
+      UserEmail,
+      UserMustChangePassword,
+      UserHasPassword,
+      UserComment,
+      UserDisabled,
+      UserSnowflakeLock,
+      UserDefaultWarehouse,
+      UserDefaultNamespace,
+      UserDefaultRole,
+      UserExtAuthnDuo,
+      UserExtAuthnUid,
+      UserHasMFA,
+      UserBypassMFAUntil,
+      UserLastSuccessLogin,
+      UserExpiresAt,
+      UserLockedUntilTime,
+      UserHasRSAPublicKey,
+      UserPasswordLastSetTime,
+      UserOwner,
+      UserDefaultSecondaryRole,
+      UserHasPAT,
+      UserHasWorkloadIdentity,
+      UserType,
+      UserDatabaseName,
+      UserDatabaseId,
+      UserSchemaName,
+      UserSchemaId,
+      UserIsFromOrganizationUser,
+      UserProvisionedBy,
+      UserIsEmailVerified,
+      QueryId,
+      QueryText,
+      QueryDatabaseId,
+      QueryDatabaseName,
+      QuerySchemaId,
+      QuerySchemaName,
+      QueryType,
+      QuerySessionId,
+      QueryAuthnEventId,
+      QueryUserName,
+      QueryRoleName,
+      QueryWarehouseId,
+      QueryWarehouseName,
+      QueryWarehouseSize,
+      QueryWarehouseType,
+      QueryClusterNumber,
+      QueryTag,
+      QueryExecutionStatus,
+      QueryErrorCode,
+      QueryErrorMessage,
+      QueryStartTime,
+      QueryTotalElapsedTime,
+      QueryBytesScanned,
+      QueryPercentageScannedFromCache,
+      QueryBytesWritten,
+      QueryBytesWrittenToResult,
+      QueryBytesReadFromResult,
+      QueryRowsProduced,
+      QueryRowsInserted,
+      QueryRowsUpdated,
+      QueryRowsDeleted,
+      QueryRowsUnloaded,
+      QueryBytesDeleted,
+      QueryPartitionsScanned,
+      QueryPartitionsTotal,
+      QueryBytesSpilledToLocalStorage,
+      QueryBytesSpilledToRemoteStorage,
+      QueryBytesSentOverTheNetwork,
+      QueryCompilationTime,
+      QueryExecutionTime,
+      QueryQueuedProvisioningTime,
+      QueryQueuedRepairTime,
+      QueryQueuedOverloadTime,
+      QueryTransactionBlockedTime,
+      QueryOutboundDataTransferCloud,
+      QueryOutboundDataTransferRegion,
+      QueryOutboundDataTransferBytes,
+      QueryInboundDataTransferCloud,
+      QueryInboundDataTransferRegion,
+      QueryInboundDataTransferBytes,
+      QueryListExternalFilesTime,
+      QueryCreditsUsedCloudServices,
+      QueryReleaseVersion,
+      QueryExternalFunctionTotalInvocations,
+      QueryExternalFunctionTotalSentRows,
+      QueryExternalFunctionTotalReceivedRows,
+      QueryExternalFunctionTotalSentBytes,
+      QueryExternalFunctionTotalReceivedBytes,
+      QueryLoadPercent,
+      QueryIsClientGeneratedStatement,
+      QueryAccelerationBytesScanned,
+      QueryAccelerationPartitionsScanned,
+      QueryAccelerationUpperLimitScaleFactor,
+      QueryTransactionId,
+      ChildQueriesWaitTime,
+      QueryRoleType,
+      QueryHash,
+      QueryHashVersion,
+      QueryParameterizedHash,
+      QueryParameterizedHashVersion,
+      QuerySecondaryRoleStats,
+      QueryRowsWrittenToResult,
+      QueryRetryTime,
+      QueryRetryCause,
+      QueryFaultHandlingTime,
+      QueryUserType,
+      QueryUserDatabaseName,
+      QueryUserDatabaseId,
+      QueryUserSchemaName,
+      QueryUserSchemaId,
+      QueryResourceConstraint,
+      QueryGeneration,
+      QueryBindValues,
+      QueryAgentType,
+      DatabaseName,
+      TimeGenerated,
+      Type

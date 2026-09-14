@@ -47,7 +47,7 @@
         "OffsetParaName": "offset"
       },
       "shouldJoinNestedData": true,
-      "joinedDataStepName": "case",
+      "joinedDataStepName": "dspmCase",
       "stepInfo": {
         "stepType": "Nested",
         "nextSteps": [
@@ -88,14 +88,14 @@
         },
         "fetchObjectsDetails": {
           "shouldJoinNestedData": true,
-          "joinedDataStepName": "affectedObjects",
+          "joinedDataStepName": "expand",
           "request": {
             "httpMethod": "GET",
             "apiEndpoint": "https://{{bigidFqdn}}/api/v1/data-catalog/",
             "queryParameters": {
               "limit": 32,
               "requireTotalCount": "true",
-              "filter": "SYSTEM = \"$dataSourceName$\" AND policy IN (\"$policyName$\")"
+              "filter": "system IN (\"$dataSourceName$\") AND policy IN (\"$policyName$\")"
             },
             "headers": {
               "Accept": "application/json",
@@ -107,6 +107,9 @@
             "format": "json"
           }
         }
+      },
+      "extra": {
+        "nestedTransformName": "/ASI/Microsoft/MvExpandTransformer"
       }
     }
   }

@@ -49,7 +49,7 @@
     "email": "support@microsoft.com",
     "_email": "[variables('email')]",
     "_solutionName": "Windows Security Events",
-    "_solutionVersion": "3.0.9",
+    "_solutionVersion": "3.0.13",
     "solutionId": "azuresentinel.azure-sentinel-solution-securityevents",
     "_solutionId": "[variables('solutionId')]",
     "uiConfigId1": "SecurityEvents",
@@ -113,11 +113,11 @@
       "_analyticRulecontentProductId6": "[concat(take(variables('_solutionId'),50),'-','ar','-', uniqueString(concat(variables('_solutionId'),'-','AnalyticsRule','-','12dcea64-bec2-41c9-9df2-9f28461b1295','-', '1.2.1')))]"
     },
     "analyticRuleObject7": {
-      "analyticRuleVersion7": "1.0.5",
+      "analyticRuleVersion7": "1.0.6",
       "_analyticRulecontentId7": "a356c8bd-c81d-428b-aa36-83be706be034",
       "analyticRuleId7": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', 'a356c8bd-c81d-428b-aa36-83be706be034')]",
       "analyticRuleTemplateSpecName7": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat(parameters('workspace'),'-ar-',uniquestring('a356c8bd-c81d-428b-aa36-83be706be034')))]",
-      "_analyticRulecontentProductId7": "[concat(take(variables('_solutionId'),50),'-','ar','-', uniqueString(concat(variables('_solutionId'),'-','AnalyticsRule','-','a356c8bd-c81d-428b-aa36-83be706be034','-', '1.0.5')))]"
+      "_analyticRulecontentProductId7": "[concat(take(variables('_solutionId'),50),'-','ar','-', uniqueString(concat(variables('_solutionId'),'-','AnalyticsRule','-','a356c8bd-c81d-428b-aa36-83be706be034','-', '1.0.6')))]"
     },
     "analyticRuleObject8": {
       "analyticRuleVersion8": "1.0.7",
@@ -134,11 +134,11 @@
       "_analyticRulecontentProductId9": "[concat(take(variables('_solutionId'),50),'-','ar','-', uniqueString(concat(variables('_solutionId'),'-','AnalyticsRule','-','05b4bccd-dd12-423d-8de4-5a6fb526bb4f','-', '1.0.2')))]"
     },
     "analyticRuleObject10": {
-      "analyticRuleVersion10": "1.0.4",
+      "analyticRuleVersion10": "1.0.6",
       "_analyticRulecontentId10": "b9d2eebc-5dcb-4888-8165-900db44443ab",
       "analyticRuleId10": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', 'b9d2eebc-5dcb-4888-8165-900db44443ab')]",
       "analyticRuleTemplateSpecName10": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat(parameters('workspace'),'-ar-',uniquestring('b9d2eebc-5dcb-4888-8165-900db44443ab')))]",
-      "_analyticRulecontentProductId10": "[concat(take(variables('_solutionId'),50),'-','ar','-', uniqueString(concat(variables('_solutionId'),'-','AnalyticsRule','-','b9d2eebc-5dcb-4888-8165-900db44443ab','-', '1.0.4')))]"
+      "_analyticRulecontentProductId10": "[concat(take(variables('_solutionId'),50),'-','ar','-', uniqueString(concat(variables('_solutionId'),'-','AnalyticsRule','-','b9d2eebc-5dcb-4888-8165-900db44443ab','-', '1.0.6')))]"
     },
     "analyticRuleObject11": {
       "analyticRuleVersion11": "1.0.2",
@@ -209,6 +209,13 @@
       "analyticRuleId20": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', '2c55fe7a-b06f-4029-a5b9-c54a2320d7b8')]",
       "analyticRuleTemplateSpecName20": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat(parameters('workspace'),'-ar-',uniquestring('2c55fe7a-b06f-4029-a5b9-c54a2320d7b8')))]",
       "_analyticRulecontentProductId20": "[concat(take(variables('_solutionId'),50),'-','ar','-', uniqueString(concat(variables('_solutionId'),'-','AnalyticsRule','-','2c55fe7a-b06f-4029-a5b9-c54a2320d7b8','-', '1.0.6')))]"
+    },
+    "analyticRuleObject21": {
+      "analyticRuleVersion21": "1.0.5",
+      "_analyticRulecontentId21": "3c8e5f0b-1d4a-4b69-9c2e-7f0d3a5e8b1f",
+      "analyticRuleId21": "[resourceId('Microsoft.SecurityInsights/AlertRuleTemplates', '3c8e5f0b-1d4a-4b69-9c2e-7f0d3a5e8b1f')]",
+      "analyticRuleTemplateSpecName21": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat(parameters('workspace'),'-ar-',uniquestring('3c8e5f0b-1d4a-4b69-9c2e-7f0d3a5e8b1f')))]",
+      "_analyticRulecontentProductId21": "[concat(take(variables('_solutionId'),50),'-','ar','-', uniqueString(concat(variables('_solutionId'),'-','AnalyticsRule','-','3c8e5f0b-1d4a-4b69-9c2e-7f0d3a5e8b1f','-', '1.0.5')))]"
     },
     "workbookVersion1": "1.0.0",
     "workbookContentId1": "EventAnalyzerwWorkbook",
@@ -459,7 +466,7 @@
       "huntingQueryTemplateSpecName47": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat(parameters('workspace'),'-hq-',uniquestring('ccbc73a1-d303-4613-aed4-478e996f454e')))]"
     },
     "huntingQueryObject48": {
-      "huntingQueryVersion48": "1.0.0",
+      "huntingQueryVersion48": "1.0.1",
       "_huntingQuerycontentId48": "1e4a5be3-4a60-4099-b286-2d3642575889",
       "huntingQueryTemplateSpecName48": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat(parameters('workspace'),'-hq-',uniquestring('1e4a5be3-4a60-4099-b286-2d3642575889')))]"
     },
@@ -485,7 +492,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "Windows Security Events data connector with template version 3.0.9",
+        "description": "Windows Security Events data connector with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('dataConnectorVersion1')]",
@@ -497,7 +504,7 @@
               "apiVersion": "2021-03-01-preview",
               "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
               "location": "[parameters('workspace-location')]",
-              "kind": "StaticUI",
+              "kind": "GenericUI",
               "properties": {
                 "connectorUiConfig": {
                   "id": "[variables('_uiConfigId1')]",
@@ -511,6 +518,12 @@
                       "baseQuery": "SecurityEvent"
                     }
                   ],
+                  "sampleQueries": [
+                    {
+                      "description": "All logs",
+                      "query": "SecurityEvent\n            | sort by TimeGenerated"
+                    }
+                  ],
                   "connectivityCriterias": [
                     {
                       "type": "SecurityEvents",
@@ -521,6 +534,84 @@
                     {
                       "name": "SecurityEvents",
                       "lastDataReceivedQuery": "SecurityEvent\n            | summarize Time = max(TimeGenerated)\n            | where isnotempty(Time)"
+                    }
+                  ],
+                  "availability": {
+                    "status": 1,
+                    "isPreview": false
+                  },
+                  "permissions": {
+                    "resourceProvider": [
+                      {
+                        "provider": "Microsoft.OperationalInsights/workspaces",
+                        "permissionsDisplayText": "read and write permissions.",
+                        "providerDisplayName": "Workspace",
+                        "scope": "Workspace",
+                        "requiredPermissions": {
+                          "read": true,
+                          "write": true,
+                          "delete": true
+                        }
+                      },
+                      {
+                        "provider": "Microsoft.OperationalInsights/workspaces/datasources",
+                        "permissionsDisplayText": "read and write permissions.",
+                        "providerDisplayName": "Workspace data sources",
+                        "scope": "Workspace",
+                        "requiredPermissions": {
+                          "read": true,
+                          "write": true
+                        }
+                      }
+                    ]
+                  },
+                  "instructionSteps": [
+                    {
+                      "description": ">  Security Events logs are collected only from **Windows** agents.",
+                      "instructions": [
+                        {
+                          "parameters": {
+                            "title": "Choose where to install the agent:",
+                            "instructionSteps": [
+                              {
+                                "title": "Install agent on Azure Windows Virtual Machine",
+                                "description": "Download the agent on the relevant machine and follow the instructions.",
+                                "instructions": [
+                                  {
+                                    "parameters": {
+                                      "linkType": "InstallAgentOnVirtualMachine"
+                                    },
+                                    "type": "InstallAgent"
+                                  }
+                                ]
+                              },
+                              {
+                                "title": "Install agent on non-Azure Windows Machine",
+                                "description": "Select the machine to install the agent and then click **Connect**.",
+                                "instructions": [
+                                  {
+                                    "parameters": {
+                                      "linkType": "InstallAgentOnNonAzure"
+                                    },
+                                    "type": "InstallAgent"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "type": "InstructionStepsGroup"
+                        }
+                      ],
+                      "title": "1. Download and install the agent"
+                    },
+                    {
+                      "description": "- All events - All Windows security and AppLocker events.\n- Common - A standard set of events for auditing purposes.\n- Minimal - A small set of events that might indicate potential threats. By enabling this option, you won't be able to have a full audit trail.\n- None - No security or AppLocker events.",
+                      "instructions": [
+                        {
+                          "type": "SecurityEvents"
+                        }
+                      ],
+                      "title": "2. Select which events to stream"
                     }
                   ]
                 }
@@ -602,7 +693,7 @@
       "apiVersion": "2021-03-01-preview",
       "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
       "location": "[parameters('workspace-location')]",
-      "kind": "StaticUI",
+      "kind": "GenericUI",
       "properties": {
         "connectorUiConfig": {
           "title": "Security Events via Legacy Agent",
@@ -627,6 +718,90 @@
               "value": null
             }
           ],
+          "sampleQueries": [
+            {
+              "description": "All logs",
+              "query": "SecurityEvent\n            | sort by TimeGenerated"
+            }
+          ],
+          "availability": {
+            "status": 1,
+            "isPreview": false
+          },
+          "permissions": {
+            "resourceProvider": [
+              {
+                "provider": "Microsoft.OperationalInsights/workspaces",
+                "permissionsDisplayText": "read and write permissions.",
+                "providerDisplayName": "Workspace",
+                "scope": "Workspace",
+                "requiredPermissions": {
+                  "read": true,
+                  "write": true,
+                  "delete": true
+                }
+              },
+              {
+                "provider": "Microsoft.OperationalInsights/workspaces/datasources",
+                "permissionsDisplayText": "read and write permissions.",
+                "providerDisplayName": "Workspace data sources",
+                "scope": "Workspace",
+                "requiredPermissions": {
+                  "read": true,
+                  "write": true
+                }
+              }
+            ]
+          },
+          "instructionSteps": [
+            {
+              "description": ">  Security Events logs are collected only from **Windows** agents.",
+              "instructions": [
+                {
+                  "parameters": {
+                    "title": "Choose where to install the agent:",
+                    "instructionSteps": [
+                      {
+                        "title": "Install agent on Azure Windows Virtual Machine",
+                        "description": "Download the agent on the relevant machine and follow the instructions.",
+                        "instructions": [
+                          {
+                            "parameters": {
+                              "linkType": "InstallAgentOnVirtualMachine"
+                            },
+                            "type": "InstallAgent"
+                          }
+                        ]
+                      },
+                      {
+                        "title": "Install agent on non-Azure Windows Machine",
+                        "description": "Select the machine to install the agent and then click **Connect**.",
+                        "instructions": [
+                          {
+                            "parameters": {
+                              "linkType": "InstallAgentOnNonAzure"
+                            },
+                            "type": "InstallAgent"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": "InstructionStepsGroup"
+                }
+              ],
+              "title": "1. Download and install the agent"
+            },
+            {
+              "description": "- All events - All Windows security and AppLocker events.\n- Common - A standard set of events for auditing purposes.\n- Minimal - A small set of events that might indicate potential threats. By enabling this option, you won't be able to have a full audit trail.\n- None - No security or AppLocker events.",
+              "instructions": [
+                {
+                  "type": "SecurityEvents"
+                }
+              ],
+              "title": "2. Select which events to stream"
+            }
+          ],
           "id": "[variables('_uiConfigId1')]"
         }
       }
@@ -640,7 +815,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "Windows Security Events data connector with template version 3.0.9",
+        "description": "Windows Security Events data connector with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('dataConnectorVersion2')]",
@@ -652,7 +827,7 @@
               "apiVersion": "2021-03-01-preview",
               "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
               "location": "[parameters('workspace-location')]",
-              "kind": "StaticUI",
+              "kind": "GenericUI",
               "properties": {
                 "connectorUiConfig": {
                   "id": "[variables('_uiConfigId2')]",
@@ -666,6 +841,12 @@
                       "baseQuery": "SecurityEvent"
                     }
                   ],
+                  "sampleQueries": [
+                    {
+                      "description": "All logs",
+                      "query": "SecurityEvent\n            | sort by TimeGenerated"
+                    }
+                  ],
                   "connectivityCriterias": [
                     {
                       "type": "WindowsSecurityEvents",
@@ -676,6 +857,63 @@
                     {
                       "name": "SecurityEvents",
                       "lastDataReceivedQuery": "SecurityEvent\n            | summarize Time = max(TimeGenerated)\n            | where isnotempty(Time)"
+                    }
+                  ],
+                  "availability": {
+                    "status": 2,
+                    "featureFlag": {
+                      "feature": "WindowsSecurityEventsFeature",
+                      "featureStates": {
+                        "1": 2,
+                        "2": 2,
+                        "3": 2,
+                        "4": 2,
+                        "5": 2,
+                        "6": 1,
+                        "7": 1
+                      }
+                    },
+                    "isPreview": false
+                  },
+                  "permissions": {
+                    "resourceProvider": [
+                      {
+                        "provider": "Microsoft.OperationalInsights/workspaces/datasources",
+                        "permissionsDisplayText": "read and write permissions.",
+                        "providerDisplayName": "Workspace data sources",
+                        "scope": "Workspace",
+                        "requiredPermissions": {
+                          "read": true,
+                          "write": true
+                        }
+                      }
+                    ],
+                    "customs": [
+                      {
+                        "description": "To collect data from non-Azure VMs, they must have Azure Arc installed and enabled. [Learn more](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-install?tabs=ARMAgentPowerShell,PowerShellWindows,PowerShellWindowsArc,CLIWindows,CLIWindowsArc)"
+                      }
+                    ]
+                  },
+                  "instructionSteps": [
+                    {
+                      "description": ">  Security Events logs are collected only from **Windows** agents.",
+                      "instructions": [
+                        {
+                          "type": "WindowsSecurityEvents"
+                        }
+                      ],
+                      "title": "Enable data collection rule​"
+                    },
+                    {
+                      "instructions": [
+                        {
+                          "parameters": {
+                            "linkType": "OpenCreateDataCollectionRule",
+                            "dataCollectionRuleType": 0
+                          },
+                          "type": "InstallAgent"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -757,7 +995,7 @@
       "apiVersion": "2021-03-01-preview",
       "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
       "location": "[parameters('workspace-location')]",
-      "kind": "StaticUI",
+      "kind": "GenericUI",
       "properties": {
         "connectorUiConfig": {
           "title": "Windows Security Events via AMA",
@@ -782,6 +1020,69 @@
               "value": null
             }
           ],
+          "sampleQueries": [
+            {
+              "description": "All logs",
+              "query": "SecurityEvent\n            | sort by TimeGenerated"
+            }
+          ],
+          "availability": {
+            "status": 2,
+            "featureFlag": {
+              "feature": "WindowsSecurityEventsFeature",
+              "featureStates": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2,
+                "5": 2,
+                "6": 1,
+                "7": 1
+              }
+            },
+            "isPreview": false
+          },
+          "permissions": {
+            "resourceProvider": [
+              {
+                "provider": "Microsoft.OperationalInsights/workspaces/datasources",
+                "permissionsDisplayText": "read and write permissions.",
+                "providerDisplayName": "Workspace data sources",
+                "scope": "Workspace",
+                "requiredPermissions": {
+                  "read": true,
+                  "write": true
+                }
+              }
+            ],
+            "customs": [
+              {
+                "description": "To collect data from non-Azure VMs, they must have Azure Arc installed and enabled. [Learn more](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-install?tabs=ARMAgentPowerShell,PowerShellWindows,PowerShellWindowsArc,CLIWindows,CLIWindowsArc)"
+              }
+            ]
+          },
+          "instructionSteps": [
+            {
+              "description": ">  Security Events logs are collected only from **Windows** agents.",
+              "instructions": [
+                {
+                  "type": "WindowsSecurityEvents"
+                }
+              ],
+              "title": "Enable data collection rule​"
+            },
+            {
+              "instructions": [
+                {
+                  "parameters": {
+                    "linkType": "OpenCreateDataCollectionRule",
+                    "dataCollectionRuleType": 0
+                  },
+                  "type": "InstallAgent"
+                }
+              ]
+            }
+          ],
           "id": "[variables('_uiConfigId2')]"
         }
       }
@@ -795,7 +1096,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "ADFSDBNamedPipeConnection_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "ADFSDBNamedPipeConnection_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject1').analyticRuleVersion1]",
@@ -823,16 +1124,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -846,16 +1147,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "UserName"
+                        "columnName": "UserName",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "AccountName"
+                        "columnName": "AccountName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "AccountNTDomain"
+                        "columnName": "AccountNTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -863,16 +1164,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "HostNameDomain"
+                        "columnName": "HostNameDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   }
@@ -930,7 +1231,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "ADFSRemoteAuthSyncConnection_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "ADFSRemoteAuthSyncConnection_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject2').analyticRuleVersion2]",
@@ -958,16 +1259,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -981,16 +1282,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "ClaimsName"
+                        "columnName": "ClaimsName",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "AccountName"
+                        "columnName": "AccountName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "AccountNTDomain"
+                        "columnName": "AccountNTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -998,16 +1299,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "HostNameDomain"
+                        "columnName": "HostNameDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   },
@@ -1015,8 +1316,8 @@
                     "entityType": "IP",
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "SourceAddress"
+                        "columnName": "SourceAddress",
+                        "identifier": "Address"
                       }
                     ]
                   }
@@ -1074,7 +1375,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "ADFSRemoteHTTPNetworkConnection_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "ADFSRemoteHTTPNetworkConnection_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject3').analyticRuleVersion3]",
@@ -1102,16 +1403,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -1125,16 +1426,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "UserName"
+                        "columnName": "UserName",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "AccountName"
+                        "columnName": "AccountName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "AccountNTDomain"
+                        "columnName": "AccountNTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -1142,16 +1443,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "HostNameDomain"
+                        "columnName": "HostNameDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   },
@@ -1159,8 +1460,8 @@
                     "entityType": "IP",
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "SourceIp"
+                        "columnName": "SourceIp",
+                        "identifier": "Address"
                       }
                     ]
                   }
@@ -1218,7 +1519,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "ExcessiveLogonFailures_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "ExcessiveLogonFailures_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject4').analyticRuleVersion4]",
@@ -1246,16 +1547,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -1269,16 +1570,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Account"
+                        "columnName": "Account",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "Name"
+                        "columnName": "Name",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "NTDomain"
+                        "columnName": "NTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -1286,16 +1587,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "WorkstationName"
+                        "columnName": "WorkstationName",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "DnsDomain"
+                        "columnName": "DnsDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   },
@@ -1303,8 +1604,8 @@
                     "entityType": "Process",
                     "fieldMappings": [
                       {
-                        "identifier": "CommandLine",
-                        "columnName": "Process"
+                        "columnName": "Process",
+                        "identifier": "CommandLine"
                       }
                     ]
                   }
@@ -1362,7 +1663,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "ExchangeOABVirtualDirectoryAttributeContainingPotentialWebshell_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "ExchangeOABVirtualDirectoryAttributeContainingPotentialWebshell_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject5').analyticRuleVersion5]",
@@ -1390,16 +1691,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -1413,16 +1714,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Account"
+                        "columnName": "Account",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "AccountName"
+                        "columnName": "AccountName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "AccountNTDomain"
+                        "columnName": "AccountNTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -1430,16 +1731,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "HostNameDomain"
+                        "columnName": "HostNameDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   }
@@ -1497,7 +1798,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "GainCodeExecutionADFSViaSMB_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "GainCodeExecutionADFSViaSMB_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject6').analyticRuleVersion6]",
@@ -1525,16 +1826,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -1548,16 +1849,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Account"
+                        "columnName": "Account",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "AccountName"
+                        "columnName": "AccountName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "AccountNTDomain"
+                        "columnName": "AccountNTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -1565,16 +1866,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "HostNameDomain"
+                        "columnName": "HostNameDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   }
@@ -1632,7 +1933,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "LocalDeviceJoinInfoAndTransportKeyRegKeysAccess_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "LocalDeviceJoinInfoAndTransportKeyRegKeysAccess_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject7').analyticRuleVersion7]",
@@ -1646,7 +1947,7 @@
               "kind": "Scheduled",
               "location": "[parameters('workspace-location')]",
               "properties": {
-                "description": "This detection uses Windows security events to detect suspicious access attempts by the same process to registry keys that provide information about an Microsoft Entra ID joined or registered devices and Transport keys (tkpub / tkpriv).\n This information can be used to export the Device Certificate (dkpub / dkpriv) and Transport key (tkpub/tkpriv).\n These set of keys can be used to impersonate existing Microsoft Entra ID joined devices.\n This detection requires an access control entry (ACE) on the system access control list (SACL) of the following securable objects:\n HKLM:\\SYSTEM\\CurrentControlSet\\Control\\CloudDomainJoin (Microsoft Entra ID joined devices)\n HKCU:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\WorkplaceJoin (Microsoft Entra ID registered devices)\n HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Cryptography\\Ngc\\KeyTransportKey (Transport Key)\n Make sure you set the SACL to propagate to its sub-keys. You can find more information in here https://github.com/OTRF/Set-AuditRule/blob/master/rules/registry/aad_connect_health_service_agent.yml\n Reference: https://o365blog.com/post/deviceidentity/",
+                "description": "This detection uses Windows security events to detect suspicious access attempts by the same process to registry keys that provide information about an Microsoft Entra ID joined or registered devices and Transport keys (tkpub / tkpriv).\n This information can be used to export the Device Certificate (dkpub / dkpriv) and Transport key (tkpub/tkpriv).\n These set of keys can be used to impersonate existing Microsoft Entra ID joined devices.\n This detection requires an access control entry (ACE) on the system access control list (SACL) of the following securable objects:\n HKLM:\\SYSTEM\\CurrentControlSet\\Control\\CloudDomainJoin (Microsoft Entra ID joined devices)\n HKCU:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\WorkplaceJoin (Microsoft Entra ID registered devices)\n HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Cryptography\\Ngc\\KeyTransportKey (Transport Key)\n Make sure you set the SACL to propagate to its sub-keys. You can find more information in here https://github.com/OTRF/Set-AuditRule/blob/master/rules/registry/aad_connect_health_service_agent.yml\n Reference: https://aadinternals.com/post/deviceidentity/",
                 "displayName": "Microsoft Entra ID Local Device Join Information and Transport Key Registry Keys Access",
                 "enabled": false,
                 "query": "// AADJoined or Register Device Registry Keys\nlet aadJoinRoot = \"\\\\REGISTRY\\\\MACHINE\\\\SYSTEM\\\\ControlSet001\\\\Control\\\\CloudDomainJoin\\\\JoinInfo\\\\\";\nlet aadRegisteredRoot = \"\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\WorkplaceJoin\";\n// Transport Key Registry Key\nlet keyTransportKey = \"\\\\REGISTRY\\\\MACHINE\\\\SYSTEM\\\\ControlSet001\\\\Control\\\\Cryptography\\\\Ngc\\\\KeyTransportKey\\\\\";\n(union isfuzzy=true\n(\n// Access to Object Requested\nSecurityEvent\n| where EventID == '4656'\n| where EventData has aadJoinRoot or EventData has aadRegisteredRoot\n| extend EventData = parse_xml(EventData).EventData.Data\n| mv-expand bagexpansion=array EventData\n| evaluate bag_unpack(EventData)\n| extend Key = tostring(column_ifexists('@Name', \"\")), Value = column_ifexists('#text', \"\")\n| evaluate pivot(Key, any(Value), TimeGenerated, Computer, EventID)\n| where ObjectType == 'Key'\n| where ObjectName startswith aadJoinRoot and SubjectLogonId != '0x3e7' //Local System\n| extend ProcessId = column_ifexists(\"ProcessId\", \"\"), Process = split(ProcessName, '\\\\', -1)[-1],Account = strcat(SubjectDomainName, \"\\\\\", SubjectUserName)\n| join kind=innerunique (\n    SecurityEvent\n    | where EventID == '4656'\n    | where EventData has keyTransportKey\n    | extend EventData = parse_xml(EventData).EventData.Data\n    | mv-expand bagexpansion=array EventData\n    | evaluate bag_unpack(EventData)\n    | extend Key = tostring(column_ifexists('@Name', \"\")), Value = column_ifexists('#text', \"\")\n    | evaluate pivot(Key, any(Value), TimeGenerated, Computer, EventID)\n    | extend ObjectName = column_ifexists(\"ObjectName\", \"\"),ObjectType = column_ifexists(\"ObjectType\", \"\")\n    | where ObjectType == 'Key'\n    | where ObjectName startswith keyTransportKey and SubjectLogonId != '0x3e7' //Local System\n    | extend ProcessId = column_ifexists(\"ProcessId\", \"\"), Process = split(ProcessName, '\\\\', -1)[-1],Account = strcat(SubjectDomainName, \"\\\\\", SubjectUserName)\n) on $left.Computer == $right.Computer and $left.SubjectLogonId == $right.SubjectLogonId and $left.ProcessId == $right.ProcessId\n| project TimeGenerated, Computer, Account, SubjectDomainName, SubjectUserName, SubjectLogonId, ObjectName, tostring(Process), ProcessName, ProcessId, EventID\n),\n// Accessing Object\n(\nSecurityEvent\n| where EventID == '4663'\n| where ObjectType == 'Key'\n| where (ObjectName startswith aadJoinRoot or ObjectName contains aadRegisteredRoot) and SubjectLogonId != '0x3e7' //Local System\n| extend Account = SubjectAccount\n| join kind=innerunique (\n    SecurityEvent\n    | where EventID == '4663'\n    | where ObjectType == 'Key'\n    | where ObjectName has keyTransportKey and SubjectLogonId != '0x3e7' //Local System\n    | extend Account = SubjectAccount\n) on $left.Computer == $right.Computer and $left.SubjectLogonId == $right.SubjectLogonId and $left.ProcessId == $right.ProcessId\n| project TimeGenerated, Computer, Account, SubjectDomainName, SubjectUserName, SubjectLogonId, ObjectName, Process, ProcessName, ProcessId, EventID\n| extend HostName = tostring(split(Computer, '.', 0)[0]), DnsDomain = tostring(strcat_array(array_slice(split(Computer, '.'), 1, -1), '.'))\n)\n)\n",
@@ -1660,16 +1961,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -1683,16 +1984,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Account"
+                        "columnName": "Account",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "SubjectUserName"
+                        "columnName": "SubjectUserName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "SubjectDomainName"
+                        "columnName": "SubjectDomainName",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -1700,16 +2001,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "DnsDomain"
+                        "columnName": "DnsDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   }
@@ -1767,7 +2068,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "MultipleFailedFollowedBySuccess_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "MultipleFailedFollowedBySuccess_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject8').analyticRuleVersion8]",
@@ -1795,16 +2096,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -1818,16 +2119,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Account"
+                        "columnName": "Account",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "Name"
+                        "columnName": "Name",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "NTDomain"
+                        "columnName": "NTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -1835,16 +2136,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "DnsDomain"
+                        "columnName": "DnsDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   },
@@ -1852,8 +2153,8 @@
                     "entityType": "IP",
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "IpAddress"
+                        "columnName": "IpAddress",
+                        "identifier": "Address"
                       }
                     ]
                   }
@@ -1911,7 +2212,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "NewEXEdeployedviaDefaultDomainorDefaultDomainControllerPolicies_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "NewEXEdeployedviaDefaultDomainorDefaultDomainControllerPolicies_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject9').analyticRuleVersion9]",
@@ -1939,16 +2240,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -1964,16 +2265,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "HostNameDomain"
+                        "columnName": "HostNameDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   }
@@ -2031,7 +2332,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "NonDCActiveDirectoryReplication_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "NonDCActiveDirectoryReplication_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject10').analyticRuleVersion10]",
@@ -2048,7 +2349,7 @@
                 "description": "This query detects potential attempts by non-computer accounts (non domain controllers) to retrieve/synchronize an active directory object leveraging directory replication services (DRS).\nA Domain Controller (computer account) would usually be performing these actions in a domain environment. Another detection rule can be created to cover domain controllers accounts doing at rare times.\nA domain user with privileged permissions to use directory replication services is rare.",
                 "displayName": "Non Domain Controller Active Directory Replication",
                 "enabled": false,
-                "query": "// Enter a reference list of hostnames for your DC servers\n//let DCServersList = dynamic ([\"DC01.simulandlabs.com\",\"DC02.simulandlabs.com\"]);\nSecurityEvent\n//| where Computer in (DCServersList)\n| where EventID == 4662 and ObjectServer == 'DS'\n| where AccountType != 'Machine'\n| where Properties has '1131f6aa-9c07-11d1-f79f-00c04fc2dcd2' //DS-Replication-Get-Changes\n    or Properties has '1131f6ad-9c07-11d1-f79f-00c04fc2dcd2' //DS-Replication-Get-Changes-All\n    or Properties has '89e95b76-444d-4c62-991a-0facbeda640c' //DS-Replication-Get-Changes-In-Filtered-Set\n| project TimeGenerated, Account, Activity, Properties, SubjectLogonId, Computer\n| join kind=leftouter\n(\n    SecurityEvent\n    //| where Computer in (DCServersList)\n    | where EventID == 4624 and LogonType == 3\n    | where AccountType != 'Machine'\n    | project TargetLogonId, IpAddress\n)\non $left.SubjectLogonId == $right.TargetLogonId\n| project-reorder TimeGenerated, Computer, Account, IpAddress\n| extend HostName = tostring(split(Computer, \".\")[0]), DomainIndex = toint(indexof(Computer, '.'))\n| extend HostNameDomain = iff(DomainIndex != -1, substring(Computer, DomainIndex + 1), Computer)\n| extend AccountName = tostring(split(Account, \"\\\\\")[0]), AccountNTDomain = tostring(split(Account, \"\\\\\")[1])\n",
+                "query": "// Enter a reference list of hostnames for your DC servers\n//let DCServersList = dynamic ([\"DC01.simulandlabs.com\",\"DC02.simulandlabs.com\"]);\nSecurityEvent\n//| where Computer in (DCServersList)\n| where EventID == 4662 and ObjectServer == 'DS'\n| where AccountType != 'Machine'\n| where Properties has '1131f6aa-9c07-11d1-f79f-00c04fc2dcd2' //DS-Replication-Get-Changes\n    or Properties has '1131f6ad-9c07-11d1-f79f-00c04fc2dcd2' //DS-Replication-Get-Changes-All\n    or Properties has '89e95b76-444d-4c62-991a-0facbeda640c' //DS-Replication-Get-Changes-In-Filtered-Set\n| project TimeGenerated, Account, Activity, Properties, SubjectLogonId, Computer\n| join kind=leftouter\n(\n    SecurityEvent\n    //| where Computer in (DCServersList)\n    | where EventID == 4624 and LogonType == 3\n    | where AccountType != 'Machine'\n    | project TargetLogonId, IpAddress, Computer\n)\non $left.SubjectLogonId == $right.TargetLogonId and $left.Computer == $right.Computer\n| project-reorder TimeGenerated, Computer, Account, IpAddress\n| extend HostName = tostring(split(Computer, \".\")[0]), DomainIndex = toint(indexof(Computer, '.'))\n| extend HostNameDomain = iff(DomainIndex != -1, substring(Computer, DomainIndex + 1), Computer)\n| extend AccountNTDomain = tostring(split(Account, \"\\\\\")[0]), AccountName = tostring(split(Account, \"\\\\\")[1])\n",
                 "queryFrequency": "P1D",
                 "queryPeriod": "P7D",
                 "severity": "High",
@@ -2059,20 +2360,23 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
                   "CredentialAccess"
+                ],
+                "subTechniques": [
+                  "T1003.006"
                 ],
                 "techniques": [
                   "T1003"
@@ -2082,16 +2386,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Account"
+                        "columnName": "Account",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "AccountName"
+                        "columnName": "AccountName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "AccountNTDomain"
+                        "columnName": "AccountNTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -2099,16 +2403,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "HostNameDomain"
+                        "columnName": "HostNameDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -2116,8 +2420,8 @@
                     "entityType": "IP",
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "IpAddress"
+                        "columnName": "IpAddress",
+                        "identifier": "Address"
                       }
                     ]
                   }
@@ -2175,7 +2479,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "NRT_base64_encoded_pefile_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "NRT_base64_encoded_pefile_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject11').analyticRuleVersion11]",
@@ -2199,16 +2503,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -2225,16 +2529,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "SubjectAccount"
+                        "columnName": "SubjectAccount",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "SubjectUserName"
+                        "columnName": "SubjectUserName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "SubjectDomainName"
+                        "columnName": "SubjectDomainName",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -2242,16 +2546,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "DnsDomain"
+                        "columnName": "DnsDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   }
@@ -2309,7 +2613,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "NRT_execute_base64_decodedpayload_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "NRT_execute_base64_decodedpayload_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject12').analyticRuleVersion12]",
@@ -2333,16 +2637,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -2359,16 +2663,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "SubjectAccount"
+                        "columnName": "SubjectAccount",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "AccountName"
+                        "columnName": "AccountName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "AccountNTDomain"
+                        "columnName": "AccountNTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -2376,16 +2680,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "HostNameDomain"
+                        "columnName": "HostNameDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   }
@@ -2443,7 +2747,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "NRT_SecurityEventLogCleared_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "NRT_SecurityEventLogCleared_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject13').analyticRuleVersion13]",
@@ -2467,16 +2771,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -2490,16 +2794,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Account"
+                        "columnName": "Account",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "AccountName"
+                        "columnName": "AccountName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "AccountNTDomain"
+                        "columnName": "AccountNTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -2507,16 +2811,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "HostNameDomain"
+                        "columnName": "HostNameDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   }
@@ -2574,7 +2878,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "password_not_set_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "password_not_set_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject14').analyticRuleVersion14]",
@@ -2602,16 +2906,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -2625,16 +2929,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "TargetAccount"
+                        "columnName": "TargetAccount",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "AccountName"
+                        "columnName": "AccountName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "AccountNTDomain"
+                        "columnName": "AccountNTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -2642,8 +2946,8 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "Sid",
-                        "columnName": "TargetSid"
+                        "columnName": "TargetSid",
+                        "identifier": "Sid"
                       }
                     ]
                   },
@@ -2651,16 +2955,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "HostNameDomain"
+                        "columnName": "HostNameDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   }
@@ -2718,7 +3022,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "PotentialFodhelperUACBypass_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "PotentialFodhelperUACBypass_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject15').analyticRuleVersion15]",
@@ -2746,16 +3050,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -2772,16 +3076,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "HostNameDomain"
+                        "columnName": "HostNameDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   },
@@ -2789,16 +3093,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "TargetAccount"
+                        "columnName": "TargetAccount",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "AccountName"
+                        "columnName": "AccountName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "AccountNTDomain"
+                        "columnName": "AccountNTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   }
@@ -2856,7 +3160,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "Potentialre-namedsdeleteusage_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "Potentialre-namedsdeleteusage_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject16').analyticRuleVersion16]",
@@ -2884,16 +3188,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -2909,16 +3213,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "TargetAccount"
+                        "columnName": "TargetAccount",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "AccountName"
+                        "columnName": "AccountName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "AccountNTDomain"
+                        "columnName": "AccountNTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -2926,16 +3230,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "HostNameDomain"
+                        "columnName": "HostNameDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   }
@@ -2993,7 +3297,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "ScheduleTaskHide_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "ScheduleTaskHide_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject17').analyticRuleVersion17]",
@@ -3021,16 +3325,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -3044,16 +3348,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "TargetAccount"
+                        "columnName": "TargetAccount",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "AccountName"
+                        "columnName": "AccountName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "AccountNTDomain"
+                        "columnName": "AccountNTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -3061,16 +3365,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "HostNameDomain"
+                        "columnName": "HostNameDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   }
@@ -3128,7 +3432,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "SdeletedeployedviaGPOandrunrecursively_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "SdeletedeployedviaGPOandrunrecursively_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject18').analyticRuleVersion18]",
@@ -3156,16 +3460,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -3179,16 +3483,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "TargetAccount"
+                        "columnName": "TargetAccount",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "AccountName"
+                        "columnName": "AccountName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "AccountNTDomain"
+                        "columnName": "AccountNTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -3196,16 +3500,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "HostNameDomain"
+                        "columnName": "HostNameDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   }
@@ -3263,7 +3567,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "StartStopHealthService_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "StartStopHealthService_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject19').analyticRuleVersion19]",
@@ -3291,16 +3595,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -3317,16 +3621,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "TargetAccount"
+                        "columnName": "TargetAccount",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "AccountName"
+                        "columnName": "AccountName",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "AccountNTDomain"
+                        "columnName": "AccountNTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -3334,16 +3638,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "HostNameDomain"
+                        "columnName": "HostNameDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   },
@@ -3351,8 +3655,8 @@
                     "entityType": "IP",
                     "fieldMappings": [
                       {
-                        "identifier": "Address",
-                        "columnName": "IpAddress"
+                        "columnName": "IpAddress",
+                        "identifier": "Address"
                       }
                     ]
                   }
@@ -3410,7 +3714,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "TimeSeriesAnomaly-ProcessExecutions_AnalyticalRules Analytics Rule with template version 3.0.9",
+        "description": "TimeSeriesAnomaly-ProcessExecutions_AnalyticalRules Analytics Rule with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('analyticRuleObject20').analyticRuleVersion20]",
@@ -3438,16 +3742,16 @@
                 "status": "Available",
                 "requiredDataConnectors": [
                   {
-                    "connectorId": "SecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "SecurityEvents"
                   },
                   {
-                    "connectorId": "WindowsSecurityEvents",
                     "dataTypes": [
                       "SecurityEvent"
-                    ]
+                    ],
+                    "connectorId": "WindowsSecurityEvents"
                   }
                 ],
                 "tactics": [
@@ -3461,16 +3765,16 @@
                     "entityType": "Account",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Account"
+                        "columnName": "Account",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "Name",
-                        "columnName": "Name"
+                        "columnName": "Name",
+                        "identifier": "Name"
                       },
                       {
-                        "identifier": "NTDomain",
-                        "columnName": "NTDomain"
+                        "columnName": "NTDomain",
+                        "identifier": "NTDomain"
                       }
                     ]
                   },
@@ -3478,16 +3782,16 @@
                     "entityType": "Host",
                     "fieldMappings": [
                       {
-                        "identifier": "FullName",
-                        "columnName": "Computer"
+                        "columnName": "Computer",
+                        "identifier": "FullName"
                       },
                       {
-                        "identifier": "HostName",
-                        "columnName": "HostName"
+                        "columnName": "HostName",
+                        "identifier": "HostName"
                       },
                       {
-                        "identifier": "DnsDomain",
-                        "columnName": "DnsDomain"
+                        "columnName": "DnsDomain",
+                        "identifier": "DnsDomain"
                       }
                     ]
                   }
@@ -3539,13 +3843,157 @@
     {
       "type": "Microsoft.OperationalInsights/workspaces/providers/contentTemplates",
       "apiVersion": "2023-04-01-preview",
+      "name": "[variables('analyticRuleObject21').analyticRuleTemplateSpecName21]",
+      "location": "[parameters('workspace-location')]",
+      "dependsOn": [
+        "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
+      ],
+      "properties": {
+        "description": "WMI-Abuse_AnalyticalRules Analytics Rule with template version 3.0.13",
+        "mainTemplate": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "[variables('analyticRuleObject21').analyticRuleVersion21]",
+          "parameters": {},
+          "variables": {},
+          "resources": [
+            {
+              "type": "Microsoft.SecurityInsights/AlertRuleTemplates",
+              "name": "[variables('analyticRuleObject21')._analyticRulecontentId21]",
+              "apiVersion": "2023-02-01-preview",
+              "kind": "Scheduled",
+              "location": "[parameters('workspace-location')]",
+              "properties": {
+                "description": "Detects WmiPrvSE.exe (the WMI Provider Host) spawning high-risk processes\nsuch as PowerShell, cmd.exe, cscript, or other LOLBins.\nWMI requires no external tools, generates minimal disk artifacts, and can\nexecute code on remote systems over DCOM/RPC while bypassing many controls.\nTune AllowlistedCmdPatterns for known-safe management tools such as SCCM.",
+                "displayName": "WMI Spawning Suspicious Child Process (Living off the Land)",
+                "enabled": false,
+                "query": "let Lookback = 1h;\nlet SuspiciousChildProcesses = dynamic([\n  \"powershell.exe\", \"pwsh.exe\", \"cmd.exe\", \"cscript.exe\", \"wscript.exe\",\n  \"mshta.exe\", \"certutil.exe\", \"bitsadmin.exe\", \"regsvr32.exe\",\n  \"rundll32.exe\", \"msiexec.exe\", \"installutil.exe\", \"cmstp.exe\",\n  \"msbuild.exe\", \"wmic.exe\", \"net.exe\", \"net1.exe\", \"nltest.exe\",\n  \"whoami.exe\", \"ipconfig.exe\", \"tasklist.exe\", \"schtasks.exe\",\n  \"at.exe\", \"sc.exe\", \"reg.exe\"\n]);\nlet AllowlistedCmdPatterns = dynamic([\n  \"ccmexec\", \"SMSAgent\", \"MOMAgent\", \"nessus\", \"qualys\"\n]);\nlet NetworkIndicators = dynamic([\n  \"http://\", \"https://\", \"ftp://\", \"Net.WebClient\",\n  \"DownloadString\", \"IEX\", \"Invoke-Expression\", \"/transfer\", \"-urlcache\"\n]);\nlet CredentialIndicators = dynamic([\n  \"lsass\", \"mimikatz\", \"sekurlsa\", \"dump\", \"sam\", \"ntds\"\n]);\nlet MDE_Results =\n  DeviceProcessEvents\n  | where Timestamp >= ago(Lookback)\n  | where InitiatingProcessFileName =~ \"WmiPrvSE.exe\"\n  | where FileName in~ (SuspiciousChildProcesses)\n  | where not(ProcessCommandLine has_any (AllowlistedCmdPatterns))\n  | extend\n      ChildProcess       = FileName,\n      ChildCmdLine       = ProcessCommandLine,\n      AccountName        = InitiatingProcessAccountName,\n      AccountDomain      = InitiatingProcessAccountDomain,\n      HostName           = DeviceName,\n      EventTime          = Timestamp,\n      NetworkActivity    = ProcessCommandLine has_any (NetworkIndicators),\n      CredentialActivity = ProcessCommandLine has_any (CredentialIndicators)\n  | project EventTime, HostName, AccountName, AccountDomain, ChildProcess,\n      ChildCmdLine, NetworkActivity, CredentialActivity;\nlet SecEvent_Results =\n  SecurityEvent\n  | where TimeGenerated >= ago(Lookback)\n  | where EventID == 4688\n  | where ParentProcessName endswith \"\\\\WmiPrvSE.exe\"\n  | extend ChildProcess = tostring(split(NewProcessName, \"\\\\\")[-1])\n  | where ChildProcess in~ (SuspiciousChildProcesses)\n  | where not(CommandLine has_any (AllowlistedCmdPatterns))\n  | extend\n      ChildCmdLine       = CommandLine,\n      AccountName        = SubjectUserName,\n      AccountDomain      = SubjectDomainName,\n      HostName           = Computer,\n      EventTime          = TimeGenerated,\n      NetworkActivity    = CommandLine has_any (NetworkIndicators),\n      CredentialActivity = CommandLine has_any (CredentialIndicators)\n  | project EventTime, HostName, AccountName, AccountDomain, ChildProcess,\n      ChildCmdLine, NetworkActivity, CredentialActivity;\nunion MDE_Results, SecEvent_Results\n| extend RiskScore = iif(CredentialActivity == true, 3, iif(NetworkActivity == true, 2, 1))\n| sort by RiskScore desc, EventTime desc\n",
+                "queryFrequency": "PT1H",
+                "queryPeriod": "PT1H",
+                "severity": "High",
+                "suppressionDuration": "PT1H",
+                "suppressionEnabled": false,
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "status": "Available",
+                "requiredDataConnectors": [
+                  {
+                    "dataTypes": [
+                      "DeviceProcessEvents"
+                    ],
+                    "connectorId": "MicrosoftThreatProtection"
+                  },
+                  {
+                    "dataTypes": [
+                      "SecurityEvent"
+                    ],
+                    "connectorId": "SecurityEvents"
+                  }
+                ],
+                "tactics": [
+                  "Execution",
+                  "LateralMovement",
+                  "Persistence"
+                ],
+                "subTechniques": [
+                  "T1021.006",
+                  "T1059.001",
+                  "T1059.003",
+                  "T1059.005"
+                ],
+                "techniques": [
+                  "T1047",
+                  "T1021",
+                  "T1059",
+                  "T1059",
+                  "T1059"
+                ],
+                "entityMappings": [
+                  {
+                    "entityType": "Host",
+                    "fieldMappings": [
+                      {
+                        "columnName": "HostName",
+                        "identifier": "FullName"
+                      }
+                    ]
+                  },
+                  {
+                    "entityType": "Account",
+                    "fieldMappings": [
+                      {
+                        "columnName": "AccountName",
+                        "identifier": "Name"
+                      },
+                      {
+                        "columnName": "AccountDomain",
+                        "identifier": "NTDomain"
+                      }
+                    ]
+                  },
+                  {
+                    "entityType": "Process",
+                    "fieldMappings": [
+                      {
+                        "columnName": "ChildCmdLine",
+                        "identifier": "CommandLine"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "Microsoft.OperationalInsights/workspaces/providers/metadata",
+              "apiVersion": "2022-01-01-preview",
+              "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat('AnalyticsRule-', last(split(variables('analyticRuleObject21').analyticRuleId21,'/'))))]",
+              "properties": {
+                "description": "Windows Security Events Analytics Rule 21",
+                "parentId": "[variables('analyticRuleObject21').analyticRuleId21]",
+                "contentId": "[variables('analyticRuleObject21')._analyticRulecontentId21]",
+                "kind": "AnalyticsRule",
+                "version": "[variables('analyticRuleObject21').analyticRuleVersion21]",
+                "source": {
+                  "kind": "Solution",
+                  "name": "Windows Security Events",
+                  "sourceId": "[variables('_solutionId')]"
+                },
+                "author": {
+                  "name": "Microsoft",
+                  "email": "[variables('_email')]"
+                },
+                "support": {
+                  "name": "Microsoft Corporation",
+                  "email": "support@microsoft.com",
+                  "tier": "Microsoft",
+                  "link": "https://support.microsoft.com"
+                }
+              }
+            }
+          ]
+        },
+        "packageKind": "Solution",
+        "packageVersion": "[variables('_solutionVersion')]",
+        "packageName": "[variables('_solutionName')]",
+        "packageId": "[variables('_solutionId')]",
+        "contentSchemaVersion": "3.0.0",
+        "contentId": "[variables('analyticRuleObject21')._analyticRulecontentId21]",
+        "contentKind": "AnalyticsRule",
+        "displayName": "WMI Spawning Suspicious Child Process (Living off the Land)",
+        "contentProductId": "[variables('analyticRuleObject21')._analyticRulecontentProductId21]",
+        "id": "[variables('analyticRuleObject21')._analyticRulecontentProductId21]",
+        "version": "[variables('analyticRuleObject21').analyticRuleVersion21]"
+      }
+    },
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/providers/contentTemplates",
+      "apiVersion": "2023-04-01-preview",
       "name": "[variables('workbookTemplateSpecName1')]",
       "location": "[parameters('workspace-location')]",
       "dependsOn": [
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "EventAnalyzer Workbook with template version 3.0.9",
+        "description": "EventAnalyzer Workbook with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('workbookVersion1')]",
@@ -3637,7 +4085,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "IdentityAndAccess Workbook with template version 3.0.9",
+        "description": "IdentityAndAccess Workbook with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('workbookVersion2')]",
@@ -3729,7 +4177,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "CommandsexecutedbyWMIonnewhosts-potentialImpacket_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "CommandsexecutedbyWMIonnewhosts-potentialImpacket_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject1').huntingQueryVersion1]",
@@ -3738,7 +4186,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_1",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -3814,7 +4262,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "Crashdumpdisabledonhost_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "Crashdumpdisabledonhost_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject2').huntingQueryVersion2]",
@@ -3823,7 +4271,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_2",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -3899,7 +4347,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "cscript_summary_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "cscript_summary_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject3').huntingQueryVersion3]",
@@ -3908,7 +4356,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_3",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -3980,7 +4428,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "CustomUserList_FailedLogons_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "CustomUserList_FailedLogons_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject4').huntingQueryVersion4]",
@@ -3989,7 +4437,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_4",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -4061,7 +4509,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "DecoyUserAccountAuthenticationAttempt_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "DecoyUserAccountAuthenticationAttempt_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject5').huntingQueryVersion5]",
@@ -4070,7 +4518,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_5",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -4146,7 +4594,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "Discorddownloadinvokedfromcmdline_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "Discorddownloadinvokedfromcmdline_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject6').huntingQueryVersion6]",
@@ -4155,7 +4603,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_6",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -4231,7 +4679,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "enumeration_user_and_group_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "enumeration_user_and_group_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject7').huntingQueryVersion7]",
@@ -4240,7 +4688,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_7",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -4312,7 +4760,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "ExchangePowerShellSnapin_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "ExchangePowerShellSnapin_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject8').huntingQueryVersion8]",
@@ -4321,7 +4769,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_8",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -4397,7 +4845,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "FailedUserLogons_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "FailedUserLogons_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject9').huntingQueryVersion9]",
@@ -4406,7 +4854,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_9",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -4482,7 +4930,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "GroupAddedToPrivlegeGroup_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "GroupAddedToPrivlegeGroup_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject10').huntingQueryVersion10]",
@@ -4491,7 +4939,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_10",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -4567,7 +5015,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "HostExportingMailboxAndRemovingExport_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "HostExportingMailboxAndRemovingExport_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject11').huntingQueryVersion11]",
@@ -4576,7 +5024,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_11",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -4652,7 +5100,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "HostsWithNewLogons_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "HostsWithNewLogons_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject12').huntingQueryVersion12]",
@@ -4661,7 +5109,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_12",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -4737,7 +5185,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "Invoke-PowerShellTcpOneLine_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "Invoke-PowerShellTcpOneLine_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject13').huntingQueryVersion13]",
@@ -4746,7 +5194,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_13",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -4822,7 +5270,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "Least_Common_Parent_Child_Process_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "Least_Common_Parent_Child_Process_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject14').huntingQueryVersion14]",
@@ -4831,7 +5279,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_14",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -4903,7 +5351,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "Least_Common_Process_Command_Lines_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "Least_Common_Process_Command_Lines_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject15').huntingQueryVersion15]",
@@ -4912,7 +5360,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_15",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -4984,7 +5432,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "Least_Common_Process_With_Depth_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "Least_Common_Process_With_Depth_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject16').huntingQueryVersion16]",
@@ -4993,7 +5441,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_16",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -5065,7 +5513,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "masquerading_files_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "masquerading_files_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject17').huntingQueryVersion17]",
@@ -5074,7 +5522,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_17",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -5146,7 +5594,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "MSRPRN_Printer_Bug_Exploitation_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "MSRPRN_Printer_Bug_Exploitation_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject18').huntingQueryVersion18]",
@@ -5155,7 +5603,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_18",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -5231,7 +5679,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "MultipleExplicitCredentialUsage4648Events_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "MultipleExplicitCredentialUsage4648Events_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject19').huntingQueryVersion19]",
@@ -5240,7 +5688,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_19",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -5316,7 +5764,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "NewChildProcessOfW3WP_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "NewChildProcessOfW3WP_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject20').huntingQueryVersion20]",
@@ -5325,7 +5773,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_20",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -5401,7 +5849,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "new_processes_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "new_processes_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject21').huntingQueryVersion21]",
@@ -5410,7 +5858,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_21",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -5482,7 +5930,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "NishangReverseTCPShellBase64_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "NishangReverseTCPShellBase64_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject22').huntingQueryVersion22]",
@@ -5491,7 +5939,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_22",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -5567,7 +6015,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "persistence_create_account_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "persistence_create_account_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject23').huntingQueryVersion23]",
@@ -5576,7 +6024,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_23",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -5652,7 +6100,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "PowerCatDownload_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "PowerCatDownload_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject24').huntingQueryVersion24]",
@@ -5661,7 +6109,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_24",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -5737,7 +6185,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "powershell_downloads_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "powershell_downloads_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject25').huntingQueryVersion25]",
@@ -5746,7 +6194,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_25",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -5818,7 +6266,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "powershell_newencodedscipts_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "powershell_newencodedscipts_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject26').huntingQueryVersion26]",
@@ -5827,7 +6275,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_26",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -5899,7 +6347,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "ProcessEntropy_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "ProcessEntropy_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject27').huntingQueryVersion27]",
@@ -5908,7 +6356,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_27",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -5980,7 +6428,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "RareProcbyServiceAccount_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "RareProcbyServiceAccount_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject28').huntingQueryVersion28]",
@@ -5989,7 +6437,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_28",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -6061,7 +6509,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "RareProcessPath_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "RareProcessPath_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject29').huntingQueryVersion29]",
@@ -6070,7 +6518,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_29",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -6142,7 +6590,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "RareProcessWithCmdLine_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "RareProcessWithCmdLine_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject30').huntingQueryVersion30]",
@@ -6151,7 +6599,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_30",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -6223,7 +6671,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "RareProcess_forWinHost_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "RareProcess_forWinHost_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject31').huntingQueryVersion31]",
@@ -6232,7 +6680,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_31",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -6304,7 +6752,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "ServiceInstallationFromUsersWritableDirectory_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "ServiceInstallationFromUsersWritableDirectory_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject32').huntingQueryVersion32]",
@@ -6313,7 +6761,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_32",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -6389,7 +6837,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "SuspectedLSASSDump_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "SuspectedLSASSDump_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject33').huntingQueryVersion33]",
@@ -6398,7 +6846,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_33",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -6474,7 +6922,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "Suspicious_enumeration_using_adfind_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "Suspicious_enumeration_using_adfind_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject34').huntingQueryVersion34]",
@@ -6483,7 +6931,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_34",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -6559,7 +7007,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "Suspicious_Windows_Login_outside_normal_hours_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "Suspicious_Windows_Login_outside_normal_hours_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject35').huntingQueryVersion35]",
@@ -6568,7 +7016,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_35",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -6644,7 +7092,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "uncommon_processes_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "uncommon_processes_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject36').huntingQueryVersion36]",
@@ -6653,7 +7101,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_36",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -6725,7 +7173,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "User Logons By Logon Type_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "User Logons By Logon Type_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject37').huntingQueryVersion37]",
@@ -6734,7 +7182,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_37",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -6810,7 +7258,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "UserAccountAddedToPrivlegeGroup_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "UserAccountAddedToPrivlegeGroup_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject38').huntingQueryVersion38]",
@@ -6819,7 +7267,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_38",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -6895,7 +7343,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "UserAccountCreatedDeleted_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "UserAccountCreatedDeleted_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject39').huntingQueryVersion39]",
@@ -6904,7 +7352,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_39",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -6980,7 +7428,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "UserAdd_RemToGroupByUnauthorizedUser_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "UserAdd_RemToGroupByUnauthorizedUser_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject40').huntingQueryVersion40]",
@@ -6989,7 +7437,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_40",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -7065,7 +7513,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "UserCreatedByUnauthorizedUser_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "UserCreatedByUnauthorizedUser_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject41').huntingQueryVersion41]",
@@ -7074,7 +7522,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_41",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -7150,7 +7598,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "VIPAccountFailedLogons_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "VIPAccountFailedLogons_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject42').huntingQueryVersion42]",
@@ -7159,7 +7607,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_42",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -7235,7 +7683,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "WindowsSystemTimeChange_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "WindowsSystemTimeChange_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject43').huntingQueryVersion43]",
@@ -7244,7 +7692,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_43",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -7320,7 +7768,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "CreateDCInstallationMedia_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "CreateDCInstallationMedia_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject44').huntingQueryVersion44]",
@@ -7329,7 +7777,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_44",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -7405,7 +7853,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "InternalProxies_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "InternalProxies_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject45').huntingQueryVersion45]",
@@ -7414,7 +7862,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_45",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -7490,7 +7938,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "ADAccountLockouts_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "ADAccountLockouts_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject46').huntingQueryVersion46]",
@@ -7499,7 +7947,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_46",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -7575,7 +8023,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "KrbRelayUpServiceCreation_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "KrbRelayUpServiceCreation_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject47').huntingQueryVersion47]",
@@ -7584,7 +8032,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_47",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -7660,7 +8108,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "RemoteScheduledTaskCreationUpdateviaSchtasks_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "RemoteScheduledTaskCreationUpdateviaSchtasks_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject48').huntingQueryVersion48]",
@@ -7669,7 +8117,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_48",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -7731,9 +8179,9 @@
         "contentId": "[variables('huntingQueryObject48')._huntingQuerycontentId48]",
         "contentKind": "HuntingQuery",
         "displayName": "Remote Task Creation/Update using Schtasks Process",
-        "contentProductId": "[concat(take(variables('_solutionId'),50),'-','hq','-', uniqueString(concat(variables('_solutionId'),'-','HuntingQuery','-',variables('huntingQueryObject48')._huntingQuerycontentId48,'-', '1.0.0')))]",
-        "id": "[concat(take(variables('_solutionId'),50),'-','hq','-', uniqueString(concat(variables('_solutionId'),'-','HuntingQuery','-',variables('huntingQueryObject48')._huntingQuerycontentId48,'-', '1.0.0')))]",
-        "version": "1.0.0"
+        "contentProductId": "[concat(take(variables('_solutionId'),50),'-','hq','-', uniqueString(concat(variables('_solutionId'),'-','HuntingQuery','-',variables('huntingQueryObject48')._huntingQuerycontentId48,'-', '1.0.1')))]",
+        "id": "[concat(take(variables('_solutionId'),50),'-','hq','-', uniqueString(concat(variables('_solutionId'),'-','HuntingQuery','-',variables('huntingQueryObject48')._huntingQuerycontentId48,'-', '1.0.1')))]",
+        "version": "1.0.1"
       }
     },
     {
@@ -7745,7 +8193,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "SuspiciousCommandlineTokenLolbas_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "SuspiciousCommandlineTokenLolbas_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject49').huntingQueryVersion49]",
@@ -7754,7 +8202,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_49",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -7830,7 +8278,7 @@
         "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
       ],
       "properties": {
-        "description": "WindowsSystemShutdownReboot_HuntingQueries Hunting Query with template version 3.0.9",
+        "description": "WindowsSystemShutdownReboot_HuntingQueries Hunting Query with template version 3.0.13",
         "mainTemplate": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "[variables('huntingQueryObject50').huntingQueryVersion50]",
@@ -7839,7 +8287,7 @@
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/savedSearches",
-              "apiVersion": "2022-10-01",
+              "apiVersion": "2025-07-01",
               "name": "Windows_Security_Events_Hunting_Query_50",
               "location": "[parameters('workspace-location')]",
               "properties": {
@@ -7911,12 +8359,12 @@
       "apiVersion": "2023-04-01-preview",
       "location": "[parameters('workspace-location')]",
       "properties": {
-        "version": "3.0.9",
+        "version": "3.0.13",
         "kind": "Solution",
         "contentSchemaVersion": "3.0.0",
         "displayName": "Windows Security Events",
         "publisherDisplayName": "Microsoft Sentinel, Microsoft Corporation",
-        "descriptionHtml": "<p><strong>Note:</strong> Please refer to the following before installing the solution:</p>\n<p>• Review the solution <a href=\"https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Windows%20Security%20Events/ReleaseNotes.md\">Release Notes</a></p>\n<p>• There may be <a href=\"https://aka.ms/sentinelsolutionsknownissues\">known issues</a> pertaining to this Solution, please refer to them before installing.</p>\n<p>The Windows Security Events solution for Microsoft Sentinel allows you to ingest Security events from your Windows machines using the Windows Agent into Microsoft Sentinel. This solution includes two (2) data connectors to help ingest the logs.</p>\n<ol>\n<li><p><strong>Windows Security Events via AMA</strong> - This data connector helps in ingesting Security Events logs into your Log Analytics Workspace using the new Azure Monitor Agent. Learn more about ingesting using the new Azure Monitor Agent <a href=\"https://learn.microsoft.com/azure/sentinel/connect-cef-ama\">here</a>. <strong>Microsoft recommends using this Data Connector</strong>.</p>\n</li>\n<li><p><strong>Security Events via Legacy Agent</strong> - This data connector helps in ingesting Security Events logs into your Log Analytics Workspace using the legacy Log Analytics agent.</p>\n</li>\n</ol>\n<P style=\"color:red\">**NOTE:** Microsoft recommends installation of Windows Security Events via AMA Connector. Legacy connector uses the Log Analytics agent which is about to be deprecated by **Aug 31, 2024,** and thus should only be installed where AMA is not supported.</p>\n<p><strong>Data Connectors:</strong> 2, <strong>Workbooks:</strong> 2, <strong>Analytic Rules:</strong> 20, <strong>Hunting Queries:</strong> 50</p>\n<p><a href=\"https://aka.ms/azuresentinel\">Learn more about Microsoft Sentinel</a> | <a href=\"https://aka.ms/azuresentinelsolutionsdoc\">Learn more about Solutions</a></p>\n",
+        "descriptionHtml": "<p><strong>Note:</strong> Please refer to the following before installing the solution:</p>\n<p>• Review the solution <a href=\"https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Windows%20Security%20Events/ReleaseNotes.md\">Release Notes</a></p>\n<p>• There may be <a href=\"https://aka.ms/sentinelsolutionsknownissues\">known issues</a> pertaining to this Solution, please refer to them before installing.</p>\n<p>The Windows Security Events solution for Microsoft Sentinel allows you to ingest Security events from your Windows machines using the Windows Agent into Microsoft Sentinel. This solution includes two (2) data connectors to help ingest the logs.</p>\n<ol>\n<li><p><strong>Windows Security Events via AMA</strong> - This data connector helps in ingesting Security Events logs into your Log Analytics Workspace using the new Azure Monitor Agent. Learn more about ingesting using the new Azure Monitor Agent <a href=\"https://learn.microsoft.com/azure/sentinel/connect-cef-ama\">here</a>. <strong>Microsoft recommends using this Data Connector</strong>.</p>\n</li>\n<li><p><strong>Security Events via Legacy Agent</strong> - This data connector helps in ingesting Security Events logs into your Log Analytics Workspace using the legacy Log Analytics agent.</p>\n</li>\n</ol>\n<p><strong>Data Connectors:</strong> 2, <strong>Workbooks:</strong> 2, <strong>Analytic Rules:</strong> 21, <strong>Hunting Queries:</strong> 50</p>\n<p><a href=\"https://aka.ms/azuresentinel\">Learn more about Microsoft Sentinel</a> | <a href=\"https://aka.ms/azuresentinelsolutionsdoc\">Learn more about Solutions</a></p>\n",
         "contentKind": "Solution",
         "contentProductId": "[variables('_solutioncontentProductId')]",
         "id": "[variables('_solutioncontentProductId')]",
@@ -8050,6 +8498,11 @@
               "kind": "AnalyticsRule",
               "contentId": "[variables('analyticRuleObject20')._analyticRulecontentId20]",
               "version": "[variables('analyticRuleObject20').analyticRuleVersion20]"
+            },
+            {
+              "kind": "AnalyticsRule",
+              "contentId": "[variables('analyticRuleObject21')._analyticRulecontentId21]",
+              "version": "[variables('analyticRuleObject21').analyticRuleVersion21]"
             },
             {
               "kind": "Workbook",

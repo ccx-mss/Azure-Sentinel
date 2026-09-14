@@ -30,11 +30,11 @@ This package includes:
 * These three playbook templates leverage AbuseIPDB custom connector:
   * [Response – blacklist IP`s to tiIndicators](./Playbooks/AbuseIPDB-BlacklistIpToThreatIntelligence) - used to stream IOCs via Microsoft Graph Security tiIndicators API from the AbuseIPDB.
   * [Response - enrich incedent by IP info](./Playbooks/AbuseIPDB-EnrichIncidentByIPInfo) - get information about IP from AbuseIPDB and add to the incident comments.
-  * [Response - Report IP to AbuseIPDB from the incident](./Playbooks/AbuseIPDB-ReportaIPsToAbuselPDBAfterCheckingByUserInMSTeams) - Report IP to AbuseIPDB from incident after user approval in Teams.
+  * [Response - Report IP to AbuseIPDB from the incident](./Playbooks/AbuseIPDB-ReportIPsAfterUserResponseInMSTeams) - Report IP to AbuseIPDB from incident after user approval in Teams.
 
 You can choose to deploy the whole package: connectors + all three playbook templates, or each one seperately from its specific folder.
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FAbuseIPDB%2FPlaybooks%2Fazuredeploy.json) [![Deploy to Azure](https://aka.ms/deploytoazuregovbutton)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FAbuseIPDB%2FPlaybooks%2Fazuredeploy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FAbuseIPDB%2FPlaybooks%2Fazuredeploy.json) [![Deploy to Azure](https://aka.ms/deploytoazuregovernbutton)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FAbuseIPDB%2FPlaybooks%2Fazuredeploy.json)
 
 # AbuseIPDB connector documentation 
 
@@ -62,9 +62,9 @@ For obtain API Key [follow the instructions](https://www.abuseipdb.com/api.html)
 |**For Playbooks**|
 |**AbuseIPDB-BlacklistIpToThreatIntelligence Playbook Name** | Enter the playbook name here (e.g. AbuseIPDB-BlacklistIpToThreatIntelligence)|
 |**AbuseIPDB-EnrichIncidentByIPInfo Playbook Name** | Enter the playbook name here (e.g. AbuseIPDB-EnrichIncidentByIPInfo)|
-|**AbuseIPDB-ReportaIPsToAbuselPDBAfterCheckingByUserInMSTeams Playbook Name** | Enter the playbook name here (e.g. AbuseIPDB-ReportaIPsToAbuselPDBAfterCheckingByUserInMSTeams)|
-|**MSTeamsGroupId** | Value of TeamsGroupId parameter in AbuseIPDB-ReportaIPsToAbuselPDBAfterCheckingByUserInMSTeams playbook. Id of the Teams Group where the adaptive card will be posted.|
-|**MSTeamsChannelId** | Value of TeamsChannelId parameter in AbuseIPDB-ReportaIPsToAbuselPDBAfterCheckingByUserInMSTeams playbook. Id of the Teams Channel where the adaptive card will be posted.|
+|**AbuseIPDB-ReportIPsAfterUserResponseInMSTeams Playbook Name** | Enter the playbook name here (e.g. AbuseIPDB-ReportIPsAfterUserResponseInMSTeams)|
+|**MSTeamsGroupId** | Value of TeamsGroupId parameter in AbuseIPDB-ReportIPsAfterUserResponseInMSTeams playbook. Id of the Teams Group where the adaptive card will be posted.|
+|**MSTeamsChannelId** | Value of TeamsChannelId parameter in AbuseIPDB-ReportIPsAfterUserResponseInMSTeams playbook. Id of the Teams Channel where the adaptive card will be posted.|
 
 <br>
 <a name="postdeployment">

@@ -21,7 +21,7 @@ requiredDataConnectors:
 queryFrequency: 1d
 queryPeriod: 1d
 triggerOperator: gt
-triggerThreshold: 0
+triggerThreshold: 3
 status: Available
 tactics:
   - CredentialAccess

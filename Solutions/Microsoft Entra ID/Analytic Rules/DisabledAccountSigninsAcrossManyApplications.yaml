@@ -5,7 +5,7 @@ description: |
   Default threshold for Azure Applications attempted to sign in to is 3.
   References: https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes
   50057 - User account is disabled. The account has been disabled by an administrator.'
-severity: Medium
+severity: Low
 requiredDataConnectors:
   - connectorId: AzureActiveDirectory
     dataTypes:
@@ -24,12 +24,11 @@ relevantTechniques:
   - T1078
 query: |
   let threshold = 3;
-  let aadFunc = (tableName:string){
-  table(tableName)
+  SigninLogs
   | where ResultType == "50057"
-  | where ResultDescription =~ "User account is disabled. The account has been disabled by an administrator."
   | summarize StartTime = min(TimeGenerated), EndTime = max(TimeGenerated), applicationCount = dcount(AppDisplayName),
-  applicationSet = make_set(AppDisplayName), count() by UserPrincipalName, IPAddress, Type
+      applicationSet = make_set(AppDisplayName), count()
+      by UserPrincipalName, IPAddress, Type
   | where applicationCount >= threshold
   | extend Name = tostring(split(UserPrincipalName,'@',0)[0]), UPNSuffix = tostring(split(UserPrincipalName,'@',1)[0])
   };
@@ -49,5 +48,5 @@ entityMappings:
     fieldMappings:
       - identifier: Address
         columnName: IPAddress
-version: 1.0.3
+version: 1.0.4
 kind: Scheduled

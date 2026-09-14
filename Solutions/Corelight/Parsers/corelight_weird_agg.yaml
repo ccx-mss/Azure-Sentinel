@@ -1,0 +1,41 @@
+id: a3a13f8a-2b91-4be6-88ce-00a84c5e2105
+Function:
+  Title: Corelight WEIRD Aggregated Events
+  Version: '2.0.0'
+  LastUpdated: '2026-08-17'
+Category: Microsoft Sentinel Parser
+FunctionName: corelight_weird_agg
+FunctionAlias: corelight_weird_agg
+FunctionQuery: |
+    let dummy_table = datatable(TimeGenerated: datetime, uids: dynamic) [];
+    let corelight_weird_agg = view () {
+        union isfuzzy=true
+            Corelight_v3_weird_agg_CL,
+            dummy_table
+        | summarize arg_max(TimeGenerated, *) by uids_key = tostring(uids)
+        | project-away uids_key
+        | extend
+            EventVendor="Corelight",
+            EventProduct="CorelightSensor",
+            EventType="weird_agg",
+            ts = TimeGenerated
+        | project
+            path,
+            system_name,
+            id_orig_h,
+            id_orig_p,
+            id_resp_h,
+            id_resp_p,
+            name,
+            uid,
+            addl,
+            notice,
+            peer,
+            source,
+            EventVendor,
+            EventProduct,
+            EventType,
+            ts,
+            TimeGenerated
+    };
+    corelight_weird_agg

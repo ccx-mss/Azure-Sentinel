@@ -1,203 +1,241 @@
-[
-    {
-        "name": "SnowflakeDCR",
-        "apiVersion": "2023-03-11",
-        "type": "Microsoft.Insights/dataCollectionRules",
-        "location": "{{location}}",
-        "properties": {
-            "dataCollectionEndpointId": "{{dataCollectionEndpointId}}",
-            "streamDeclarations": {
-                "Custom-SnowflakeLogin": {
-                    "columns": [
-                        {
-                            "name": "data",
-                            "type": "dynamic"
-                        }
-                    ]
-                },
-                "Custom-SnowflakeQuery": {
-                    "columns": [
-                        {
-                            "name": "data",
-                            "type": "dynamic"
-                        }
-                    ]
-                },
-                "Custom-SnowflakeUserGrant": {
-                    "columns": [
-                        {
-                            "name": "data",
-                            "type": "dynamic"
-                        }
-                    ]
-                },
-                "Custom-SnowflakeRoleGrant": {
-                    "columns": [
-                        {
-                            "name": "data",
-                            "type": "dynamic"
-                        }
-                    ]
-                },
-                "Custom-SnowflakeLoad": {
-                    "columns": [
-                        {
-                            "name": "data",
-                            "type": "dynamic"
-                        }
-                    ]
-                },
-                "Custom-SnowflakeMaterializedView": {
-                    "columns": [
-                        {
-                            "name": "data",
-                            "type": "dynamic"
-                        }
-                    ]
-                },
-                "Custom-SnowflakeRoles": {
-                    "columns": [
-                        {
-                            "name": "data",
-                            "type": "dynamic"
-                        }
-                    ]
-                },
-                "Custom-SnowflakeTable": {
-                    "columns": [
-                        {
-                            "name": "data",
-                            "type": "dynamic"
-                        }
-                    ]
-                },
-                "Custom-SnowflakeTableStorageMetrics": {
-                    "columns": [
-                        {
-                            "name": "data",
-                            "type": "dynamic"
-                        }
-                    ]
-                },
-                "Custom-SnowflakeUsers": {
-                    "columns": [
-                        {
-                            "name": "data",
-                            "type": "dynamic"
-                        }
-                    ]
-                }
-            },
-            "destinations": {
-                "logAnalytics": [
-                    {
-                        "workspaceResourceId": "{{workspaceResourceId}}",
-                        "name": "clv2ws1"
-                    }
-                ]
-            },
-            "dataFlows": [
-                {
-                    "streams": [
-                        "Custom-SnowflakeLogin"
-                    ],
-                    "destinations": [
-                        "clv2ws1"
-                    ],
-                    "transformKql": "source | extend Data = tostring(data), TimeGenerated = now() | where Data !contains \"[]\" | project TimeGenerated, Data",
-                    "outputStream": "Custom-SnowflakeLogin_CL"
-                },
-                {
-                    "streams": [
-                        "Custom-SnowflakeQuery"
-                    ],
-                    "destinations": [
-                        "clv2ws1"
-                    ],
-                    "transformKql": "source | extend Data = tostring(data), TimeGenerated = now() | where Data !contains \"[]\" | project TimeGenerated, Data",
-                    "outputStream": "Custom-SnowflakeQuery_CL"
-                },
-                {
-                    "streams": [
-                        "Custom-SnowflakeUserGrant"
-                    ],
-                    "destinations": [
-                        "clv2ws1"
-                    ],
-                    "transformKql": "source | extend Data = tostring(data), TimeGenerated = now() | where Data !contains \"[]\" | project TimeGenerated, Data",
-                    "outputStream": "Custom-SnowflakeUserGrant_CL"
-                },
-                {
-                    "streams": [
-                        "Custom-SnowflakeRoleGrant"
-                    ],
-                    "destinations": [
-                        "clv2ws1"
-                    ],
-                    "transformKql": "source | extend Data = tostring(data), TimeGenerated = now() | where Data !contains \"[]\" | project TimeGenerated, Data",
-                    "outputStream": "Custom-SnowflakeRoleGrant_CL"
-                },
-                {
-                    "streams": [
-                        "Custom-SnowflakeLoad"
-                    ],
-                    "destinations": [
-                        "clv2ws1"
-                    ],
-                    "transformKql": "source | extend Data = tostring(data), TimeGenerated = now() | where Data !contains \"[]\" | project TimeGenerated, Data",
-                    "outputStream": "Custom-SnowflakeLoad_CL"
-                },
-                {
-                    "streams": [
-                        "Custom-SnowflakeMaterializedView"
-                    ],
-                    "destinations": [
-                        "clv2ws1"
-                    ],
-                    "transformKql": "source | extend Data = tostring(data), TimeGenerated = now() | where Data !contains \"[]\" | project TimeGenerated, Data",
-                    "outputStream": "Custom-SnowflakeMaterializedView_CL"
-                },
-                {
-                    "streams": [
-                        "Custom-SnowflakeRoles"
-                    ],
-                    "destinations": [
-                        "clv2ws1"
-                    ],
-                    "transformKql": "source | extend Data = tostring(data), TimeGenerated = now() | where Data !contains \"[]\" | project TimeGenerated, Data",
-                    "outputStream": "Custom-SnowflakeRoles_CL"
-                },
-                {
-                    "streams": [
-                        "Custom-SnowflakeTable"
-                    ],
-                    "destinations": [
-                        "clv2ws1"
-                    ],
-                    "transformKql": "source | extend Data = tostring(data), TimeGenerated = now() | where Data !contains \"[]\" | project TimeGenerated, Data",
-                    "outputStream": "Custom-SnowflakeTables_CL"
-                },
-                {
-                    "streams": [
-                        "Custom-SnowflakeTableStorageMetrics"
-                    ],
-                    "destinations": [
-                        "clv2ws1"
-                    ],
-                    "transformKql": "source | extend Data = tostring(data), TimeGenerated = now() | where Data !contains \"[]\" | project TimeGenerated, Data",
-                    "outputStream": "Custom-SnowflakeTableStorageMetrics_CL"
-                },
-                {
-                    "streams": [
-                        "Custom-SnowflakeUsers"
-                    ],
-                    "destinations": [
-                        "clv2ws1"
-                    ],
-                    "transformKql": "source | extend Data = tostring(data), TimeGenerated = now() | where Data !contains \"[]\" | project TimeGenerated, Data",
-                    "outputStream": "Custom-SnowflakeUsers_CL"
-                }
-            ]
+{
+  "name": "SnowflakeDCRV2",
+  "apiVersion": "2023-03-11",
+  "type": "Microsoft.Insights/dataCollectionRules",
+  "location": "{{location}}",
+  "properties": {
+    "dataCollectionEndpointId": "{{dataCollectionEndpointId}}",
+    "streamDeclarations": {
+      "Custom-SnowflakeLoadV2_CL": {
+        "columns": [
+          {
+            "name": "data",
+            "type": "dynamic"
+          },
+          {
+            "name": "accountId",
+            "type": "string"
+          }
+        ]
+      },
+      "Custom-SnowflakeLoginV2_CL": {
+        "columns": [
+          {
+            "name": "data",
+            "type": "dynamic"
+          },
+          {
+            "name": "accountId",
+            "type": "string"
+          }
+        ]
+      },
+      "Custom-SnowflakeMaterializedViewV2_CL": {
+        "columns": [
+          {
+            "name": "data",
+            "type": "dynamic"
+          },
+          {
+            "name": "accountId",
+            "type": "string"
+          }
+        ]
+      },
+      "Custom-SnowflakeQueryV2_CL": {
+        "columns": [
+          {
+            "name": "data",
+            "type": "dynamic"
+          },
+          {
+            "name": "accountId",
+            "type": "string"
+          }
+        ]
+      },
+      "Custom-SnowflakeRoleGrantV2_CL": {
+        "columns": [
+          {
+            "name": "data",
+            "type": "dynamic"
+          },
+          {
+            "name": "accountId",
+            "type": "string"
+          }
+        ]
+      },
+      "Custom-SnowflakeRolesV2_CL": {
+        "columns": [
+          {
+            "name": "data",
+            "type": "dynamic"
+          },
+          {
+            "name": "accountId",
+            "type": "string"
+          }
+        ]
+      },
+      "Custom-SnowflakeTablesV2_CL": {
+        "columns": [
+          {
+            "name": "data",
+            "type": "dynamic"
+          },
+          {
+            "name": "accountId",
+            "type": "string"
+          }
+        ]
+      },
+      "Custom-SnowflakeTableStorageMetricsV2_CL": {
+        "columns": [
+          {
+            "name": "data",
+            "type": "dynamic"
+          },
+          {
+            "name": "accountId",
+            "type": "string"
+          }
+        ]
+      },
+      "Custom-SnowflakeUserGrantV2_CL": {
+        "columns": [
+          {
+            "name": "data",
+            "type": "dynamic"
+          },
+          {
+            "name": "accountId",
+            "type": "string"
+          }
+        ]
+      },
+      "Custom-SnowflakeUsersV2_CL": {
+        "columns": [
+          {
+            "name": "data",
+            "type": "dynamic"
+          },
+          {
+            "name": "accountId",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "destinations": {
+      "logAnalytics": [
+        {
+          "workspaceResourceId": "{{workspaceResourceId}}",
+          "name": "clv2ws1"
         }
-    }
-]
+      ]
+    },
+    "dataFlows": [
+      {
+        "streams": [
+          "Custom-SnowflakeLoadV2_CL"
+        ],
+        "destinations": [
+          "clv2ws1"
+        ],
+        "outputStream": "Custom-SnowflakeLoadV2_CL",
+        "transformKql": "source  | project TimeGenerated=now(),Data=tostring(data),SnowflakeAccountIdentifier=tostring(accountId)"
+      },
+      {
+        "streams": [
+          "Custom-SnowflakeLoginV2_CL"
+        ],
+        "destinations": [
+          "clv2ws1"
+        ],
+        "outputStream": "Custom-SnowflakeLoginV2_CL",
+        "transformKql": "source  | project TimeGenerated=now(),Data=tostring(data),SnowflakeAccountIdentifier=tostring(accountId)"
+      },
+      {
+        "streams": [
+          "Custom-SnowflakeMaterializedViewV2_CL"
+        ],
+        "destinations": [
+          "clv2ws1"
+        ],
+        "outputStream": "Custom-SnowflakeMaterializedViewV2_CL",
+        "transformKql": "source  | project TimeGenerated=now(),Data=tostring(data),SnowflakeAccountIdentifier=tostring(accountId)"
+      },
+      {
+        "streams": [
+          "Custom-SnowflakeQueryV2_CL"
+        ],
+        "destinations": [
+          "clv2ws1"
+        ],
+        "outputStream": "Custom-SnowflakeQueryV2_CL",
+        "transformKql": "source  | project TimeGenerated=now(),Data=tostring(data),SnowflakeAccountIdentifier=tostring(accountId)"
+      },
+      {
+        "streams": [
+          "Custom-SnowflakeRoleGrantV2_CL"
+        ],
+        "destinations": [
+          "clv2ws1"
+        ],
+        "outputStream": "Custom-SnowflakeRoleGrantV2_CL",
+        "transformKql": "source  | project TimeGenerated=now(),Data=tostring(data),SnowflakeAccountIdentifier=tostring(accountId)"
+      },
+      {
+        "streams": [
+          "Custom-SnowflakeRolesV2_CL"
+        ],
+        "destinations": [
+          "clv2ws1"
+        ],
+        "outputStream": "Custom-SnowflakeRolesV2_CL",
+        "transformKql": "source  | project TimeGenerated=now(),Data=tostring(data),SnowflakeAccountIdentifier=tostring(accountId)"
+      },
+      {
+        "streams": [
+          "Custom-SnowflakeTablesV2_CL"
+        ],
+        "destinations": [
+          "clv2ws1"
+        ],
+        "outputStream": "Custom-SnowflakeTablesV2_CL",
+        "transformKql": "source  | project TimeGenerated=now(),Data=tostring(data),SnowflakeAccountIdentifier=tostring(accountId)"
+      },
+      {
+        "streams": [
+          "Custom-SnowflakeTableStorageMetricsV2_CL"
+        ],
+        "destinations": [
+          "clv2ws1"
+        ],
+        "outputStream": "Custom-SnowflakeTableStorageMetricsV2_CL",
+        "transformKql": "source  | project TimeGenerated=now(),Data=tostring(data),SnowflakeAccountIdentifier=tostring(accountId)"
+      },
+      {
+        "streams": [
+          "Custom-SnowflakeUserGrantV2_CL"
+        ],
+        "destinations": [
+          "clv2ws1"
+        ],
+        "outputStream": "Custom-SnowflakeUserGrantV2_CL",
+        "transformKql": "source  | project TimeGenerated=now(),Data=tostring(data),SnowflakeAccountIdentifier=tostring(accountId)"
+      },
+      {
+        "streams": [
+          "Custom-SnowflakeUsersV2_CL"
+        ],
+        "destinations": [
+          "clv2ws1"
+        ],
+        "outputStream": "Custom-SnowflakeUsersV2_CL",
+        "transformKql": "source  | project TimeGenerated=now(),Data=tostring(data),SnowflakeAccountIdentifier=tostring(accountId)"
+      }
+    ]
+  }
+}

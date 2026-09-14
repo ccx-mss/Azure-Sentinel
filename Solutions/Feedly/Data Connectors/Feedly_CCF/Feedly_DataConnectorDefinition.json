@@ -1,0 +1,111 @@
+{
+    "name": "FeedlyCCPDefinition",
+    "apiVersion": "2022-09-01-preview",
+    "type": "Microsoft.SecurityInsights/dataConnectorDefinitions",
+    "location": "{{location}}",
+    "kind": "Customizable",
+    "properties": {
+        "connectorUiConfig": {
+            "id": "FeedlyCCPDefinition",
+            "title": "Feedly IoC",
+            "publisher": "Feedly",
+            "descriptionMarkdown": "The [Feedly](https://feedly.com/) IoC data connector ingests Indicators of Compromise from the Feedly API into the native [ThreatIntelIndicators](https://learn.microsoft.com/azure/azure-monitor/reference/tables/threatintelindicators) table in Microsoft Sentinel. Indicators are tagged with `SourceSystem == \"Feedly\"` so they participate in Microsoft Sentinel threat-intelligence matching, analytics, and hunting the same way as other TIP integrations (for example Recorded Future via the Upload Indicators API).",
+            "graphQueriesTableName": "ThreatIntelIndicators",
+            "graphQueries": [
+                {
+                    "metricName": "Total data received",
+                    "legend": "Feedly IoCs",
+                    "baseQuery": "{{graphQueriesTableName}}\n| where SourceSystem == \"Feedly\"\n| summarize count() by bin(TimeGenerated, 1h)"
+                }
+            ],
+            "sampleQueries": [
+                {
+                    "description": "All Feedly IoCs collected",
+                    "query": "{{graphQueriesTableName}}\n| where SourceSystem == \"Feedly\"\n| sort by TimeGenerated desc"
+                },
+                {
+                    "description": "IP addresses",
+                    "query": "{{graphQueriesTableName}}\n| where SourceSystem == \"Feedly\" and ObservableKey == \"ipv4-addr:value\"\n| sort by TimeGenerated desc"
+                },
+                {
+                    "description": "Domain names",
+                    "query": "{{graphQueriesTableName}}\n| where SourceSystem == \"Feedly\" and ObservableKey == \"domain-name:value\"\n| sort by TimeGenerated desc"
+                },
+                {
+                    "description": "URLs",
+                    "query": "{{graphQueriesTableName}}\n| where SourceSystem == \"Feedly\" and ObservableKey == \"url:value\"\n| sort by TimeGenerated desc"
+                }
+            ],
+            "dataTypes": [
+                {
+                    "name": "{{graphQueriesTableName}}",
+                    "lastDataReceivedQuery": "{{graphQueriesTableName}}\n| where SourceSystem == \"Feedly\"\n| summarize Time = max(TimeGenerated)\n| where isnotempty(Time)"
+                }
+            ],
+            "availability": {
+                "isPreview": false
+            },
+            "connectivityCriteria": [
+                {
+                    "type": "HasDataConnectors"
+                }
+            ],
+            "permissions": {
+                "resourceProvider": [
+                    {
+                        "provider": "Microsoft.OperationalInsights/workspaces",
+                        "permissionsDisplayText": "Read and Write permissions are required.",
+                        "providerDisplayName": "Workspace",
+                        "scope": "Workspace",
+                        "requiredPermissions": {
+                            "write": true,
+                            "read": true,
+                            "delete": true
+                        }
+                    }
+                ],
+                "customs": [
+                    {
+                        "name": "Feedly API access",
+                        "description": "Access to the Feedly API is required. You need a Feedly API token with access to the IoC streams you want to ingest. Generate your API token at https://feedly.com/i/team/api"
+                    }
+                ]
+            },
+            "instructionSteps": [
+                {
+                    "description": "1) Go to https://feedly.com/i/team/api and generate a new API token for the connector.\n2) In Microsoft Sentinel, provide your Feedly API Key and Stream IDs, then click Connect.\n3) Indicators are written to the native ThreatIntelIndicators table with SourceSystem Feedly. Query them with: ThreatIntelIndicators | where SourceSystem == \"Feedly\"",
+                    "instructions": [
+                        {
+                            "type": "Textbox",
+                            "parameters": {
+                                "label": "Feedly API Key",
+                                "placeholder": "Enter your Feedly API token",
+                                "type": "password",
+                                "name": "feedlyApiKey",
+                                "required": true
+                            }
+                        },
+                        {
+                            "type": "Textbox",
+                            "parameters": {
+                                "label": "Feedly Stream IDs",
+                                "placeholder": "streamId1,streamId2,streamId3",
+                                "type": "text",
+                                "name": "feedlyStreamIds",
+                                "required": true
+                            }
+                        },
+                        {
+                            "type": "ConnectionToggleButton",
+                            "parameters": {
+                                "connectLabel": "Connect",
+                                "name": "connect"
+                            }
+                        }
+                    ],
+                    "title": "Connect to Feedly to start collecting IoCs in Microsoft Sentinel"
+                }
+            ]
+        }
+    }
+}

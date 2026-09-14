@@ -29,11 +29,11 @@ query: |
   | where Category =~ "RoleManagement"
   | where OperationName in~ (OperationList)
   | mv-apply TargetResource = TargetResources on 
-    (
-        where TargetResource.type =~ "User"
-        | extend TargetUserPrincipalName = tostring(TargetResource.userPrincipalName),
-                 modProps = TargetResource.modifiedProperties
-    )
+      (
+      where TargetResource.type =~ "User"
+      | extend TargetUserPrincipalName = tostring(TargetResource.userPrincipalName),
+          modProps = TargetResource.modifiedProperties
+      )
   | mv-apply Property = modProps on 
     (
         where Property.displayName =~ "Role.WellKnownObjectName"

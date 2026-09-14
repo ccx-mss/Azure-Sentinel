@@ -7,7 +7,7 @@
   "properties": {
     "connectorUiConfig": {
       "id": "GitHubAuditDefinitionV2",
-      "title": "GitHub Enterprise Audit Log (via Codeless Connector Framework) (Preview)",
+      "title": "GitHub Enterprise Audit Log (via Codeless Connector Framework)",
       "publisher": "Microsoft",
       "descriptionMarkdown": "The GitHub audit log connector provides the capability to ingest GitHub logs into Microsoft Sentinel. By connecting GitHub audit logs into Microsoft Sentinel, you can view this data in workbooks, use it to create custom alerts, and improve your investigation process. \n\n **Note:** If you intended to ingest GitHub subscribed events into Microsoft Sentinel, please refer to GitHub (using Webhooks) Connector from \"**Data Connectors**\" gallery.",
       "graphQueriesTableName": "GitHubAuditLogsV2_CL",
@@ -73,7 +73,7 @@
               "parameters": {
                 "mapping": [
                   {
-                    "columnName": "Github Enterprise URL",
+                    "columnName": "Github Enterprise API URL",
                     "columnValue": "properties.addOnAttributes.ApiUrl"
                   }
                 ],
@@ -88,16 +88,21 @@
                 "isPrimary": true,
                 "label": "Add Enterprise",
                 "title": "Add Enterprise",
-                "subtitle": "Enter the credentials",
                 "contextPaneType": "DataConnectorsContextPane",
                 "instructionSteps": [
                   {
                     "instructions": [
                       {
+                        "parameters": {
+                          "content": "Enter your Github Enterprise API URL and API key. Github Enterprise API URL formats:\n* `https://api.github.com/enterprises/{enterprise}`\n* `https://api.{subdomain}.ghe.com/enterprises/{enterprise}`"
+                        },
+                        "type": "Markdown"
+                      },
+                      {
                         "type": "Textbox",
                         "parameters": {
-                          "label": "Github Enterprise URL",
-                          "placeholder": "Your Github Enterprise URL",
+                          "label": "Github Enterprise API URL",
+                          "placeholder": "Your Github Enterprise API URL",
                           "type": "text",
                           "name": "ApiUrl"
                         }
